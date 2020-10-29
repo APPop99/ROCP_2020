@@ -43,7 +43,7 @@ public class playerDBMS_demo {
 		
 		//UPDATE operation = finding a player specified by id and updating a field (teamName)
 		try {
-			int id=109;
+			int id=107;
 			String newTeamName = "Bulls";
 			
 			Player playerRead=playerDAO.getPlayerById(id);

@@ -43,8 +43,8 @@ public class PlayerDAO implements IPlayerDAO
 		
 		try (Connection connection=PostgresSqlConnection.getConnection())
 		{
-			String sql = "UPDATE roc_revature.player SET teamName=? WHERE id=? "
-					+ "VALUES(?,?)";
+			String sql = "UPDATE roc_revature.player SET teamName=? WHERE id=? "; // Values are passed as arguments of the method
+
 			PreparedStatement preparedStatement = connection.prepareStatement(sql);
 			preparedStatement.setString(1, newTeamName);
 			preparedStatement.setInt(2, id);
@@ -63,8 +63,8 @@ public class PlayerDAO implements IPlayerDAO
 		int c=0;
 		try (Connection connection = PostgresSqlConnection.getConnection()) {
 			//write here the delete query
-			String sql = "DELETE FROM roc_revature.player WHERE id=? "
-				+ "VALUES(?)";
+			String sql = "DELETE FROM roc_revature.player WHERE id=? ";		// Values are passed as arguments of the method
+
 			PreparedStatement preparedStatement = connection.prepareStatement(sql);
 			preparedStatement.setInt(1, id);
 			//set parameter here
@@ -83,7 +83,7 @@ public class PlayerDAO implements IPlayerDAO
 		
 		try (Connection connection=PostgresSqlConnection.getConnection())
 		{
-			String sql = "SELECT  name, age, gender, teamName, contact FROM roc_revature.player WHERE id=?";
+			String sql = "SELECT  name, age, gender, teamName, contact FROM roc_revature.player WHERE id=?";	// Values are passed as arguments of the method
 			PreparedStatement preparedStatement = connection.prepareStatement(sql);
 			preparedStatement.setInt(1, id);
 			

@@ -1,0 +1,25 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+  <groupId>app.consoleBankProject</groupId>
+  <artifactId>jdbc_console_based_bank_core</artifactId>
+  <version>0.0.1-SNAPSHOT</version>
+  <name>jdbc_console_based_bank_core</name>
+  <description>The Bank app is a console-based application that simulates banking operations. 
+  	A customer can apply for an account, view their balance, and make withdrawals and deposits. 
+  	An employee can approve or deny accounts and view account balances for their customers.
+  </description>
+
+ <properties>
+	<maven.compiler.target>1.8</maven.compiler.target>
+	<maven.compiler.source>1.8</maven.compiler.source>
+  </properties>
+
+  <dependencies>
+	<dependency>
+		<groupId>org.postgresql</groupId>
+		<artifactId>postgresql</artifactId>
+		<version>42.2.5</version>
+	</dependency>
+  </dependencies>
+
+</project>

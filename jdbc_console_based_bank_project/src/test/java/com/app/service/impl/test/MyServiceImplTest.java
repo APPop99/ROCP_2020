@@ -8,7 +8,7 @@ import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
 
 import app.bankingApp.service.MyService;
-import app.bankingApp.service.impl.MyServiceImpl;
+import app.bankingApp.service.implementation.MyServiceImpl;
 
 class MyServiceImplTest {
 	

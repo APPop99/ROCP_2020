@@ -21,6 +21,16 @@ public class UserOperationsQueries
 			+ "where project_console_bank.user.user_id = ? and"
 			+ "project_console_bank.user_status.status_user = ?";
 	
+	public static final String UPDATEUSERCUSTOMERSTATUS = "UPDATE project_console_bank.user as u"
+			+ "set status_user_id = status_id"
+			+ "from project_console_bank.user_status as us"
+			+ "where u.user_id = ? and us.status_user = ?";
+	
+	public static final String UPDATEUSERCUSTOMERREQAPPROVALSTATUS = "UPDATE project_console_bank.non_customer_user_for_approval as ncufa"
+			+ "set customer_approval_pending = ?, customer_approval_status = ?"
+			+ "from project_console_bank.user as u"
+			+ "where u.user_id = ? and u.user_id = ncufa.user_id_cust_appr";
+	
 //	public static final String INSERTUSEREMPLOYEE = "INSERT INTO project_console_bank.user(first_name, last_name, dob, "
 //			+ "phone_number, email, password, date_user_account_creation, date_user_account_deletion, status_user_id) "
 //			+ "VALUES(?,?,?,?,?,?,?,?,(select status_id from project_console_bank.user_status where status_user=?))";

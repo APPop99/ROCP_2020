@@ -12,7 +12,7 @@ public class SupervisorMenuPresenterImpl implements SupervisorMenuPresenter
 	}
 
 	@Override
-	public void approveNonCustomerUserAccount(User userSession) 
+	public void approveCustomerUserAccount(User userSession) 
 	{
 		// TODO Auto-generated method stub
 	}

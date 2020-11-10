@@ -250,10 +250,44 @@ public class UserOperationsDAOImpl implements app.bankingApp.DAO.UserOperationsD
 	}
 
 	@Override
-	public int updateUser() throws BusinessException 
+	public int updateUser(User user) throws BusinessException 
 	{
-		// TODO Auto-generated method stub
-		return 0;
+//		System.out.println("Here is the <Change User Status> Method from DAO layer");
+		log.info("Here is the <Change User Status and Change Customer Acct Approval Status> Method from DAO layer");
+		int c = 0;
+		int d = 0;
+		
+		try (Connection connection=PostgresSqlConnection.getConnection())
+		{
+			String sql = UserOperationsQueries.UPDATEUSERCUSTOMERSTATUS;
+			
+			PreparedStatement preparedStatement = connection.prepareStatement(sql);
+			preparedStatement.setInt(1, user.getId());
+			preparedStatement.setString(2, user.getStatusUser().toString());
+			
+			c = preparedStatement.executeUpdate();
+			
+			sql = UserOperationsQueries.UPDATEUSERCUSTOMERREQAPPROVALSTATUS;
+			
+			preparedStatement = connection.prepareStatement(sql);
+			preparedStatement.setBoolean(1, user.isCustomerApprovalPending());
+			preparedStatement.setBoolean(2, user.isCustomerStatusApproved());
+			preparedStatement.setInt(3, user.getId());
+			
+			d = preparedStatement.executeUpdate();
+		}
+		catch (ClassNotFoundException | SQLException e) 
+		{
+			System.out.println(e);	// take off this line when in production
+			throw new BusinessException("Internal error occured... Please contact SYSADMIN");
+		} 
+		if (c!=0 && d!=0)
+		{
+			return c;
+		} else 
+		{
+			return 0;
+		}
 	}
 
 	@Override
@@ -299,5 +333,16 @@ public class UserOperationsDAOImpl implements app.bankingApp.DAO.UserOperationsD
 			log.info(e);
 			throw new BusinessException("Internal error occured... Kindly contact SYSADMIN");
 		} 
-		return usersToBeApprovedList;	}
+		return usersToBeApprovedList;	
+	}
+
+//	@Override
+//	public int changeUserStatus(User user) throws BusinessException 
+//	{
+////		System.out.println("Here is the <Change User Status> Method from DAO layer");
+//		log.info("Here is the <Change User Status> Method from DAO layer");
+//		int c = 0;
+//		
+//		return 0;
+//	}
 }

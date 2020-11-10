@@ -11,7 +11,7 @@ public interface UserOperationsDAO
 	//CREATE operation
 	public int createUser(User user)throws BusinessException;
 	//UPDATE operation
-	public int updateUser(/*to include parameters*/)throws BusinessException;
+	public int updateUser(User user)throws BusinessException;
 	public int addNonCustomerUserToApprovalTable(User user)throws BusinessException;
 	//DELETE operation
 	public void deleteUser(/*to include parameters*/)throws BusinessException;
@@ -28,4 +28,5 @@ public interface UserOperationsDAO
 	public List<User> getUsersByStatus(String statusUser) throws BusinessException;
 	public User getUserByContactNumber(Long contact) throws BusinessException;
 	public List<User> getUsersFromApprovalTable(boolean userApprovalPendingStatus) throws BusinessException;
+//	public int changeUserStatus(User user) throws BusinessException;
 }

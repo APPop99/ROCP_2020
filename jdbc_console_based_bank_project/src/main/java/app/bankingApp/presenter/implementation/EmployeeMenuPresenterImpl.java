@@ -5,6 +5,7 @@ import java.util.Scanner;
 
 import org.apache.log4j.Logger;
 
+import app.bankingApp.model.StatusUser;
 import app.bankingApp.model.User;
 //import app.bankingApp.presenter.CustomerMenuPresenter;
 import app.bankingApp.presenter.EmployeeMenuPresenter;
@@ -66,7 +67,7 @@ public class EmployeeMenuPresenterImpl implements EmployeeMenuPresenter
 					log.info("Method <Approve Customer Account for NonCustomer User> will approve or reject the User's request to become a new Customer!");
 
 					EmployeeMenuPresenter approveCustomerAccount = new EmployeeMenuPresenterImpl(userSession);
-					approveCustomerAccount.approveNonCustomerUserAccount(userSession);
+					approveCustomerAccount.approveCustomerUserAccount(userSession);
 					break;
 				case 2:
 					//employee can approve or reject a User's Bank Account
@@ -93,7 +94,7 @@ public class EmployeeMenuPresenterImpl implements EmployeeMenuPresenter
 	}
 
 	@Override
-	public void approveNonCustomerUserAccount(User userSession) 
+	public void approveCustomerUserAccount(User userSession) 
 	{
 		//instantiate an object that will be used () to transfer data to and from Service layer 
 		UserService userService = new UserServiceImpl();
@@ -127,8 +128,10 @@ public class EmployeeMenuPresenterImpl implements EmployeeMenuPresenter
 			
 			//Step 2a: Approve and change User Status in CUSTOMER for a specific User
 			//Step 2b: Reject and change User Status in INACTIVE for a specific User
-			Scanner scannerNonCustomerMenu = new Scanner(System.in);
+			
+			Scanner scannerEmployeeMenu = new Scanner(System.in);
 			int choice = 0;
+			String choiceStatus;
 
 			do
 			{
@@ -143,7 +146,7 @@ public class EmployeeMenuPresenterImpl implements EmployeeMenuPresenter
 				
 				try 
 				{
-					choice = Integer.parseInt(scannerNonCustomerMenu.nextLine());
+					choice = Integer.parseInt(scannerEmployeeMenu.nextLine());
 				} 
 				catch (NumberFormatException e) 
 				{
@@ -157,7 +160,7 @@ public class EmployeeMenuPresenterImpl implements EmployeeMenuPresenter
 						
 						try 
 						{
-							int id = Integer.parseInt(scannerNonCustomerMenu.nextLine());
+							int id = Integer.parseInt(scannerEmployeeMenu.nextLine());
 			
 							//Code Here for SERVICE LAYER
 							User user = userService.getUserById(id);
@@ -167,8 +170,49 @@ public class EmployeeMenuPresenterImpl implements EmployeeMenuPresenter
 								System.out.println("User found with id "+id+" details are : ");
 								System.out.println(user); // to print only needed details: id, fname, lname, email, crtStatus
 								System.out.println("Approve the request of Activating Customer Account? (Y - approve / N - reject)");
-								
+
 								//change status code
+
+								choiceStatus = scannerEmployeeMenu.nextLine();
+
+								switch (choiceStatus)
+								{
+								case "Y":
+									//Code Here for SERVICE LAYER
+									//change User Status to CUSTOMER, customer_approval_status to true, customer_approval_pending to false
+									user.setStatusUser(StatusUser.CUSTOMER);	//set User Status to 'CUSTOMER'
+									user.setCustomerApprovalPending(false); 	//set value to false - Customer Account approval is done
+									user.setCustomerStatusApproved(true);	//set value to true - this User is approved as Customer 
+									userService.updateUser(user);
+									break;
+								case "y":
+									//Code Here for SERVICE LAYER
+									//change User Status to CUSTOMER, customer_approval_status to true, customer_approval_pending to false
+									user.setStatusUser(StatusUser.CUSTOMER);	//set User Status to 'CUSTOMER'
+									user.setCustomerApprovalPending(false); 	//set value to false - Customer Account approval is done
+									user.setCustomerStatusApproved(true);	//set value to true - this User is approved as Customer 
+									userService.updateUser(user);
+									break;
+								case "N":
+									//Code Here for SERVICE LAYER
+									//change User Status to INACTIVE, customer_approval_status to false, customer_approval_pending to false
+									user.setStatusUser(StatusUser.INACTIVE);	//set User Status to 'CUSTOMER'
+									user.setCustomerApprovalPending(false); 	//set value to false - Customer Account approval is done
+									user.setCustomerStatusApproved(false);	//set value to false - this User's request to be approved as Customer is denied 
+									userService.updateUser(user);
+									break;
+								case "n":
+									//Code Here for SERVICE LAYER
+									//change User Status to INACTIVE, customer_approval_status to false, customer_approval_pending to false
+									user.setStatusUser(StatusUser.INACTIVE);	//set User Status to 'CUSTOMER'
+									user.setCustomerApprovalPending(false); 	//set value to false - Customer Account approval is done
+									user.setCustomerStatusApproved(false);	//set value to false - this User's request to be approved as Customer is denied 
+									userService.updateUser(user);
+									break;
+								default: 
+									System.out.println("Please enter only 'Y' or 'N' to continue!");
+									break;
+								}
 							}
 						} 
 						catch (BusinessException e) 

@@ -101,12 +101,12 @@ public class CustomerMenuPresenterImpl implements CustomerMenuPresenter
 		
 		System.out.println("Please explicitly give us your acceptance for being approved as Customer:");
 		Scanner scannerAddNonCustomerUserToApprovalTable = new Scanner(System.in);
-	
+		
+		String choiceStatus;
+		boolean choiceBool = false;
+		
 		try 
 		{
-			String choiceStatus;
-			boolean choiceBool = false;
-
 			do
 			{
 				System.out.println("Do you like to have your account registered as Customer Account ? (Y/N)");

@@ -7,6 +7,6 @@ public interface EmployeeMenuPresenter
 
 	public void showEmployeeMenu(User userSession); 
 
-	public void approveNonCustomerUserAccount(User userSession);
+	public void approveCustomerUserAccount(User userSession);
 
 }

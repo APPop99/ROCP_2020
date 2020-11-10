@@ -21,17 +21,21 @@ public class UserServiceImpl implements UserService
 	private UserOperationsDAO userDAO = new UserOperationsDAOImpl();  
 	
 	@Override
-	public int createUser(User user) throws BusinessException {
-//		System.out.println("Here is the CreateUser Method from Service layer");
+	public int createUser(User user) throws BusinessException 
+	{
+		//		System.out.println("Here is the CreateUser Method from Service layer");
 		log.info("Here is the CreateUser Method from Service layer");
 		int c = userDAO.createUser(user);		
 		return c;
 	}
 
 	@Override
-	public int updateUser() throws BusinessException {
-		// TODO Auto-generated method stub
-		return 0;
+	public int updateUser(User user) throws BusinessException 
+	{
+//		System.out.println("Here is the CreateUser Method from Service layer");
+		log.info("Here is the createCustomerToBeApproved Method from Service layer");
+		int c = userDAO.updateUser(user);		
+		return c;
 	}
 
 	@Override
@@ -125,4 +129,13 @@ public class UserServiceImpl implements UserService
 		// TODO Auto-generated method stub
 		return null;
 	}
+
+//	@Override
+//	public int changeUserStatus(User user) throws BusinessException 
+//	{
+////		System.out.println("Here is the CreateUser Method from Service layer");
+//		log.info("Here is the createCustomerToBeApproved Method from Service layer");
+//		int c = userDAO.changeUserStatus(user);		
+//		return c;
+//	}
 }

@@ -10,11 +10,15 @@ public interface UserService
 {
 	//CREATE operation
 	public int createUser(User user)throws BusinessException;
+	
 	//UPDATE operation
-	public int updateUser()throws BusinessException;
+	public int updateUser(User user)throws BusinessException;
 	public int addNonCustomerUserToApprovalTable (User user)throws BusinessException;
+//	public int changeUserStatus(User user) throws BusinessException;
+	
 	//DELETE operation
 	public void deleteUser(int id)throws BusinessException;
+	
 	//READ operation
 	public boolean getUserByEmail(String email) throws BusinessException;
 	public List<User> getUsersByEmail(String email) throws BusinessException;

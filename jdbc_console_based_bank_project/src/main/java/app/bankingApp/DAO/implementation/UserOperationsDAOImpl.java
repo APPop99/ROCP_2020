@@ -72,12 +72,46 @@ public class UserOperationsDAOImpl implements app.bankingApp.DAO.UserOperationsD
 	@Override
 	public User getUserById(int id) throws BusinessException 
 	{
-		// TODO Auto-generated method stub
-		return null;
+//			System.out.println("Here is the <Get User By Id> Method from DAO layer");
+		log.info("Here is the <Get User By Id> Method from DAO layer");
+		//Instantiate an object to record/handle the results of the query 
+		User userById = null;
+		
+		try (Connection connection=PostgresSqlConnection.getConnection())
+		{
+			//instantiate the sql
+			String sql = UserOperationsQueries.GETUSERBYID;		// Values are passed as arguments of the method
+			PreparedStatement preparedStatement = connection.prepareStatement(sql);
+			preparedStatement.setInt(1, id);
+			
+			ResultSet resultSet = preparedStatement.executeQuery();
+			
+			if (resultSet.next())
+			{
+				//The user with requested id was found
+				userById = new User(resultSet.getInt("user_id"), resultSet.getString("first_name"), resultSet.getString("last_name"),
+						resultSet.getDate("dob"), resultSet.getLong("phone_number"), resultSet.getString("email"), 
+						resultSet.getString("password"), resultSet.getTimestamp("date_user_account_creation"), 
+						resultSet.getTimestamp("date_user_account_deletion"), StatusUser.valueOf(resultSet.getString("status_user")));
+				userById.setCustomerStatusApproved(resultSet.getBoolean("customer_approval_status"));
+				userById.setCustomerApprovalPending(resultSet.getBoolean("customer_approval_pending"));
+				
+			} else
+			{
+				throw new BusinessException("Invalid ID!!!... No matching records found for the ID = "+id);
+			}
+		}
+		catch (ClassNotFoundException | SQLException e) 
+		{	
+			System.out.println(e); // take off this line when in production
+			log.info(e);
+			throw new BusinessException("Internal error occured... Kindly contact SYSADMIN");
+		}  
+		return userById;
 	}
 	
 	@Override
-	public boolean getUserByEmail(String email) throws BusinessException 
+	public boolean isUserByEmailDuplicate(String email) throws BusinessException 
 	{
 //		System.out.println("Here is the getUserByEmail Method from DAO layer");
 		log.info("Here is the getUserByEmail Method from DAO layer");
@@ -189,12 +223,14 @@ public class UserOperationsDAOImpl implements app.bankingApp.DAO.UserOperationsD
 	@Override
 	public int addNonCustomerUserToApprovalTable(User user) throws BusinessException 
 	{
-//		System.out.println("Here is the <Add NonCustomer User To Approval Table> Method from DAO layer");
+		System.out.println("Here is the <Add NonCustomer User To Approval Table> Method from DAO layer");
 		log.info("Here is the <Add NonCustomer User To Approval Table> Method from DAO layer");
+		
 		int c = 0;
 		
 		try (Connection connection=PostgresSqlConnection.getConnection())
 		{
+			System.out.println("Calling the insert query!!");
 			String sql = UserOperationsQueries.INSERTUSERTOCUSTOMERAPPROVALTABLE;
 			PreparedStatement preparedStatement = connection.prepareStatement(sql);
 			
@@ -252,7 +288,7 @@ public class UserOperationsDAOImpl implements app.bankingApp.DAO.UserOperationsD
 	@Override
 	public int updateUser(User user) throws BusinessException 
 	{
-//		System.out.println("Here is the <Change User Status> Method from DAO layer");
+		System.out.println("Here is the <Change User Status> Method from DAO layer");
 		log.info("Here is the <Change User Status and Change Customer Acct Approval Status> Method from DAO layer");
 		int c = 0;
 		int d = 0;
@@ -316,10 +352,10 @@ public class UserOperationsDAOImpl implements app.bankingApp.DAO.UserOperationsD
 			while (resultSet.next())
 			{
 				User user = new User(resultSet.getInt("user_id"), resultSet.getString("first_name"), 
-						resultSet.getString("last_name"), resultSet.getDate("dob"), resultSet.getLong("phone_number"), 
-						resultSet.getString("email"), resultSet.getString("password"), 
-						resultSet.getTimestamp("date_user_account_creation"), resultSet.getTimestamp("date_user_account_deletion"), 
+						resultSet.getString("last_name"), resultSet.getString("email"), 
 						StatusUser.valueOf(resultSet.getString("status_user")));
+				user.setCustomerStatusApproved(false);
+				user.setCustomerApprovalPending(true);
 				usersToBeApprovedList.add(user);		
 			} 
 			if(usersToBeApprovedList.size()==0)

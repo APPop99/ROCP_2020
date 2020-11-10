@@ -141,7 +141,7 @@ public class MainMenuPresenterImpl implements MainMenuPresenter
 				{
 					System.out.print("Please enter User's email: ");
 					email = scannerUserCreation.nextLine();					
-				} while(userServiceEmailCheck.getUserByEmail(email) != true);
+				} while(userServiceEmailCheck.isUserByEmailDuplicate(email) != true);
 				
 				while (isEmailFormatValid == false)	
 				{

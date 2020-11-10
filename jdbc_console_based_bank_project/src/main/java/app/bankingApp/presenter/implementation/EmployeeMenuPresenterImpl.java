@@ -108,6 +108,7 @@ public class EmployeeMenuPresenterImpl implements EmployeeMenuPresenter
 		try 
 		{
 			List<User> usersToBeApprovedAsCustomers;
+//			System.out.println("Launch the Service call");
 			usersToBeApprovedAsCustomers = userService.getUsersFromApprovalTable(userApprovalPendingStatus);
 			
 			if(usersToBeApprovedAsCustomers !=null && usersToBeApprovedAsCustomers.size()>0)
@@ -121,7 +122,8 @@ public class EmployeeMenuPresenterImpl implements EmployeeMenuPresenter
 					{
 						String tempStatus = "PENDING"; 
 						System.out.println("User: "+ u.getId() + " | " + u.getFirstName() + " " 
-							+ u.getLastName() + " | Email: " + u.getEmail() + " | Approval Status: " + tempStatus);
+							+ u.getLastName() + " | Email: " + u.getEmail() + " | User Status: " + u.getStatusUser() 
+								+ " | Approval Status: " + tempStatus);
 					}
 				}
 			}
@@ -163,19 +165,23 @@ public class EmployeeMenuPresenterImpl implements EmployeeMenuPresenter
 							int id = Integer.parseInt(scannerEmployeeMenu.nextLine());
 			
 							//Code Here for SERVICE LAYER
+							System.out.println("Launch the Service Layer");
 							User user = userService.getUserById(id);
 							
 							if (user!=null)
 							{
 								System.out.println("User found with id "+id+" details are : ");
-								System.out.println(user); // to print only needed details: id, fname, lname, email, crtStatus
+								System.out.println("User: "+ user.getId() + " | " + user.getFirstName() + " " 
+										+ user.getLastName() + " | Email: " + user.getEmail() + " | User Status: " 
+										+ user.getStatusUser() + " | Approval Status Pending?: " + user.isCustomerApprovalPending());
+								// to print only needed details: id, fname, lname, email, crtStatus
 								System.out.println("Approve the request of Activating Customer Account? (Y - approve / N - reject)");
 
 								//change status code
 
 								choiceStatus = scannerEmployeeMenu.nextLine();
-
-								switch (choiceStatus)
+								
+								switch (choiceStatus.toUpperCase())
 								{
 								case "Y":
 									//Code Here for SERVICE LAYER
@@ -185,23 +191,7 @@ public class EmployeeMenuPresenterImpl implements EmployeeMenuPresenter
 									user.setCustomerStatusApproved(true);	//set value to true - this User is approved as Customer 
 									userService.updateUser(user);
 									break;
-								case "y":
-									//Code Here for SERVICE LAYER
-									//change User Status to CUSTOMER, customer_approval_status to true, customer_approval_pending to false
-									user.setStatusUser(StatusUser.CUSTOMER);	//set User Status to 'CUSTOMER'
-									user.setCustomerApprovalPending(false); 	//set value to false - Customer Account approval is done
-									user.setCustomerStatusApproved(true);	//set value to true - this User is approved as Customer 
-									userService.updateUser(user);
-									break;
 								case "N":
-									//Code Here for SERVICE LAYER
-									//change User Status to INACTIVE, customer_approval_status to false, customer_approval_pending to false
-									user.setStatusUser(StatusUser.INACTIVE);	//set User Status to 'CUSTOMER'
-									user.setCustomerApprovalPending(false); 	//set value to false - Customer Account approval is done
-									user.setCustomerStatusApproved(false);	//set value to false - this User's request to be approved as Customer is denied 
-									userService.updateUser(user);
-									break;
-								case "n":
 									//Code Here for SERVICE LAYER
 									//change User Status to INACTIVE, customer_approval_status to false, customer_approval_pending to false
 									user.setStatusUser(StatusUser.INACTIVE);	//set User Status to 'CUSTOMER'

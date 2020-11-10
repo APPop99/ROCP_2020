@@ -54,11 +54,11 @@ public class UserServiceImpl implements UserService
 	}
 
 	@Override
-	public boolean getUserByEmail(String email) throws BusinessException {
+	public boolean isUserByEmailDuplicate(String email) throws BusinessException {
 //		System.out.println("Here is the getUserByEmail Method from Service layer");
 		log.info("Here is the getUserByEmail Method from Service layer");		
 //		List<User> usersListByEmail = null;
-		return userDAO.getUserByEmail(email);
+		return userDAO.isUserByEmailDuplicate(email);
 //		return usersListByEmail;
 	}
 	
@@ -92,7 +92,7 @@ public class UserServiceImpl implements UserService
 	@Override
 	public List<User> getUsersFromApprovalTable(boolean userApprovalPendingStatus) throws BusinessException 
 	{
-//		System.out.println("Here is the getUsersFromApprovalTable Method from Service layer");
+	//	System.out.println("Here is the getUsersFromApprovalTable Method from Service layer");
 		log.info("Here is the getUsersFromApprovalTable Method from Service layer");		
 		List<User> usersToBeApprovedList = null;
 		usersToBeApprovedList = userDAO.getUsersFromApprovalTable(userApprovalPendingStatus);
@@ -116,18 +116,21 @@ public class UserServiceImpl implements UserService
 	@Override
 	public int addNonCustomerUserToApprovalTable(User user) throws BusinessException 
 	{
-//		System.out.println("Here is the CreateUser Method from Service layer");
-		log.info("Here is the createCustomerToBeApproved Method from Service layer");
+		System.out.println("Here is the <Add NonCustomer User To Approval Table> Method from Service layer");
+		log.info("Here is the <Add NonCustomer User To Approval Table> Method from Service layer");
 		int c = userDAO.addNonCustomerUserToApprovalTable(user);		
 		return c;
-//		return null;
 	}
 
 	@Override
 	public User getUserById(int id) throws BusinessException 
 	{
-		// TODO Auto-generated method stub
-		return null;
+//		System.out.println("Here is the <Get Use By ID> Method from Service layer");
+		log.info("Here is the <Get Use By ID> Method from Service layer");
+		
+		User user = null;
+		user = userDAO.getUserById(id);
+		return user;
 	}
 
 //	@Override

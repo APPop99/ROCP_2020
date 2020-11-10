@@ -9,6 +9,4 @@ public interface CustomerMenuPresenter
 	public void showNonCustomerMenu(User userSession);
 
 	public void addNonCustomerUserToApprovalTable(User userSession);
-
-//	public void addNewCustomerToApprovalTable(User userSession); 
 }

@@ -20,7 +20,7 @@ public interface UserService
 	public void deleteUser(int id)throws BusinessException;
 	
 	//READ operation
-	public boolean getUserByEmail(String email) throws BusinessException;
+	public boolean isUserByEmailDuplicate(String email) throws BusinessException;
 	public List<User> getUsersByEmail(String email) throws BusinessException;
 	public List<User> getAllUsers() throws BusinessException;
 	public List<User> getUsersByLastName(String LastName) throws BusinessException;

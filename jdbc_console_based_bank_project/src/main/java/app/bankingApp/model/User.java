@@ -132,6 +132,17 @@ public class User
 		this.dateUserAccountDeletion = dateUserAccountDeletion;
 		this.statusUser = statusUser;
 	}
+	
+	public User(int id, String firstName, String lastName, String email, StatusUser statusUser) 
+	{
+		super();
+		this.id = id;
+		this.firstName = firstName;
+		this.lastName = lastName;
+		this.email = email;
+		this.statusUser = statusUser;
+	}
+	
 	public User() 
 	{
 		// TODO Auto-generated constructor stub
@@ -144,13 +155,16 @@ public class User
 				+ ", statusUser=" + statusUser + ", password=" + password + ", dateUserAccountDeletion=" + dateUserAccountDeletion
 				+ "]";
 	}
-	public boolean isCustomerStatusApproved() {
+	public boolean isCustomerStatusApproved() 
+	{
 		return customerApprovalStatus;
 	}
-	public void setCustomerStatusApproved(boolean customerApprovalStatus) {
+	public void setCustomerStatusApproved(boolean customerApprovalStatus) 
+	{
 		this.customerApprovalStatus = customerApprovalStatus;
 	}
-	public boolean isCustomerApprovalPending() {
+	public boolean isCustomerApprovalPending() 
+	{
 		return customerApprovalPending;
 	}
 	public void setCustomerApprovalPending(boolean customerApprovalPending) {

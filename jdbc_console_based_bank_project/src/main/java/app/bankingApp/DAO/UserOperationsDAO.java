@@ -17,7 +17,7 @@ public interface UserOperationsDAO
 	public void deleteUser(/*to include parameters*/)throws BusinessException;
 	//READ operation
 	public User getUserById(int id) throws BusinessException;
-	public boolean getUserByEmail(String email) throws BusinessException;
+	public boolean isUserByEmailDuplicate(String email) throws BusinessException;
 	public List<User> getUsersByEmail(String email) throws BusinessException;
 //	public User getUserByAccountId(String accountId) throws BusinessException;
 	public List<User> getAllUsers() throws BusinessException;

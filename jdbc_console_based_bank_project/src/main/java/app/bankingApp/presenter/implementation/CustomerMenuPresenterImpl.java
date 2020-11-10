@@ -79,14 +79,21 @@ public class CustomerMenuPresenterImpl implements CustomerMenuPresenter
 							log.info("Method <Add NonCustomer User To Approval Table> will register for Bank's reviewal process the User's request to become a new Customer!");
 							CustomerMenuPresenter approveCustomer = new CustomerMenuPresenterImpl(userSession);
 							approveCustomer.addNonCustomerUserToApprovalTable(userSession);
+							break;
 						}
-						System.out.println("User with " + userSession.getId() + " | "+userSession.getFirstName() 
+						else
+						{
+							System.out.println("User with " + userSession.getId() + " | "+userSession.getFirstName() 
 							+ " "+userSession.getLastName()+" already submitted a request for Bank's approval for a Customer Acoount");
+							break;
+						}
+					}
+					else
+					{
+						System.out.println("User with " + userSession.getId() + " | "+userSession.getFirstName() 
+						+ " "+userSession.getLastName()+" already has Customer status");
 						break;
 					}
-					System.out.println("User with " + userSession.getId() + " | "+userSession.getFirstName() 
-					+ " "+userSession.getLastName()+" has already Customer status");
-					break;
 				case 2:
 					break;
 			}
@@ -109,48 +116,36 @@ public class CustomerMenuPresenterImpl implements CustomerMenuPresenter
 		{
 			do
 			{
-				System.out.println("Do you like to have your account registered as Customer Account ? (Y/N)");
+				System.out.println("Do you like to have your User account registered as Customer Account ? (Y/N)");
 				choiceStatus = scannerAddNonCustomerUserToApprovalTable.nextLine();
 
-				switch (choiceStatus)
+				switch (choiceStatus.toUpperCase())
 				{
 					case "Y":
 						//Code Here for SERVICE LAYER
 						System.out.println("User with id " + userSession.getId() + " will be saved in temp db waiting for approval.");
-						log.info("User with id " + userSession.getId() + "will saved in temp db waiting for approval.");
+						log.info("User with id " + userSession.getId() + "will be saved in temp db waiting for approval.");
 						userSession.setCustomerApprovalPending(true); 	//set value to true - Customer Account approval is pending
 						userSession.setCustomerStatusApproved(false);	//set value to false - this User has not yet been approved as Customer 
-						userService.addNonCustomerUserToApprovalTable(userSession);
-						choiceBool = true;
-						break;
-					case "y":
-						//Code Here for SERVICE LAYER
-						System.out.println("User with id " + userSession.getId() + " will be saved in temp db waiting for approval.");
-						log.info("User with id " + userSession.getId() + "will saved in temp db waiting for approval.");
-						userSession.setCustomerApprovalPending(true); 	//set value to true - Customer Account approval is pending
-						userSession.setCustomerStatusApproved(false);	//set value to false - this User has not yet been approved as Customer 
-						userService.addNonCustomerUserToApprovalTable(userSession);
+						
+						if (userService.addNonCustomerUserToApprovalTable(userSession)>0)
+						{
+							System.out.println("User: "+ userSession.getId() + " | " + userSession.getFirstName() + " " 
+									+ userSession.getLastName()+" was saved in temp db waiting for approval");
+							log.info("User: "+ userSession.getId() + " | " + userSession.getFirstName() + " " 
+									+ userSession.getLastName()+" was saved in temp db waiting for approval");				
+						}
 						choiceBool = true;
 						break;
 					case "N":
-						break;
-					case "n":
+						choiceBool = true;
 						break;
 					default: 
 						System.out.println("Please enter only 'Y' or 'N' to continue!");
-//						choiceBool = true;
+						choiceBool = false;
 						break;
 				}	
-			} while (choiceBool != true);
-						
-			if (userService.addNonCustomerUserToApprovalTable(userSession)>0)
-			{
-				System.out.println("User: "+ userSession.getId() + " | " + userSession.getFirstName() + " " 
-						+ userSession.getLastName()+" was saved in temp db waiting for approval");
-				log.info("User: "+ userSession.getId() + " | " + userSession.getFirstName() + " " 
-						+ userSession.getLastName()+" was saved in temp db waiting for approval");				
-//				scannerUserCreation.close();
-			}	
+			} while (choiceBool != true);	
 		}
 		catch (BusinessException e) 
 		{

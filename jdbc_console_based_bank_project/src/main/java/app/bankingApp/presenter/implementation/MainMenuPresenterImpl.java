@@ -3,8 +3,6 @@ package app.bankingApp.presenter.implementation;
 import java.sql.Timestamp;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
-//import java.time.LocalDate;
-//import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 import java.util.Scanner;
@@ -46,6 +44,7 @@ public class MainMenuPresenterImpl implements MainMenuPresenter
 			{
 				choice = Integer.parseInt(scannerMainMenu.nextLine());
 			} 
+			
 			catch (NumberFormatException e) 
 			{
 				System.out.println("Please enter a number between 1 and 3!");
@@ -56,8 +55,8 @@ public class MainMenuPresenterImpl implements MainMenuPresenter
 				case 1:
 					System.out.println("Method <New user registration> will create a new User!");
 					log.info("Method <New user registration> will create a new User!");
-					MainMenuPresenter createUserMenu = new MainMenuPresenterImpl();
-					createUserMenu.createNewUser();
+					MainMenuPresenter createUser = new MainMenuPresenterImpl();
+					createUser.createNewUser();
 					break;
 				case 2:
 					System.out.println("Method <User login> will allow a registered user to login!");
@@ -73,21 +72,27 @@ public class MainMenuPresenterImpl implements MainMenuPresenter
 					switch (userSession.getStatusUser()) 
 					{
 						case NONCUSTOMER:
-							System.out.println("This customer does not have a bank account created and has status: "+userSession.getStatusUser());
-							customerMenu.showCustomerMenu(userSession);
+							System.out.println("This customer does not have a Customer Account created/approved and has status: "+userSession.getStatusUser()+"\n");
+							log.info("This customer does not have a Customer Account created/approved and has status: "+userSession.getStatusUser()+"\n");
+							customerMenu.showNonCustomerMenu(userSession);
 							break;
 						case CUSTOMER:
-							System.out.println("This customer has a bank account created and has status: "+userSession.getStatusUser());
+							System.out.println("This customer has a bank account created and has status: "+userSession.getStatusUser()+"\n");
+							log.info("This customer has a bank account created and has status: "+userSession.getStatusUser()+"\n");
 							customerMenu.showCustomerMenu(userSession);
 							break;
 						case EMPLOYEE:
-							System.out.println("This user is an employee, with role: "+userSession.getStatusUser());
+							System.out.println("This user is an employee, with role: "+userSession.getStatusUser()+"\n");
+							log.info("This user is an employee, with role: "+userSession.getStatusUser()+"\n");
 							employeeMenu.showEmployeeMenu(userSession);
 							break;
 						case INACTIVE:
 							System.out.println("User logged in: " + userSession.getFirstName() + userSession.getLastName() + " is not an active user. \n"
-									+ "This user has de-activated (deleted) all his/her bank accounts");
-							System.out.println("Please select an active user!");
+									+ "This user has de-activated (deleted) all his/her bank accounts \n");
+							log.info("User logged in: " + userSession.getFirstName() + userSession.getLastName() + " is not an active user. \n"
+									+ "This user has de-activated (deleted) all his/her bank accounts \n");
+							customerMenu.showNonCustomerMenu(userSession);
+//							System.out.println("Please select an active user!");
 							break;
 					}	
 					break;
@@ -204,7 +209,6 @@ public class MainMenuPresenterImpl implements MainMenuPresenter
 						
 			Timestamp dateUserAccountCreation = new Timestamp(System.currentTimeMillis()); 
 			Timestamp dateUserAccountDeletion = null; 
-//			StatusUser statusUser = StatusUser.NONCUSTOMER;
 			
 			//Code Here for SERVICE LAYER
 			User userNew = new User(firstName, lastName, email, dob, phoneNumber, password);
@@ -240,8 +244,14 @@ public class MainMenuPresenterImpl implements MainMenuPresenter
 			{
 				System.out.println("User is created in DB with below details: ");
 				log.info("User is created in DB with below details: ");				
-				System.out.println(userNew);				
-				log.info(userNew);
+				
+				Date date = new Date(userNew.getDateUserAccountCreation().getTime());
+				SimpleDateFormat formatter = new SimpleDateFormat("E, dd MMMM yyyy"); 
+				
+				System.out.println("User id: " + userNew.getId() + " | " + userNew.getFirstName() + " " 
+						+ userNew.getLastName() + " | " + userNew.getEmail() + " | " + formatter.format(date));				
+				log.info("User id: " + userNew.getId() + " | " + userNew.getFirstName() + " " 
+						+ userNew.getLastName() + " | " + userNew.getEmail() + " | " + formatter.format(date));
 //				scannerUserCreation.close();
 			}	
 		} 
@@ -290,7 +300,13 @@ public class MainMenuPresenterImpl implements MainMenuPresenter
 				
 				System.out.println("Login successful!\n");
 				userLogin = selectUser(email, password, userList); 
-				System.out.println("User logged in: "+ userLogin);
+				
+				Date date = new Date(userLogin.getDateUserAccountCreation().getTime());
+				SimpleDateFormat formatter = new SimpleDateFormat("E, dd MMMM yyyy"); 
+				
+				System.out.println("User logged in has the following details:");
+				System.out.println("User id: " + userLogin.getId() + " | " + userLogin.getFirstName() + " " 
+						+ userLogin.getLastName() + " | " + userLogin.getEmail() + " | " + formatter.format(date));
 				return userLogin;
 			}
 			else {

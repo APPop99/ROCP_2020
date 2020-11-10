@@ -24,7 +24,8 @@ public class UserOperationsDAOImpl implements app.bankingApp.DAO.UserOperationsD
 	private static Logger log=Logger.getLogger(MainMenuPresenterImpl.class);
 
 	@Override
-	public int createUser(User user) throws BusinessException {
+	public int createUser(User user) throws BusinessException 
+	{
 //		System.out.println("Here is the CreateUser Method from DAO layer");
 		log.info("Here is the CreateUser Method from DAO layer");
 		int c = 0;
@@ -186,6 +187,34 @@ public class UserOperationsDAOImpl implements app.bankingApp.DAO.UserOperationsD
 	}
 	
 	@Override
+	public int addNonCustomerUserToApprovalTable(User user) throws BusinessException 
+	{
+//		System.out.println("Here is the <Add NonCustomer User To Approval Table> Method from DAO layer");
+		log.info("Here is the <Add NonCustomer User To Approval Table> Method from DAO layer");
+		int c = 0;
+		
+		try (Connection connection=PostgresSqlConnection.getConnection())
+		{
+			String sql = UserOperationsQueries.INSERTUSERTOCUSTOMERAPPROVALTABLE;
+			PreparedStatement preparedStatement = connection.prepareStatement(sql);
+			
+			preparedStatement.setInt(1, user.getId());
+			preparedStatement.setBoolean(2, user.isCustomerStatusApproved());
+			preparedStatement.setBoolean(3, user.isCustomerApprovalPending());
+			
+			c = preparedStatement.executeUpdate();
+			
+		}	
+		catch (ClassNotFoundException | SQLException e) 
+		{	
+				System.out.println(e); // take off this line when in production
+				log.info(e);
+				throw new BusinessException("Internal error occured... Kindly contact SYSADMIN");
+		} 
+		return c;
+	}
+	
+	@Override
 	public List<User> getUersByLastName(String lastName) throws BusinessException 
 	{
 		// TODO Auto-generated method stub
@@ -221,14 +250,54 @@ public class UserOperationsDAOImpl implements app.bankingApp.DAO.UserOperationsD
 	}
 
 	@Override
-	public int updateUser() throws BusinessException {
+	public int updateUser() throws BusinessException 
+	{
 		// TODO Auto-generated method stub
 		return 0;
 	}
 
 	@Override
-	public void deleteUser() throws BusinessException {
+	public void deleteUser() throws BusinessException 
+	{
 		// TODO Auto-generated method stub
 		
 	}
+
+	@Override
+	public List<User> getUsersFromApprovalTable(boolean userApprovalPendingStatus) throws BusinessException 
+	{
+//		System.out.println("Here is the getUsersFromApprovalTable Method from DAO layer");
+		log.info("Here is the getUsersFromApprovalTable Method from DAO layer");
+		//Instantiate an object to record/handle the results of the query 
+		List<User> usersToBeApprovedList = new ArrayList<>();
+		
+		try (Connection connection=PostgresSqlConnection.getConnection())
+		{
+			//instantiate the sql
+			String sql = UserOperationsQueries.GETUSERSBYCUSTOMERACCOUNTAPPROVALSTATUS;		// Values are passed as arguments of the method
+			PreparedStatement preparedStatement = connection.prepareStatement(sql);
+			preparedStatement.setBoolean(1, userApprovalPendingStatus);
+			ResultSet resultSet = preparedStatement.executeQuery();
+			
+			while (resultSet.next())
+			{
+				User user = new User(resultSet.getInt("user_id"), resultSet.getString("first_name"), 
+						resultSet.getString("last_name"), resultSet.getDate("dob"), resultSet.getLong("phone_number"), 
+						resultSet.getString("email"), resultSet.getString("password"), 
+						resultSet.getTimestamp("date_user_account_creation"), resultSet.getTimestamp("date_user_account_deletion"), 
+						StatusUser.valueOf(resultSet.getString("status_user")));
+				usersToBeApprovedList.add(user);		
+			} 
+			if(usersToBeApprovedList.size()==0)
+			{
+				throw new BusinessException("No records of users with status PENDING: "+ userApprovalPendingStatus +" for their requests to get their Customer Accounts approved available to retrieve!");
+			}
+		}
+		catch (ClassNotFoundException | SQLException e) 
+		{	
+			System.out.println(e); // take off this line when in production
+			log.info(e);
+			throw new BusinessException("Internal error occured... Kindly contact SYSADMIN");
+		} 
+		return usersToBeApprovedList;	}
 }

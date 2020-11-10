@@ -5,11 +5,15 @@ import app.bankingApp.presenter.SupervisorMenuPresenter;
 
 public class SupervisorMenuPresenterImpl implements SupervisorMenuPresenter 
 {
-
 	@Override
-	public void showEmployeeMenu(User userSession) {
+	public void showEmployeeMenu(User userSession) 
+	{
 		// TODO Auto-generated method stub
-		
 	}
 
+	@Override
+	public void approveNonCustomerUserAccount(User userSession) 
+	{
+		// TODO Auto-generated method stub
+	}
 }

@@ -1,9 +1,17 @@
 package app.bankingApp.presenter.implementation;
 
+import java.util.List;
+import java.util.Scanner;
+
 import org.apache.log4j.Logger;
 
 import app.bankingApp.model.User;
+//import app.bankingApp.presenter.CustomerMenuPresenter;
 import app.bankingApp.presenter.EmployeeMenuPresenter;
+import app.bankingApp.service.UserService;
+import app.bankingApp.service.implementation.UserServiceImpl;
+import app.bankingApp.exception.BusinessException;
+
 
 public class EmployeeMenuPresenterImpl implements EmployeeMenuPresenter 
 {
@@ -18,11 +26,169 @@ public class EmployeeMenuPresenterImpl implements EmployeeMenuPresenter
 	public void showEmployeeMenu(User userSession) 
 	{
 		System.out.println("Employee Menu!");
-		//employee can approve or reject an account
-		//view a customer's bank accounts
-		//view a log of all transactions (of a specific account or all accounts):
-			//open accounts
-			//funds deposit or funds withdrawal
-			//transfers posted or accepted
+		System.out.println("Allows Bank's Employees to perform Bank-specific operations!\n");
+
+		Scanner scannerNonCustomerMenu = new Scanner(System.in);
+		
+		System.out.println("Welcome to Console based Bank / Employee Menu!");
+		System.out.println("----------------------------------------------");
+		
+		int choice = 0;
+		
+		do
+		{
+			System.out.println("Console Bank EMPLOYEE MENU");
+			System.out.println("==========================");
+			System.out.println("Please select your option:");
+			System.out.println("--------------------------\n");
+			System.out.println("1) Approval or Rejection for New CUSTOMER registration request");
+			System.out.println("2) Approval or Rejection for a CUSTOMER's bank account openning request");
+			System.out.println("3) View a CUSTOMER's bank accounts");
+			System.out.println("4) View logs of all transactions / for all Customers or for a Customer (? optional implementation)");
+			System.out.println("5) Returning to previous menu");
+			System.out.println("Please enter appropriate choice(1-5) :) ");
+
+			try 
+			{
+				choice = Integer.parseInt(scannerNonCustomerMenu.nextLine());
+			} 
+			
+			catch (NumberFormatException e) 
+			{
+				System.out.println("Please enter a number between 1 and 2!");
+			}
+			
+			switch (choice)
+			{
+				case 1:
+					//employee can approve or reject an User Customer Account
+					System.out.println("Method <Approve Customer Account for NonCustomer User> will approve or reject the User's request to become a new Customer!");
+					log.info("Method <Approve Customer Account for NonCustomer User> will approve or reject the User's request to become a new Customer!");
+
+					EmployeeMenuPresenter approveCustomerAccount = new EmployeeMenuPresenterImpl(userSession);
+					approveCustomerAccount.approveNonCustomerUserAccount(userSession);
+					break;
+				case 2:
+					//employee can approve or reject a User's Bank Account
+	
+					break;
+				case 3:
+					//view a customer's bank accounts
+	
+					break;
+				case 4:
+					//view a log of all transactions (of a specific account or all accounts):
+					//open accounts
+					//funds deposit or funds withdrawal
+					//transfers posted or accepted
+	
+					break;
+				case 5:
+					break;	
+				default:
+					System.out.println("Please enter 1, 2, 3, 4 or 5 to continue!");
+					break;
+			}	
+		} while (choice != 5);
+	}
+
+	@Override
+	public void approveNonCustomerUserAccount(User userSession) 
+	{
+		//instantiate an object that will be used () to transfer data to and from Service layer 
+		UserService userService = new UserServiceImpl();
+
+		//Step 1: Get all Users that are saved in temp db with Customer Status Approval Pending;
+		System.out.println("Retrieve and display a list with all User that request their Customer's accounts to be approved.");
+
+		//Code Here for SERVICE LAYER
+		boolean userApprovalPendingStatus = true;
+		
+		try 
+		{
+			List<User> usersToBeApprovedAsCustomers;
+			usersToBeApprovedAsCustomers = userService.getUsersFromApprovalTable(userApprovalPendingStatus);
+			
+			if(usersToBeApprovedAsCustomers !=null && usersToBeApprovedAsCustomers.size()>0)
+			{
+				System.out.println("We found "+usersToBeApprovedAsCustomers.size()+" users in the DB waiting to get their Customer status/account approved... Detailed list is:");
+				log.info("We found "+usersToBeApprovedAsCustomers.size()+" users in the DB waiting to get their Customer status/account approved... Detailed list is:");
+				
+				for(User u:usersToBeApprovedAsCustomers)
+				{
+					if (u.isCustomerApprovalPending() == true)
+					{
+						String tempStatus = "PENDING"; 
+						System.out.println("User: "+ u.getId() + " | " + u.getFirstName() + " " 
+							+ u.getLastName() + " | Email: " + u.getEmail() + " | Approval Status: " + tempStatus);
+					}
+				}
+			}
+			
+			//Step 2a: Approve and change User Status in CUSTOMER for a specific User
+			//Step 2b: Reject and change User Status in INACTIVE for a specific User
+			Scanner scannerNonCustomerMenu = new Scanner(System.in);
+			int choice = 0;
+
+			do
+			{
+				System.out.println("Console Bank EMPLOYEE Customer Account Approval Process MENU");
+				System.out.println("============================================================");
+				System.out.println("Please select your option:");
+				System.out.println("--------------------------\n");
+				System.out.println("1) Process a specific Approval Request");
+//				System.out.println("1) Process all Approval Requests, one by one"); //(? optional)
+				System.out.println("2) Returning to previous menu");
+				System.out.println("Please enter appropriate choice(1-2) :) ");
+				
+				try 
+				{
+					choice = Integer.parseInt(scannerNonCustomerMenu.nextLine());
+				} 
+				catch (NumberFormatException e) 
+				{
+					System.out.println("Please enter a number between 1 and 2!");
+				}
+				
+				switch (choice)
+				{
+					case 1:
+						System.out.println("Please enter the User's Id of the User whose approval request is to be processed:");
+						
+						try 
+						{
+							int id = Integer.parseInt(scannerNonCustomerMenu.nextLine());
+			
+							//Code Here for SERVICE LAYER
+							User user = userService.getUserById(id);
+							
+							if (user!=null)
+							{
+								System.out.println("User found with id "+id+" details are : ");
+								System.out.println(user); // to print only needed details: id, fname, lname, email, crtStatus
+								System.out.println("Approve the request of Activating Customer Account? (Y - approve / N - reject)");
+								
+								//change status code
+							}
+						} 
+						catch (BusinessException e) 
+						{
+							System.out.println(e.getMessage());
+						}
+						System.out.println("");
+						break;
+					
+					case 2:
+						break;
+				}
+				
+
+			} while (choice != 2);
+			
+		} catch (BusinessException e) 
+		{	
+			System.out.println(e.getMessage());
+		}
+		System.out.println("");
 	}
 }

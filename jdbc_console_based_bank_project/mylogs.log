@@ -1946,3 +1946,37 @@
 [INFO]        app.bankingApp.presenter.implementation.MainMenuPresenterImpl       Method <User login> will allow a registered user to login!             09-noiembrie-2020 luni EET 08:08:40        
 [INFO]        app.bankingApp.presenter.implementation.MainMenuPresenterImpl       Here is the getUsersByEmail Method from Service layer             09-noiembrie-2020 luni EET 08:08:47        
 [INFO]        app.bankingApp.presenter.implementation.MainMenuPresenterImpl       Here is the getUsersByEmail Method from DAO layer             09-noiembrie-2020 luni EET 08:08:47        
+[INFO]        app.bankingApp.presenter.implementation.MainMenuPresenterImpl       Method <User login> will allow a registered user to login!             10-noiembrie-2020 marþi EET 02:21:19        
+[INFO]        app.bankingApp.presenter.implementation.MainMenuPresenterImpl       Here is the getUsersByEmail Method from Service layer             10-noiembrie-2020 marþi EET 02:21:59        
+[INFO]        app.bankingApp.presenter.implementation.MainMenuPresenterImpl       Here is the getUsersByEmail Method from DAO layer             10-noiembrie-2020 marþi EET 02:21:59        
+[INFO]        app.bankingApp.presenter.implementation.MainMenuPresenterImpl       This customer does not have a Customer Account created/approved and has status: NONCUSTOMER             10-noiembrie-2020 marþi EET 02:22:00        
+[INFO]        app.bankingApp.presenter.implementation.MainMenuPresenterImpl       Method <New Customer Account registration> will create a new Customer!             10-noiembrie-2020 marþi EET 02:22:20        
+[INFO]        app.bankingApp.presenter.implementation.MainMenuPresenterImpl       User with id 6will saved in temp db waiting for approval.             10-noiembrie-2020 marþi EET 02:22:40        
+[INFO]        app.bankingApp.presenter.implementation.MainMenuPresenterImpl       Here is the createCustomerToBeApproved Method from Service layer             10-noiembrie-2020 marþi EET 02:22:40        
+[INFO]        app.bankingApp.presenter.implementation.MainMenuPresenterImpl       Here is the <Add NonCustomer User To Approval Table> Method from DAO layer             10-noiembrie-2020 marþi EET 02:22:40        
+[INFO]        app.bankingApp.presenter.implementation.MainMenuPresenterImpl       org.postgresql.util.PSQLException: ERROR: syntax error at or near "("
+  Position: 142             10-noiembrie-2020 marþi EET 02:22:40        
+[INFO]        app.bankingApp.presenter.implementation.MainMenuPresenterImpl       Internal error occured... Kindly contact SYSADMIN             10-noiembrie-2020 marþi EET 02:22:40        
+[INFO]        app.bankingApp.presenter.implementation.MainMenuPresenterImpl       Method <User login> will allow a registered user to login!             10-noiembrie-2020 marþi EET 02:30:32        
+[INFO]        app.bankingApp.presenter.implementation.MainMenuPresenterImpl       Here is the getUsersByEmail Method from Service layer             10-noiembrie-2020 marþi EET 02:30:53        
+[INFO]        app.bankingApp.presenter.implementation.MainMenuPresenterImpl       Here is the getUsersByEmail Method from DAO layer             10-noiembrie-2020 marþi EET 02:30:53        
+[INFO]        app.bankingApp.presenter.implementation.MainMenuPresenterImpl       This customer does not have a Customer Account created/approved and has status: NONCUSTOMER             10-noiembrie-2020 marþi EET 02:30:53        
+[INFO]        app.bankingApp.presenter.implementation.MainMenuPresenterImpl       Method <New Customer Account registration> will create a new Customer!             10-noiembrie-2020 marþi EET 02:31:09        
+[INFO]        app.bankingApp.presenter.implementation.MainMenuPresenterImpl       User with id 6will saved in temp db waiting for approval.             10-noiembrie-2020 marþi EET 02:31:23        
+[INFO]        app.bankingApp.presenter.implementation.MainMenuPresenterImpl       Here is the createCustomerToBeApproved Method from Service layer             10-noiembrie-2020 marþi EET 02:31:23        
+[INFO]        app.bankingApp.presenter.implementation.MainMenuPresenterImpl       Here is the <Add NonCustomer User To Approval Table> Method from DAO layer             10-noiembrie-2020 marþi EET 02:31:23        
+[INFO]        app.bankingApp.presenter.implementation.MainMenuPresenterImpl       org.postgresql.util.PSQLException: ERROR: syntax error at or near "("
+  Position: 142             10-noiembrie-2020 marþi EET 02:31:23        
+[INFO]        app.bankingApp.presenter.implementation.MainMenuPresenterImpl       Internal error occured... Kindly contact SYSADMIN             10-noiembrie-2020 marþi EET 02:31:23        
+[INFO]        app.bankingApp.presenter.implementation.MainMenuPresenterImpl       Method <User login> will allow a registered user to login!             10-noiembrie-2020 marþi EET 02:46:22        
+[INFO]        app.bankingApp.presenter.implementation.MainMenuPresenterImpl       Here is the getUsersByEmail Method from Service layer             10-noiembrie-2020 marþi EET 02:46:41        
+[INFO]        app.bankingApp.presenter.implementation.MainMenuPresenterImpl       Here is the getUsersByEmail Method from DAO layer             10-noiembrie-2020 marþi EET 02:46:41        
+[INFO]        app.bankingApp.presenter.implementation.MainMenuPresenterImpl       This customer does not have a Customer Account created/approved and has status: NONCUSTOMER
+             10-noiembrie-2020 marþi EET 02:46:41        
+[INFO]        app.bankingApp.presenter.implementation.MainMenuPresenterImpl       Method <Add NonCustomer User To Approval Table> will register for Bank's reviewal process the User's request to become a new Customer!             10-noiembrie-2020 marþi EET 02:47:06        
+[INFO]        app.bankingApp.presenter.implementation.MainMenuPresenterImpl       User with id 6will saved in temp db waiting for approval.             10-noiembrie-2020 marþi EET 02:47:16        
+[INFO]        app.bankingApp.presenter.implementation.MainMenuPresenterImpl       Here is the createCustomerToBeApproved Method from Service layer             10-noiembrie-2020 marþi EET 02:47:16        
+[INFO]        app.bankingApp.presenter.implementation.MainMenuPresenterImpl       Here is the <Add NonCustomer User To Approval Table> Method from DAO layer             10-noiembrie-2020 marþi EET 02:47:16        
+[INFO]        app.bankingApp.presenter.implementation.MainMenuPresenterImpl       Here is the createCustomerToBeApproved Method from Service layer             10-noiembrie-2020 marþi EET 02:47:16        
+[INFO]        app.bankingApp.presenter.implementation.MainMenuPresenterImpl       Here is the <Add NonCustomer User To Approval Table> Method from DAO layer             10-noiembrie-2020 marþi EET 02:47:16        
+[INFO]        app.bankingApp.presenter.implementation.MainMenuPresenterImpl       User: 6 | Bono Bossman was saved in temp db waiting for approval             10-noiembrie-2020 marþi EET 02:47:16        

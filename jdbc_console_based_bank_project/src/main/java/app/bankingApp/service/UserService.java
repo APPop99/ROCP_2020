@@ -3,6 +3,7 @@ package app.bankingApp.service;
 import java.util.List;
 
 import app.bankingApp.exception.BusinessException;
+import app.bankingApp.model.Customer;
 import app.bankingApp.model.User;
 
 public interface UserService 
@@ -11,6 +12,7 @@ public interface UserService
 	public int createUser(User user)throws BusinessException;
 	//UPDATE operation
 	public int updateUser()throws BusinessException;
+	public int addNonCustomerUserToApprovalTable (User user)throws BusinessException;
 	//DELETE operation
 	public void deleteUser(int id)throws BusinessException;
 	//READ operation
@@ -22,4 +24,6 @@ public interface UserService
 	public List<User> getUsersByStatus(String statusUser) throws BusinessException;
 	public List<User> getUsersByAccountId(String bankAccountId) throws BusinessException;
 	public User getUserByPhoneNumber(Long phoneNumber) throws BusinessException;
+	public List<User> getUsersFromApprovalTable(boolean userApprovalPendingStatus) throws BusinessException;
+	public User getUserById(int id) throws BusinessException;
 }

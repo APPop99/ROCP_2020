@@ -8,6 +8,7 @@ import org.apache.log4j.Logger;
 import app.bankingApp.DAO.UserOperationsDAO;
 import app.bankingApp.DAO.implementation.UserOperationsDAOImpl;
 import app.bankingApp.exception.BusinessException;
+import app.bankingApp.model.Customer;
 import app.bankingApp.model.User;
 import app.bankingApp.presenter.implementation.MainMenuPresenterImpl;
 import app.bankingApp.service.UserService;
@@ -83,15 +84,44 @@ public class UserServiceImpl implements UserService
 		// TODO Auto-generated method stub
 		return null;
 	}
+	
+	@Override
+	public List<User> getUsersFromApprovalTable(boolean userApprovalPendingStatus) throws BusinessException 
+	{
+//		System.out.println("Here is the getUsersFromApprovalTable Method from Service layer");
+		log.info("Here is the getUsersFromApprovalTable Method from Service layer");		
+		List<User> usersToBeApprovedList = null;
+		usersToBeApprovedList = userDAO.getUsersFromApprovalTable(userApprovalPendingStatus);
+		return usersToBeApprovedList;
+	}
 
 	@Override
-	public List<User> getUsersByAccountId(String bankAccountId) throws BusinessException {
+	public List<User> getUsersByAccountId(String bankAccountId) throws BusinessException 
+	{
 		// TODO Auto-generated method stub
 		return null;
 	}
 
 	@Override
-	public User getUserByPhoneNumber(Long phoneNumber) throws BusinessException {
+	public User getUserByPhoneNumber(Long phoneNumber) throws BusinessException 
+	{
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public int addNonCustomerUserToApprovalTable(User user) throws BusinessException 
+	{
+//		System.out.println("Here is the CreateUser Method from Service layer");
+		log.info("Here is the createCustomerToBeApproved Method from Service layer");
+		int c = userDAO.addNonCustomerUserToApprovalTable(user);		
+		return c;
+//		return null;
+	}
+
+	@Override
+	public User getUserById(int id) throws BusinessException 
+	{
 		// TODO Auto-generated method stub
 		return null;
 	}

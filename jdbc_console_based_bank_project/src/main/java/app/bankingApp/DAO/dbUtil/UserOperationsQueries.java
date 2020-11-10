@@ -5,6 +5,11 @@ public class UserOperationsQueries
 	public static final String INSERTUSER = "INSERT INTO project_console_bank.user(first_name, last_name, dob, "
 			+ "phone_number, email, password, date_user_account_creation, date_user_account_deletion, status_user_id) "
 			+ "VALUES(?,?,?,?,?,?,?,?,(select status_id from project_console_bank.user_status where status_user=?))";
+
+	public static final String INSERTUSERTOCUSTOMERAPPROVALTABLE = 
+			"INSERT INTO project_console_bank.non_customer_user_for_approval (user_id_cust_appr, "
+			+ "customer_approval_status, customer_approval_pending)"
+			+ "VALUES(?,?,?)";
 	
 	public static final String GETLASTUSERINSERTED = "SELECT user_id, date_user_account_creation "
 			+ "FROM project_console_bank.user ORDER BY date_user_account_creation DESC LIMIT 1";
@@ -39,6 +44,18 @@ public class UserOperationsQueries
 			+ " FROM project_console_bank.user u "
 			+ " left join project_console_bank.user_status us on u.status_user_id = us.status_id "
 			+ " ORDER BY last_name ASC";
+	
+	public static final String GETUSERSTATUS = "SELECT user_id, first_name, last_name, email, status_user "
+			+ "FROM project_console_bank.user u"
+			+ "LEFT JOIN project_console_bank.user_status us ON u.status_user_id = us.status_id "
+			+ "WHERE email = ? ORDER BY user_id ASC";
+
+	public static final String GETUSERSBYCUSTOMERACCOUNTAPPROVALSTATUS = "SELECT user_id, first_name, last_name, "
+			+ "email, status_user, customer_approval_status, customer_approval_pending "
+			+ "FROM project_console_bank.user u"
+			+ "LEFT JOIN project_console_bank.user_status us ON u.status_user_id = us.status_id "
+			+ "LEFT JOIN project_console_bank.non_customer_user_for_approval us_to_c ON u.user_id = us_to_c.user_id_cust_appr "
+			+ "WHERE customer_approval_pending = ? ORDER BY user_id ASC";
 	
 //	public static final String GETUSERSBYLASTNAME = "SELECT id,name, age, gender, teamName, contact FROM roc_revature.player WHERE name=? ORDER BY id ASC";
 //	public static final String GETUSERSBYFIRSTNAME = "SELECT id,name, age, gender, teamName, contact FROM roc_revature.player WHERE teamName=? ORDER BY id ASC";

@@ -71,18 +71,18 @@ public class EmployeeMenuPresenterImpl implements EmployeeMenuPresenter
 					break;
 				case 2:
 					//employee can approve or reject a User's Bank Account
-	
+					System.out.println("Feature not yet implemented!");	
 					break;
 				case 3:
 					//view a customer's bank accounts
-	
+					System.out.println("Feature not yet implemented!");	
 					break;
 				case 4:
 					//view a log of all transactions (of a specific account or all accounts):
 					//open accounts
 					//funds deposit or funds withdrawal
 					//transfers posted or accepted
-	
+					System.out.println("Feature not yet implemented!");
 					break;
 				case 5:
 					break;	

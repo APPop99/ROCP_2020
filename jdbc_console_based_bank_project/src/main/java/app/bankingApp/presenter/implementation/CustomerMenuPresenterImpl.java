@@ -25,12 +25,72 @@ public class CustomerMenuPresenterImpl implements CustomerMenuPresenter
 	public void showCustomerMenu(User userSession) 
 	{
 		System.out.println("Customer Menu!");
-		//open an account with a starting balance
-		//view the balance of an account
-		//make a withdrawal from a specific account (reject invalid transactions)
-		//make a deposit into a specific account (reject invalid transactions)
-		//post a money transfer to another account
-		//accept money transfer from another account
+		System.out.println("Allows a logged in Customer to operate the apps' features!\n");
+		Scanner scannerCustomerMenu = new Scanner(System.in);
+		
+		System.out.println("Welcome to Console based Bank / Customer Menu!");
+		System.out.println("----------------------------------------------");
+		
+		int choice = 0;
+		do 
+		{
+			System.out.println("Console Bank CUSTOMER MENU");
+			System.out.println("==========================");
+			System.out.println("Please select your option:");
+			System.out.println("--------------------------\n");
+			System.out.println("1) Apply for a single Bank Account");
+//			System.out.println("2) Apply for a joint Bank Account"); //(?optional)
+			System.out.println("2) View the balance of the selected Bank account");
+			System.out.println("3) Make a deposit into the selected Bank Account");			
+			System.out.println("4) Make a withdrawal from the selected Bank Account");
+			System.out.println("5) Post a money transfer from the selected Bank Account");
+			System.out.println("6) Accept a trasfer into the selected Bank Account");
+			System.out.println("7) Returning to previous menu");
+			System.out.println("Please enter appropriate choice(1-7) :) ");
+
+			try 
+			{
+				choice = Integer.parseInt(scannerCustomerMenu.nextLine());
+			} 
+			catch (NumberFormatException e) 
+			{
+				System.out.println("Please enter a number between 1 and 2!");
+			}
+
+			switch (choice)
+			{
+				case 1:
+					//open an account 
+					System.out.println("Feature not yet implemented!");
+					break;
+				case 2:
+					//view the balance of an account
+					System.out.println("Feature not yet implemented!");
+					break;
+				case 3:
+					//make a deposit into a specific account (reject invalid transactions)
+					System.out.println("Feature not yet implemented!");
+					break;
+				case 4:
+					//make a withdrawal from a specific account (reject invalid transactions)
+					System.out.println("Feature not yet implemented!");
+					break;
+				case 5:
+					//post a money transfer to another account
+					System.out.println("Feature not yet implemented!");
+					break;
+				case 6:
+					//accept money transfer from another account
+					System.out.println("Feature not yet implemented!");
+					break;
+				case 7: 
+					//return to previous menu
+					break;
+				default:
+					System.out.println("Please enter 1, 2, 3, 4, 5, 6 or 7 to continue!");
+					break;
+			}
+		} while (choice !=9 );
 	}
 
 	@Override

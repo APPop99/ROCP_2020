@@ -3,7 +3,6 @@ package app.bankingApp.service;
 import java.util.List;
 
 import app.bankingApp.exception.BusinessException;
-import app.bankingApp.model.Customer;
 import app.bankingApp.model.User;
 
 public interface UserService 

@@ -174,6 +174,20 @@ public class BankAccount
 		this.accountBalance = accountBalance;	
 	}
 
+	public BankAccount() 
+	{
+		// TODO Auto-generated constructor stub
+	}
+
+	public BankAccount(int bankAccountId, long bankAccountNumber, double accountBalance, int accountOwnerId) 
+	{
+		super();
+		this.bankAccountId = bankAccountId;
+		this.bankAccountNumber = bankAccountNumber;
+		this.accountBalance = accountBalance;
+		this.accountOwnerId = accountOwnerId;
+	}
+
 	@Override
 	public String toString() {
 		return "BankAccount [bankAccountId=" + bankAccountId + ", bankAccountNumber=" + bankAccountNumber

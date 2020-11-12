@@ -14,4 +14,6 @@ public interface EmployeeMenuPresenter
 
 	public void getBankAccountListyByUser();
 
+	public void getAllTransactions();
+
 }

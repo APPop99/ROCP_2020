@@ -29,4 +29,10 @@ public class SupervisorMenuPresenterImpl implements SupervisorMenuPresenter
 		// TODO Auto-generated method stub
 		
 	}
+
+	@Override
+	public void getAllTransactions() {
+		// TODO Auto-generated method stub
+		
+	}
 }

@@ -12,8 +12,12 @@ import org.apache.log4j.Logger;
 import app.bankingApp.DAO.BankAccountOperationsDAO;
 import app.bankingApp.DAO.dbUtil.BankAccountOperationsQueries;
 import app.bankingApp.DAO.dbUtil.PostgresSqlConnection;
+import app.bankingApp.DAO.dbUtil.UserOperationsQueries;
 import app.bankingApp.exception.BusinessException;
 import app.bankingApp.model.BankAccount;
+import app.bankingApp.model.BankTransaction;
+import app.bankingApp.model.StatusUser;
+import app.bankingApp.model.TransactionType;
 import app.bankingApp.model.User;
 import app.bankingApp.presenter.implementation.MainMenuPresenterImpl;
 
@@ -111,40 +115,144 @@ public class BankAccountOperationsDAOImpl implements BankAccountOperationsDAO
 	@Override
 	public BankAccount getBankAccountById(int id) throws BusinessException 
 	{
-		// TODO Auto-generated method stub
-		return null;
+		//System.out.println("Here is the <Get Bank Account By Id> method from DAO layer");
+		log.info("Here is the <Get Bank Account By Id> method from DAO layer");
+		//Instantiate an object to record/handle the results of the query 
+		BankAccount bankAccountById = null;
+		
+		try (Connection connection=PostgresSqlConnection.getConnection())
+		{
+			//instantiate the sql
+			String sql = BankAccountOperationsQueries.GETBANKACCOUNTBYID;		// Values are passed as arguments of the method
+			PreparedStatement preparedStatement = connection.prepareStatement(sql);
+			preparedStatement.setInt(1, id);
+			
+			ResultSet resultSet = preparedStatement.executeQuery();
+			
+			if (resultSet.next())
+			{
+				//The bank account with requested id was found
+				bankAccountById = new BankAccount(id, resultSet.getLong("bank_account_number"), 
+						resultSet.getDouble("bank_account_balance"), resultSet.getInt("bank_account_owner_id"));
+			} else
+			{
+				throw new BusinessException("Invalid ID!!!... No matching records found for the ID = "+id);
+			}
+		}
+		catch (ClassNotFoundException | SQLException e) 
+		{	
+//			System.out.println(e); // take off this line when in production
+			log.info(e);
+			throw new BusinessException("Internal error occured... Kindly contact SYSADMIN");
+		} 
+		return bankAccountById;
 	}
 
 	@Override
-	public void transferFundsOut(int sourceBankAccounId, int destinationBankAccounId, Double transferAmount, int userId)
-			throws BusinessException 
+	public int transferFundsOut(BankAccount sourceBankAccountId, BankAccount destinationBankAccountId, 
+			double transferAmount, int userId) throws BusinessException 
 	{
 		// TODO Auto-generated method stub
-		
+		int c = 0;
+		return c;	
 	}
 
 	@Override
-	public void transferFundsIn(int sourceBankAccounId, int destinationBankAccounId, Double transferAmount, int userId)
-			throws BusinessException 
+	public int transferFundsIn(BankAccount sourceBankAccount, BankAccount destinationBankAccount, 
+			double transferAmount, int userId) throws BusinessException 
 	{
 		// TODO Auto-generated method stub
-		
+		int c = 0;
+		return c;	
 	}
 
 	@Override
-	public void withdrawFunds(int bankAccounID, Double withdrawAmount, int userId) throws BusinessException 
+	public int withdrawFundsTransaction(BankAccount bankAccount, double amountToWithdraw, int userId) throws BusinessException 
 	{
-		// TODO Auto-generated method stub
+		int c = 0;
+//		System.out.println("Here is the withdrawFundsTransaction method from DAO layer");
+		log.info("Here is the withdrawFundsTransaction method from DAO layer");
 		
+		try (Connection connection=PostgresSqlConnection.getConnection())
+		{
+			String sql = BankAccountOperationsQueries.UPDATEBANKACCOUNTBALANCE;
+			
+			double newAccountBalance = bankAccount.getAccountBalance() - amountToWithdraw;
+			
+			PreparedStatement preparedStatement = connection.prepareStatement(sql);
+			preparedStatement.setDouble(1, newAccountBalance);
+			preparedStatement.setInt(2, bankAccount.getBankAccountId());
+//			preparedStatement.setInt(3, userId);
+			
+			c = preparedStatement.executeUpdate();
+		}
+		catch (ClassNotFoundException | SQLException e) 
+		{
+//			System.out.println(e);	// take off this line when in production
+			log.info(e);
+			throw new BusinessException("Internal error occured... Please contact SYSADMIN");
+		} 
+		return c;
 	}
 
 	@Override
-	public void depositFunds(int bankAccounID, Double deposit, int userId) throws BusinessException 
+	public int depositFundsTransaction(BankAccount bankAccount, double amountToDeposit, int userId) throws BusinessException 
 	{
-		// TODO Auto-generated method stub
+		int c = 0;
+//		System.out.println("Here is the depositFunds method from DAO layer");
+		log.info("Here is the depositFunds method from DAO layer");
 		
+		try (Connection connection=PostgresSqlConnection.getConnection())
+		{
+			String sql = BankAccountOperationsQueries.UPDATEBANKACCOUNTBALANCE;
+			
+			double newAccountBalance = bankAccount.getAccountBalance() + amountToDeposit;
+			
+			PreparedStatement preparedStatement = connection.prepareStatement(sql);
+			preparedStatement.setDouble(1, newAccountBalance);
+			preparedStatement.setInt(2, bankAccount.getBankAccountId());
+//			preparedStatement.setInt(3, userId);
+			
+			c = preparedStatement.executeUpdate();
+		}
+		catch (ClassNotFoundException | SQLException e) 
+		{
+//			System.out.println(e);	// take off this line when in production
+			log.info(e);
+			throw new BusinessException("Internal error occured... Please contact SYSADMIN");
+		} 
+		return c;
 	}
 
+	@Override
+	public int recordTransaction(BankTransaction transactionObj) throws BusinessException 
+	{
+		int c = 0;
+//		System.out.println("Here is the recordTransaction method from DAO layer");
+		log.info("Here is the recordTransaction method from DAO layer");
+		
+		try (Connection connection=PostgresSqlConnection.getConnection())
+		{
+			String sql = BankAccountOperationsQueries.RECORDTRANSACTION;
+					
+			PreparedStatement preparedStatement = connection.prepareStatement(sql);
+			preparedStatement.setInt(1, transactionObj.getSourceBankAccount().getBankAccountId());
+			preparedStatement.setInt(2, transactionObj.getDestinationBankAccount().getBankAccountId());
+			preparedStatement.setDouble(3, transactionObj.getAmount());
+			preparedStatement.setTimestamp(4, transactionObj.getTransactionDate());
+			preparedStatement.setString(7, transactionObj.getTransactionType().toString());
+			
+			c = preparedStatement.executeUpdate();
+		}
+		catch (ClassNotFoundException | SQLException e) 
+		{
+//			System.out.println(e);	// take off this line when in production
+			log.info(e);
+			throw new BusinessException("Internal error occured... Please contact SYSADMIN");
+		} 
+		return c;
+	}
+	
 	@Override
 	public void closeBankAccount(int bankAccounId, int userId) throws BusinessException 
 	{
@@ -275,5 +383,42 @@ public class BankAccountOperationsDAOImpl implements BankAccountOperationsDAO
 	{
 		// TODO Auto-generated method stub
 		return null;
+	}
+
+	@Override
+	public List<BankTransaction> getAllTransactions() throws BusinessException 
+	{
+//		System.out.println("Here is the getAllTransactions method from DAO layer");
+		log.info("Here is the getAllTransactions method from DAO layer");
+		//Instantiate an object to record/handle the results of the query 
+		List<BankTransaction> allTransactionsList = new ArrayList<>();
+		
+		try (Connection connection=PostgresSqlConnection.getConnection())
+		{
+			//instantiate the sql
+			String sql = BankAccountOperationsQueries.GETALLTRANSACTIONS;		// Values are passed as arguments of the method
+			PreparedStatement preparedStatement = connection.prepareStatement(sql);
+			ResultSet resultSet = preparedStatement.executeQuery();
+			
+			while (resultSet.next())
+			{
+				BankTransaction bankTransaction = new BankTransaction(resultSet.getInt("id_transaction"), 
+						resultSet.getInt("id_source_bank_account"), resultSet.getInt("id_destination_bank_account"),
+						resultSet.getDouble("transaction_amount"), TransactionType.valueOf(resultSet.getString("transaction_type")), 
+						resultSet.getTimestamp("transaction_date"));
+				allTransactionsList.add(bankTransaction);		
+			} 
+			if(allTransactionsList.size()==0)
+			{
+				throw new BusinessException("No players' records available to retrieve!");
+			}
+		}
+		catch (ClassNotFoundException | SQLException e) 
+		{	
+//			System.out.println(e); // take off this line when in production
+			log.info(e);
+			throw new BusinessException("Internal error occured.. Kindly contact SYSADMIN");
+		} 
+		return allTransactionsList;
 	}
 }

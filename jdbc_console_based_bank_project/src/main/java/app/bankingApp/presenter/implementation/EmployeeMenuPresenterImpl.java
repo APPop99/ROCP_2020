@@ -8,6 +8,7 @@ import java.util.Scanner;
 import org.apache.log4j.Logger;
 
 import app.bankingApp.model.BankAccount;
+import app.bankingApp.model.BankTransaction;
 import app.bankingApp.model.StatusAccount;
 import app.bankingApp.model.StatusUser;
 import app.bankingApp.model.User;
@@ -41,7 +42,7 @@ public class EmployeeMenuPresenterImpl implements EmployeeMenuPresenter
 		System.out.println("Employee Menu!");
 		System.out.println("Allows Bank's Employees to perform Bank-specific operations!\n");
 
-		Scanner scannerNonCustomerMenu = new Scanner(System.in);
+		Scanner scannerEmployeeMenu = new Scanner(System.in);
 		
 		System.out.println("Welcome to Console based Bank / Employee Menu!");
 		System.out.println("----------------------------------------------");
@@ -63,12 +64,12 @@ public class EmployeeMenuPresenterImpl implements EmployeeMenuPresenter
 
 			try 
 			{
-				choice = Integer.parseInt(scannerNonCustomerMenu.nextLine());
+				choice = Integer.parseInt(scannerEmployeeMenu.nextLine());
 			} 
 			
 			catch (NumberFormatException e) 
 			{
-				System.out.println("Please enter a number between 1 and 2!");
+				System.out.println("Please enter a number between 1 and 5!");
 			}
 			
 			switch (choice)
@@ -101,7 +102,10 @@ public class EmployeeMenuPresenterImpl implements EmployeeMenuPresenter
 					//open accounts
 					//funds deposit or funds withdrawal
 					//transfers posted or accepted
-					System.out.println("Feature not yet implemented!");
+//					System.out.println("Method <View Bank Account> allows an Employee to see an User's Bank Accounts!");
+					log.info("Method <View Bank Account> allows an Employee to see an User's Bank Accounts!");
+					EmployeeMenuPresenter viewAllTransactions = new EmployeeMenuPresenterImpl();
+					viewAllTransactions.getAllTransactions();														
 					break;
 				case 5:
 					break;	
@@ -444,6 +448,51 @@ public class EmployeeMenuPresenterImpl implements EmployeeMenuPresenter
 							+ ba.getBankAccountNumber() + " | Bank Account active since: " + formatter.format(date)
 							+ " | Bank Account Balance: " + ba.getAccountBalance());
 				}
+			}
+		}
+		catch (BusinessException e) 
+		{
+			System.out.println(e.getMessage());
+		}
+		System.out.println("");
+	}
+
+	@Override
+	public void getAllTransactions() 
+	{
+		//instantiate an object that will be used () to transfer data to and from Service layer 
+		BankAccountService bankAccountService = new BankAccountServiceImpl();
+		UserService userService = new UserServiceImpl();
+
+//		System.out.println("getAllTransactions method allows a Bank Employee to see all the trasactions.");
+		log.info("getAllTransactions method allows a Bank Employee to see all the trasactions.");
+		
+		try 
+		{		//Code Here for SERVICE LAYER
+			List<BankTransaction> bankTransactionsListAll;
+
+			bankTransactionsListAll = bankAccountService.getAllTransactions();
+
+			if(bankTransactionsListAll!=null && bankTransactionsListAll.size()>0)
+			{
+				System.out.println("We found " + bankTransactionsListAll.size()+" transactions performed and recorded in bank's database!... Detailed list is:"); 
+				log.info("We found " + bankTransactionsListAll.size()+" transactions performed and recorded in bank's database!... Detailed list is:");
+			}
+			for(BankTransaction bt:bankTransactionsListAll)
+			{
+				Date date = new Date(bt.getTransactionDate().getTime());
+				SimpleDateFormat formatter = new SimpleDateFormat("E, dd MMMM yyyy"); 
+
+				System.out.println("Transaction Id: " + bt.getIdTransaction() + " | Source Bank Account: " 
+						+ bt.getSourceBankAccount() + " | Destination Bank Account: " 
+						+ bt.getDestinationBankAccount() + " | Transaction Amount: " + bt.getAmount() 
+						+ " | Transaction Type" + bt.getTransactionType() + " | Transaction Date: " 
+						+ formatter.format(date));
+				log.info("Transaction Id: " + bt.getIdTransaction() + " | Source Bank Account: " 
+						+ bt.getSourceBankAccount() + " | Destination Bank Account: " 
+						+ bt.getDestinationBankAccount() + " | Transaction Amount: " + bt.getAmount() 
+						+ " | Transaction Type" + bt.getTransactionType() + " | Transaction Date: " 
+						+ formatter.format(date));
 			}
 		}
 		catch (BusinessException e) 

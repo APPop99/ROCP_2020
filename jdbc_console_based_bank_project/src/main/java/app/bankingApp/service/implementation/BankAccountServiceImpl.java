@@ -10,6 +10,7 @@ import app.bankingApp.DAO.implementation.BankAccountOperationsDAOImpl;
 import app.bankingApp.DAO.implementation.UserOperationsDAOImpl;
 import app.bankingApp.exception.BusinessException;
 import app.bankingApp.model.BankAccount;
+import app.bankingApp.model.BankTransaction;
 import app.bankingApp.model.User;
 import app.bankingApp.presenter.implementation.MainMenuPresenterImpl;
 import app.bankingApp.service.BankAccountService;
@@ -40,41 +41,17 @@ public class BankAccountServiceImpl implements BankAccountService
 	}
 
 	@Override
-	public void transferFundsOut(int sourceBankAccounId, int destinationBankAccounId, Double transferAmount, int userId)
-			throws BusinessException {
-		// TODO Auto-generated method stub
-		
-	}
-
-	@Override
-	public void transferFundsIn(int sourceBankAccounId, int destinationBankAccounId, Double transferAmount, int userId)
-			throws BusinessException {
-		// TODO Auto-generated method stub
-		
-	}
-
-	@Override
-	public void withdrawFunds(int bankAccounID, Double withdrawAmount, int userId) throws BusinessException {
-		// TODO Auto-generated method stub
-		
-	}
-
-	@Override
-	public void depositFunds(int bankAccounID, Double deposit, int userId) throws BusinessException {
-		// TODO Auto-generated method stub
-		
-	}
-
-	@Override
 	public void closeBankAccount(int bankAccounId, int userId) throws BusinessException {
 		// TODO Auto-generated method stub
 		
 	}
 
 	@Override
-	public BankAccount getBankAccountById(int id) throws BusinessException {
-		// TODO Auto-generated method stub
-		return null;
+	public BankAccount getBankAccountById(int id) throws BusinessException 
+	{
+		BankAccount bankAccountsListById = null;
+		bankAccountsListById = bankAccountDAO.getBankAccountById(id);
+		return bankAccountsListById;	
 	}
 
 	@Override
@@ -140,5 +117,59 @@ public class BankAccountServiceImpl implements BankAccountService
 //		bankAccountsListByUser = bankAccountDAO.getBankAccountByUser(userId);
 //		return bankAccountsListByUser;	
 		return null;
+	}
+
+	@Override
+	public int transferFundsOut(BankAccount sourceBankAccount, BankAccount destinationBankAccount,
+			Double amountToTransfer, int userId) throws BusinessException {
+		// TODO Auto-generated method stub
+		return 0;
+	}
+
+	@Override
+	public int transferFundsIn(BankAccount sourceBankAccount, BankAccount destinationBankAccount,
+			Double amountToTransfer, int userId) throws BusinessException {
+		// TODO Auto-generated method stub
+		return 0;
+	}
+
+	@Override
+	public int withdrawFundsTransaction(BankAccount selectedBankAccount, Double amountToWithdraw, int userId)
+			throws BusinessException 
+	{
+		// System.out.println("Here is the withdrawFundsTransaction method from Service layer");
+		log.info("Here is the withdrawFundsTransaction method from Service layer");
+		
+		int c = bankAccountDAO.withdrawFundsTransaction(selectedBankAccount, amountToWithdraw, userId);		
+		return c;
+	}
+
+	@Override
+	public int depositFundsTransaction(BankAccount selectedBankAccount, Double amountToDeposit, int userId)
+			throws BusinessException 
+	{
+		// System.out.println("Here is the depositFundsTransaction method from Service layer");
+		log.info("Here is the depositFundsTransaction method from Service layer");
+		
+		int c = bankAccountDAO.depositFundsTransaction(selectedBankAccount, amountToDeposit, userId);		
+		return c;
+	}
+
+	@Override
+	public int recordTransaction(BankTransaction transactionObj) throws BusinessException 
+	{
+		// System.out.println("Here is the depositFundsTransaction method from Service layer");
+		log.info("Here is the recordTransaction method from Service layer");
+		
+		int c = bankAccountDAO.recordTransaction(transactionObj);		
+		return c;
+	}
+
+	@Override
+	public List<BankTransaction> getAllTransactions() throws BusinessException 
+	{
+		List<BankTransaction> bankTransactionsListAll = null;
+		bankTransactionsListAll = bankAccountDAO.getAllTransactions();
+		return bankTransactionsListAll;	
 	}
 }

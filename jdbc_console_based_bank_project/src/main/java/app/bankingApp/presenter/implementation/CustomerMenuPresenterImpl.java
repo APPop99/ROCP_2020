@@ -14,8 +14,10 @@ import org.apache.log4j.Logger;
 //import app.bankingApp.DAO.dbUtil.LongStream;
 import app.bankingApp.exception.BusinessException;
 import app.bankingApp.model.BankAccount;
+import app.bankingApp.model.BankTransaction;
 import app.bankingApp.model.StatusAccount;
 import app.bankingApp.model.StatusUser;
+import app.bankingApp.model.TransactionType;
 import app.bankingApp.model.User;
 import app.bankingApp.presenter.CustomerMenuPresenter;
 import app.bankingApp.service.BankAccountService;
@@ -79,20 +81,26 @@ public class CustomerMenuPresenterImpl implements CustomerMenuPresenter
 					createBankAccount.createNewBankAccount(userSession);
 					break;
 				case 2:
-					//view the balance of an account
+					//view the balance of the accounts
 //					System.out.println("Method <View Bank Account Balance> allows User to see Bank Account balance!");
 					log.info("Method <View Bank Account Balance> allows User to see Bank Account balance!");
 					CustomerMenuPresenter viewBankAccountBalance = new CustomerMenuPresenterImpl(userSession);
-					viewBankAccountBalance.getBankAccountBalance(userSession);					
+					List<BankAccount> bankAccountsListByUser = null;
+					bankAccountsListByUser = viewBankAccountBalance.getBankAccountBalance(userSession);					
 					break;
 				case 3:
 					//make a deposit into a specific account (reject invalid transactions)
-					System.out.println("Feature not yet implemented!");
+//					System.out.println("Method <Deposit amount in Bank Account> allows a Customer to deposit funds into a selected Bank Account he/she owns!");
+					log.info("Method <Deposit amount in Bank Account> allows a Customer to deposit funds into a selected Bank Account he/she owns!");
+					CustomerMenuPresenter depositFundsIntoBankAccount = new CustomerMenuPresenterImpl(userSession);
+					depositFundsIntoBankAccount.updateDepositFundsIntoBankAccount(userSession);						
 					break;
 				case 4:
 					//make a withdrawal from a specific account (reject invalid transactions)
-					System.out.println("Feature not yet implemented!");
-					break;
+//					System.out.println("Method <Withdraw amount in Bank Account> allows a Customer to withdraw funds into a selected Bank Account he/she owns!");
+					log.info("Method <Withdraw amount in Bank Account> allows a Customer to withdraw funds into a selected Bank Account he/she owns!");
+					CustomerMenuPresenter withdrawFundsFromBankAccount = new CustomerMenuPresenterImpl(userSession);
+					withdrawFundsFromBankAccount.updateWithdrawFundsFromBankAccount(userSession);								break;
 				case 5:
 					//post a money transfer to another account
 					System.out.println("Feature not yet implemented!");
@@ -328,19 +336,20 @@ public class CustomerMenuPresenterImpl implements CustomerMenuPresenter
 	}
 
 	@Override
-	public void getBankAccountBalance(User userSession) 
+	public List<BankAccount> getBankAccountBalance(User userSession) 
 	{
 		//instantiate an object that will be used () to transfer data to and from Service layer 
 		BankAccountService bankAccountService = new BankAccountServiceImpl();
-		
+
+		//get all the bank accounts a User has
+		List<BankAccount> bankAccountsListByUser = null;
+
 //		System.out.println("View Bank Account Balance method allows a User to see the balance of one of his/her Bank Accounts.");
 		log.info("View Bank Account Balance method allows a User to see the balance of one of his/her Bank Accounts.");
 		
 		try 
 		{
 			//Code Here for SERVICE LAYER
-			//get all the bank accounts a User has
-			List<BankAccount> bankAccountsListByUser;
 			
 			bankAccountsListByUser = bankAccountService.getBankAccountByUser(userSession);
 			
@@ -370,5 +379,202 @@ public class CustomerMenuPresenterImpl implements CustomerMenuPresenter
 			System.out.println(e.getMessage());
 		}
 		System.out.println("");
+		return bankAccountsListByUser;
+	}
+
+	@Override
+	public void updateDepositFundsIntoBankAccount(User userSession) 
+	{
+		//instantiate an object that will be used () to transfer data to and from Service layer 
+		BankAccountService bankAccountService = new BankAccountServiceImpl();
+
+		CustomerMenuPresenter depositFundsIntoBankAccount = new CustomerMenuPresenterImpl(userSession);
+		List<BankAccount> bankAccountsListByUser = null;
+
+		//get all the bank accounts a Customer has and display them on screen .
+		//Customer can choose the destination account from the list;
+		bankAccountsListByUser = depositFundsIntoBankAccount.getBankAccountBalance(userSession);
+		
+		Scanner scannerDepositFunds = new Scanner(System.in);
+
+		int selectedBankAccountId = 0;
+		BankAccount selectedBankAccount = null;
+		BankTransaction depositFundsTransactionObj = new BankTransaction();
+		
+		boolean choiceBankAcctId = false;
+		do
+		{
+			System.out.println("Select the bank account where you want to deposit the funds: ");
+			selectedBankAccountId = Integer.parseInt(scannerDepositFunds.nextLine());
+
+			//Code Here for SERVICE LAYER
+			try 
+			{
+				selectedBankAccount = bankAccountService.getBankAccountById(selectedBankAccountId);
+			} catch (BusinessException e) 
+			{
+				System.out.println(e.getMessage());
+			}
+			
+			//test if the chosen bank account is included in the list of BAnk Accounts owned by the Customer;
+			if (bankAccountsListByUser.contains(selectedBankAccount))
+			{
+				choiceBankAcctId = true;
+			}
+			else
+			{
+				System.out.println("Please select a Bank Account from the list of bank accounts you own!");
+			}
+		} while (choiceBankAcctId == false);
+		
+		double amountToDeposit = 0;
+		do
+		{	//check if invalid transactions: 
+			//A deposit of negative money.
+			System.out.println("Please enter the amount you want to deposit (it should be a positive amount): ");
+			amountToDeposit = Double.parseDouble(scannerDepositFunds.nextLine());
+		} while (amountToDeposit <= 0);
+				
+		depositFundsTransactionObj.setSourceBankAccount(null);
+		depositFundsTransactionObj.setDestinationBankAccount(selectedBankAccount);
+		depositFundsTransactionObj.setAmount(amountToDeposit);
+	
+		Timestamp transactionDate = new Timestamp(System.currentTimeMillis());
+		depositFundsTransactionObj.setTransactionDate(transactionDate);
+		
+		TransactionType transactionType = TransactionType.DEPOSIT_FUNDS;
+		depositFundsTransactionObj.setTransactionType(transactionType);
+		
+		try 
+		{
+			//Code Here for SERVICE LAYER
+			//update the bank account balance
+			if(bankAccountService.depositFundsTransaction(selectedBankAccount, amountToDeposit, userSession.getId()) > 0)
+			{
+				Date date = new Date(depositFundsTransactionObj.getTransactionDate().getTime());
+				SimpleDateFormat formatter = new SimpleDateFormat("E, dd MMMM yyyy"); 
+
+				System.out.println("On " + formatter.format(date) + ", the amount of " + amountToDeposit 
+						+ " was deposited in your bank account with" + " Bank Account Id: " 
+						+ selectedBankAccount.getBankAccountId() + " | Bank Account Number: " 
+						+ selectedBankAccount.getBankAccountNumber());
+				log.info("On " + formatter.format(date) + ", the amount of " + amountToDeposit 
+						+ " was deposited in your bank account with" + " Bank Account Id: " 
+						+ selectedBankAccount.getBankAccountId() + " | Bank Account Number: " 
+						+ selectedBankAccount.getBankAccountNumber());				
+			}
+			//record the transaction in transactions' table;
+			if(bankAccountService.recordTransaction(depositFundsTransactionObj)>0)
+			{
+				System.out.println("Transaction "+ depositFundsTransactionObj.getIdTransaction() 
+					+ "was recorded in the database");
+				log.info("Transaction "+ depositFundsTransactionObj.getIdTransaction() 
+				+ "was recorded in the database");
+			}
 		}
+		catch (BusinessException e) 
+		{
+			System.out.println(e.getMessage());
+		}
+		System.out.println("");
+	}
+
+	@Override
+	public void updateWithdrawFundsFromBankAccount(User userSession) 
+	{
+		//instantiate an object that will be used () to transfer data to and from Service layer 
+		BankAccountService bankAccountService = new BankAccountServiceImpl();
+
+		CustomerMenuPresenter withdrawFundsFromBankAccount = new CustomerMenuPresenterImpl(userSession);
+		List<BankAccount> bankAccountsListByUser = null;
+
+		//get all the bank accounts a Customer has and display them on screen .
+		//Customer can choose the destination account from the list;
+		bankAccountsListByUser = withdrawFundsFromBankAccount.getBankAccountBalance(userSession);
+		
+		Scanner scannerDepositFunds = new Scanner(System.in);
+
+		int selectedBankAccountId = 0;
+		BankAccount selectedBankAccount = null;
+		BankTransaction withdrawFundsTransactionObj = new BankTransaction();
+		
+		boolean choiceBankAcctId = false;
+		do
+		{
+			System.out.println("Select the bank account where you want to deposit the funds: ");
+			selectedBankAccountId = Integer.parseInt(scannerDepositFunds.nextLine());
+
+			//Code Here for SERVICE LAYER
+			try 
+			{
+				selectedBankAccount = bankAccountService.getBankAccountById(selectedBankAccountId);
+			} catch (BusinessException e) 
+			{
+				System.out.println(e.getMessage());
+			}
+			
+			//test if the chosen bank account is included in the list of BAnk Accounts owned by the Customer;
+			if (bankAccountsListByUser.contains(selectedBankAccount))
+			{
+				choiceBankAcctId = true;
+			}
+			else
+			{
+				System.out.println("Please select a Bank Account from the list of bank accounts you own!");
+			}
+		} while (choiceBankAcctId == false);
+		
+		double amountToWithdraw = 0;
+		do
+		{	//check if invalid transactions: 
+			//A withdrawal that would result in a negative balance.
+			//A deposit or withdrawal of negative money.
+			System.out.println("Please enter the amount you want to withdraw (it should be a positive amount): ");
+			System.out.println("You can withdraw a maximum amount of: " + selectedBankAccount.getAccountBalance());
+			amountToWithdraw = Double.parseDouble(scannerDepositFunds.nextLine());
+		} while (amountToWithdraw <= 0 || (selectedBankAccount.getAccountBalance()-amountToWithdraw < 0));
+				
+		withdrawFundsTransactionObj.setSourceBankAccount(selectedBankAccount);
+		withdrawFundsTransactionObj.setDestinationBankAccount(null);
+		withdrawFundsTransactionObj.setAmount(amountToWithdraw);
+	
+		Timestamp transactionDate = new Timestamp(System.currentTimeMillis());
+		withdrawFundsTransactionObj.setTransactionDate(transactionDate);
+		
+		TransactionType transactionType = TransactionType.DEPOSIT_FUNDS;
+		withdrawFundsTransactionObj.setTransactionType(transactionType);
+		
+		try 
+		{
+			//Code Here for SERVICE LAYER
+			//update the bank account balance
+			if(bankAccountService.withdrawFundsTransaction(selectedBankAccount, amountToWithdraw, userSession.getId()) > 0)
+			{
+				Date date = new Date(withdrawFundsTransactionObj.getTransactionDate().getTime());
+				SimpleDateFormat formatter = new SimpleDateFormat("E, dd MMMM yyyy"); 
+
+				System.out.println("On " + formatter.format(date) + ", the amount of " + amountToWithdraw 
+						+ " was withdrawn from your bank account with" + " Bank Account Id: " 
+						+ selectedBankAccount.getBankAccountId() + " | Bank Account Number: " 
+						+ selectedBankAccount.getBankAccountNumber());
+				log.info("On " + formatter.format(date) + ", the amount of " + amountToWithdraw 
+						+ " was withdrawn from your bank account with" + " Bank Account Id: " 
+						+ selectedBankAccount.getBankAccountId() + " | Bank Account Number: " 
+						+ selectedBankAccount.getBankAccountNumber());				
+			}
+			//record the transaction in transactions' table;
+			if(bankAccountService.recordTransaction(withdrawFundsTransactionObj)>0)
+			{
+				System.out.println("Transaction "+ withdrawFundsTransactionObj.getIdTransaction() 
+					+ "was recorded in the database");
+				log.info("Transaction "+ withdrawFundsTransactionObj.getIdTransaction() 
+				+ "was recorded in the database");
+			}
+		}
+		catch (BusinessException e) 
+		{
+			System.out.println(e.getMessage());
+		}
+		System.out.println("");		
+	}
 }

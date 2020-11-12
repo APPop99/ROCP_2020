@@ -165,6 +165,15 @@ public class BankAccount
 		this.accountOwnerId = accountOwnerId;
 	}
 	
+	public BankAccount(int bankAccountId, long bankAccountNumber, Timestamp dateBankAccountCreation, double accountBalance) 
+	{
+		super();
+		this.bankAccountId = bankAccountId;
+		this.bankAccountNumber = bankAccountNumber;
+		this.dateBankAccountCreation = dateBankAccountCreation;
+		this.accountBalance = accountBalance;	
+	}
+
 	@Override
 	public String toString() {
 		return "BankAccount [bankAccountId=" + bankAccountId + ", bankAccountNumber=" + bankAccountNumber

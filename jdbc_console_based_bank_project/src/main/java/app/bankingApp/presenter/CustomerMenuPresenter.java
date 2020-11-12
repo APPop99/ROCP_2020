@@ -12,4 +12,6 @@ public interface CustomerMenuPresenter
 	public void addNonCustomerUserToApprovalTable(User userSession);
 
 	public void createNewBankAccount(User userSession);
+
+	public void getBankAccountBalance(User userSession);
 }

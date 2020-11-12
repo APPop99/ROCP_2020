@@ -32,4 +32,10 @@ public class BankAccountOperationsQueries
 			+ " FROM project_console_bank.bank_account AS ba "
 			+ " left join project_console_bank.account_status AS as ON ba.status_bank_account_id = as.id_account_status"
 			+ " WHERE bank_account_number = ?";
+	
+	public static final String GETBANKACCOUNTLISTBYUSER = "SELECT bank_account_id, bank_account_number,"
+			+ " date_bank_account_creation, first_name, last_name, bank_account_balance"
+			+ " FROM project_console_bank.bank_account AS ba"
+			+ " LEFT JOIN project_console_bank.user u ON ba.bank_account_owner_id = u.user_id"
+			+ " WHERE user_id = ? ORDER BY date_bank_account_creation ASC";
 }

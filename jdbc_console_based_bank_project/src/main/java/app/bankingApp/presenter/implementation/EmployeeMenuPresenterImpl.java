@@ -1,5 +1,7 @@
 package app.bankingApp.presenter.implementation;
 
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.List;
 import java.util.Scanner;
 
@@ -9,6 +11,7 @@ import app.bankingApp.model.BankAccount;
 import app.bankingApp.model.StatusAccount;
 import app.bankingApp.model.StatusUser;
 import app.bankingApp.model.User;
+import app.bankingApp.presenter.CustomerMenuPresenter;
 //import app.bankingApp.presenter.CustomerMenuPresenter;
 import app.bankingApp.presenter.EmployeeMenuPresenter;
 import app.bankingApp.service.BankAccountService;
@@ -23,6 +26,11 @@ public class EmployeeMenuPresenterImpl implements EmployeeMenuPresenter
 	private static Logger log=Logger.getLogger(MainMenuPresenterImpl.class);
 
 	public EmployeeMenuPresenterImpl(User userSession) 
+	{
+		
+	}
+
+	public EmployeeMenuPresenterImpl() 
 	{
 		
 	}
@@ -83,7 +91,10 @@ public class EmployeeMenuPresenterImpl implements EmployeeMenuPresenter
 					break;
 				case 3:
 					//view a customer's bank accounts
-					System.out.println("Feature not yet implemented!");	
+//					System.out.println("Method <View Bank Account> allows an Employee to see an User's Bank Accounts!");
+					log.info("Method <View Bank Account> allows an Employee to see an User's Bank Accounts!");
+					EmployeeMenuPresenter viewBankAccountsByUser = new EmployeeMenuPresenterImpl();
+					viewBankAccountsByUser.getBankAccountListyByUser();										
 					break;
 				case 4:
 					//view a log of all transactions (of a specific account or all accounts):
@@ -388,4 +399,57 @@ public class EmployeeMenuPresenterImpl implements EmployeeMenuPresenter
 		}
 		System.out.println("");		
 	}
+
+	@Override
+	public void getBankAccountListyByUser() 
+	{
+		//instantiate an object that will be used () to transfer data to and from Service layer 
+		BankAccountService bankAccountService = new BankAccountServiceImpl();
+		UserService userService = new UserServiceImpl();
+
+//		System.out.println("View Bank Accounts by User method allows a Bank Employee to see the Bank Accounts of a specified User.");
+		log.info("View Bank Accounts by User method allows a Bank Employee to see the Bank Accounts of a specified User.");
+		
+		Scanner scannerEmployeeMenu = new Scanner(System.in);
+		System.out.println("Please enter the Id of the Customer whose Bank Accounts you want to retrieve:");
+		
+		try 
+		{
+			int userId = Integer.parseInt(scannerEmployeeMenu.nextLine());
+			
+			//Code Here for SERVICE LAYER
+			//get all the bank accounts a User has
+			User selectedUser;
+			List<BankAccount> bankAccountsListByUser;
+			
+			selectedUser = userService.getUserById(userId);
+			bankAccountsListByUser = bankAccountService.getBankAccountByUser(selectedUser);			
+			
+			if(bankAccountsListByUser!=null && bankAccountsListByUser.size()>0)
+			{
+				System.out.println("We found " + bankAccountsListByUser.size()+" bank accounts opened by the User: " 
+						+ selectedUser.getFirstName() + " " + selectedUser.getLastName() + "... Detailed list is:");
+				log.info("We found " + bankAccountsListByUser.size()+" bank accounts opened by the User: " 
+						+ selectedUser.getFirstName() + " " + selectedUser.getLastName() + "... Detailed list is:");
+				
+				for(BankAccount ba:bankAccountsListByUser)
+				{
+					Date date = new Date(ba.getDateBankAccountCreation().getTime());
+					SimpleDateFormat formatter = new SimpleDateFormat("E, dd MMMM yyyy"); 
+
+					System.out.println("Bank Account Id: " + ba.getBankAccountId() + " | Bank Account Number: " 
+							+ ba.getBankAccountNumber() + " | Bank Account active since: " + formatter.format(date)
+							+ " | Bank Account Balance: " + ba.getAccountBalance());
+					log.info("Bank Account Id: " + ba.getBankAccountId() + " | Bank Account Number: " 
+							+ ba.getBankAccountNumber() + " | Bank Account active since: " + formatter.format(date)
+							+ " | Bank Account Balance: " + ba.getAccountBalance());
+				}
+			}
+		}
+		catch (BusinessException e) 
+		{
+			System.out.println(e.getMessage());
+		}
+		System.out.println("");
+	}		
 }

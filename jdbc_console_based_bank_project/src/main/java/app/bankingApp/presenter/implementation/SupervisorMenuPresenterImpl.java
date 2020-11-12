@@ -23,4 +23,10 @@ public class SupervisorMenuPresenterImpl implements SupervisorMenuPresenter
 		// TODO Auto-generated method stub
 		
 	}
+
+	@Override
+	public void getBankAccountListyByUser() {
+		// TODO Auto-generated method stub
+		
+	}
 }

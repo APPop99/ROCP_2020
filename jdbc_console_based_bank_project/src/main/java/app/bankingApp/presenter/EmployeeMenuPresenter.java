@@ -12,4 +12,6 @@ public interface EmployeeMenuPresenter
 
 	public void approveBankAccount(User userSession, BankAccount bankAccount);
 
+	public void getBankAccountListyByUser();
+
 }

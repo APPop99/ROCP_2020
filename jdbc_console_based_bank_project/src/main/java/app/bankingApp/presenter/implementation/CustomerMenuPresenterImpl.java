@@ -3,6 +3,7 @@ package app.bankingApp.presenter.implementation;
 import java.sql.Timestamp;
 import java.text.SimpleDateFormat;
 import java.util.Date;
+import java.util.List;
 import java.util.Scanner;
 import java.lang.Math;
 //import java.util.Random;
@@ -72,14 +73,17 @@ public class CustomerMenuPresenterImpl implements CustomerMenuPresenter
 			{
 				case 1:
 					//apply for a bank account 
-					System.out.println("Method <New Bank Account Registration> will create a new Bank Account and submit it for Bank's approval!");
+//					System.out.println("Method <New Bank Account Registration> will create a new Bank Account and submit it for Bank's approval!");
 					log.info("Method <New Bank Account Registration> will create a new Bank Account and submit it for Bank's approval!");
 					CustomerMenuPresenter createBankAccount = new CustomerMenuPresenterImpl(userSession);
 					createBankAccount.createNewBankAccount(userSession);
 					break;
 				case 2:
 					//view the balance of an account
-					System.out.println("Feature not yet implemented!");
+//					System.out.println("Method <View Bank Account Balance> allows User to see Bank Account balance!");
+					log.info("Method <View Bank Account Balance> allows User to see Bank Account balance!");
+					CustomerMenuPresenter viewBankAccountBalance = new CustomerMenuPresenterImpl(userSession);
+					viewBankAccountBalance.getBankAccountBalance(userSession);					
 					break;
 				case 3:
 					//make a deposit into a specific account (reject invalid transactions)
@@ -237,12 +241,12 @@ public class CustomerMenuPresenterImpl implements CustomerMenuPresenter
 	@Override
 	public void createNewBankAccount(User userSession) 
 	{
-		Scanner scannerUserCreation = new Scanner(System.in);
-
 		//instantiate an object that will be used () to transfer data to and from Service layer 
 		BankAccountService bankAccountService = new BankAccountServiceImpl();
 		
-		System.out.println("System will generate the details for the new Bank Account you wish to open:");
+//		System.out.println("System will generate the details for the new Bank Account you wish to open:");
+		log.info("System will generate the details for the new Bank Account you wish to open:");
+		
 		try 
 		{
 			//generated a 9-digits random number as Bank Account Number 
@@ -322,4 +326,49 @@ public class CustomerMenuPresenterImpl implements CustomerMenuPresenter
 		}
 		System.out.println("");
 	}
+
+	@Override
+	public void getBankAccountBalance(User userSession) 
+	{
+		//instantiate an object that will be used () to transfer data to and from Service layer 
+		BankAccountService bankAccountService = new BankAccountServiceImpl();
+		
+//		System.out.println("View Bank Account Balance method allows a User to see the balance of one of his/her Bank Accounts.");
+		log.info("View Bank Account Balance method allows a User to see the balance of one of his/her Bank Accounts.");
+		
+		try 
+		{
+			//Code Here for SERVICE LAYER
+			//get all the bank accounts a User has
+			List<BankAccount> bankAccountsListByUser;
+			
+			bankAccountsListByUser = bankAccountService.getBankAccountByUser(userSession);
+			
+			if(bankAccountsListByUser!=null && bankAccountsListByUser.size()>0)
+			{
+				System.out.println("We found " + bankAccountsListByUser.size()+" bank accounts opened by the User: " 
+						+ userSession.getFirstName() + " " + userSession.getLastName() + "... Detailed list is:");
+				log.info("We found " + bankAccountsListByUser.size()+" bank accounts opened by the User: " 
+						+ userSession.getFirstName() + " " + userSession.getLastName() + "... Detailed list is:");
+				
+				for(BankAccount ba:bankAccountsListByUser)
+				{
+					Date date = new Date(ba.getDateBankAccountCreation().getTime());
+					SimpleDateFormat formatter = new SimpleDateFormat("E, dd MMMM yyyy"); 
+
+					System.out.println("Bank Account Id: " + ba.getBankAccountId() + " | Bank Account Number: " 
+							+ ba.getBankAccountNumber() + " | Account active since: " + formatter.format(date)
+							+ " | Bank Account Balance: " + ba.getAccountBalance());
+					log.info("Bank Account Id: " + ba.getBankAccountId() + " | Bank Account Number: " 
+							+ ba.getBankAccountNumber() + " | Account active since: " + formatter.format(date)
+							+ " | Bank Account Balance: " + ba.getAccountBalance());
+				}
+			}
+		}
+		catch (BusinessException e) 
+		{
+			System.out.println(e.getMessage());
+		}
+		System.out.println("");
+		}
 }

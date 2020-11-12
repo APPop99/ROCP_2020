@@ -4,6 +4,7 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
 import java.util.List;
 
 import org.apache.log4j.Logger;
@@ -231,5 +232,48 @@ public class BankAccountOperationsDAOImpl implements BankAccountOperationsDAO
 				throw new BusinessException("Internal error occured... Kindly contact SYSADMIN");
 		} 
 		return c;
+	}
+
+	@Override
+	public List<BankAccount> getBankAccountByUser(User userSession) throws BusinessException 
+	{	
+		//Instantiate an object to record/handle the results of the query 
+		List<BankAccount> bankAccountsListByUser = new ArrayList<>();
+		
+		try (Connection connection=PostgresSqlConnection.getConnection())
+		{
+			//instantiate the sql
+			String sql = BankAccountOperationsQueries.GETBANKACCOUNTLISTBYUSER;		// Values are passed as arguments of the method
+			PreparedStatement preparedStatement = connection.prepareStatement(sql);
+			preparedStatement.setInt(1, userSession.getId());
+			ResultSet resultSet = preparedStatement.executeQuery();
+			
+			while (resultSet.next())
+			{
+				BankAccount bankAccount = new BankAccount(resultSet.getInt("bank_account_id"), 
+						resultSet.getLong("bank_account_number"), resultSet.getTimestamp("date_bank_account_creation"), 
+						resultSet.getDouble("bank_account_balance"));
+				bankAccountsListByUser.add(bankAccount);		
+			} 
+			if(bankAccountsListByUser.size()==0)
+			{
+				throw new BusinessException("No records of bank accounts opened by User: " + userSession.getId() 
+				+ " | " + userSession.getFirstName() + userSession.getLastName() + " available to retrieve!");
+			}
+		}
+		catch (ClassNotFoundException | SQLException e) 
+		{	
+//			System.out.println(e); // take off this line when in production
+			log.info(e);
+			throw new BusinessException("Internal error occured... Kindly contact SYSADMIN");
+		} 
+		return bankAccountsListByUser;
+	}
+
+	@Override
+	public List<BankAccount> getBankAccountByUser(int userId) throws BusinessException 
+	{
+		// TODO Auto-generated method stub
+		return null;
 	}
 }

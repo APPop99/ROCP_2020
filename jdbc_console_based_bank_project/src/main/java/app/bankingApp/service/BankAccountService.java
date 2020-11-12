@@ -31,4 +31,6 @@ public interface BankAccountService
 	public boolean isBankAccountDuplicate(long bankAccountNumber) throws BusinessException;
 	public List<BankAccount> getBankAccountsFromApprovalTable(boolean bankAccountApprovalPendingStatus)  throws BusinessException;
 	public BankAccount getUserById(int id) throws BusinessException;
+	public List<BankAccount> getBankAccountByUser(User userSession) throws BusinessException;
+	public List<BankAccount> getBankAccountByUser(int userId) throws BusinessException;
 }

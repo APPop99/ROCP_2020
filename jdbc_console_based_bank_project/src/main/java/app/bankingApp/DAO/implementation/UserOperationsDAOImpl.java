@@ -73,8 +73,8 @@ public class UserOperationsDAOImpl implements app.bankingApp.DAO.UserOperationsD
 	@Override
 	public User getUserById(int id) throws BusinessException 
 	{
-//			System.out.println("Here is the <Get User By Id> Method from DAO layer");
-		log.info("Here is the <Get User By Id> Method from DAO layer");
+//			System.out.println("Here is the <Get User By Id> method from DAO layer");
+		log.info("Here is the <Get User By Id> method from DAO layer");
 		//Instantiate an object to record/handle the results of the query 
 		User userById = null;
 		

@@ -10,6 +10,7 @@ public interface BankAccountOperationsDAO
 {
 	//CREATE operation
 	public int createNewBankAccount(User user, BankAccount bankAccount)throws BusinessException;
+	public int addNewBankAccountToApprovalTable(User user, BankAccount bankAccount) throws BusinessException;
 	
 	//UPDATE operation
 	public int updateBankAccount(User user, BankAccount bankAccount)throws BusinessException;
@@ -28,5 +29,6 @@ public interface BankAccountOperationsDAO
 	public List<BankAccount> getAccountsList(int userId) throws BusinessException;
 	public List<BankAccount> getAllBankAccountsList() throws BusinessException;
 	public boolean isBankAccountDuplicate(long bankAccountNumber) throws BusinessException;
-	public int addNewBankAccountToApprovalTable(User user, BankAccount bankAccount) throws BusinessException;
+	public List<BankAccount> getBankAccountByUser(User userSession) throws BusinessException;
+	public List<BankAccount> getBankAccountByUser(int userId) throws BusinessException;
 }

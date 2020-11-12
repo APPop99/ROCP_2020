@@ -1,5 +1,7 @@
 package app.bankingApp.model;
 
+import java.sql.Timestamp;
+
 public class Transaction 
 {
 	private int idTransaction;
@@ -7,7 +9,8 @@ public class Transaction
 	private BankAccount destinationBankAccountId;
 	private double amount;
 	private TransactionType transactionType;
-	private boolean isTransactionCleared;
+	private boolean isTransactionCleared; 		//to be user when accepting a money transfer from another account 
+	private Timestamp transactionDate;
 	
 	public int getIdTransaction() 
 	{
@@ -63,21 +66,30 @@ public class Transaction
 		this.transactionType = transactionType;
 	}
 	
+	public Timestamp getTransactionDate() {
+		return transactionDate;
+	}
+
+	public void setTransactionDate(Timestamp transactionDate) {
+		this.transactionDate = transactionDate;
+	}
+
 	public Transaction(int idTransaction, BankAccount sourceBankAccountId, BankAccount destinationBankAccountId,
-			double amount, TransactionType transactionType, boolean isTransactionCleared) {
+			double amount, TransactionType transactionType, Timestamp transactionDate) {
 		super();
 		this.idTransaction = idTransaction;
 		this.sourceBankAccountId = sourceBankAccountId;
 		this.destinationBankAccountId = destinationBankAccountId;
 		this.amount = amount;
 		this.transactionType = transactionType;
-		this.isTransactionCleared = isTransactionCleared;
+		this.transactionDate = transactionDate;
 	}
 
 	@Override
 	public String toString() {
 		return "Transaction [idTransaction=" + idTransaction + ", sourceBankAccountId=" + sourceBankAccountId
 				+ ", destinationBankAccountId=" + destinationBankAccountId + ", amount=" + amount + ", transactionType="
-				+ transactionType + ", isTransactionCleared=" + isTransactionCleared + "]";
+				+ transactionType + ", isTransactionCleared=" + isTransactionCleared + ", transactionDate="
+				+ transactionDate + "]";
 	}
 }

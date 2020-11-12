@@ -124,4 +124,21 @@ public class BankAccountServiceImpl implements BankAccountService
 		// TODO Auto-generated method stub
 		return null;
 	}
+
+	@Override
+	public List<BankAccount> getBankAccountByUser(User userSession) throws BusinessException 
+	{
+		List<BankAccount> bankAccountsListByUser = null;
+		bankAccountsListByUser = bankAccountDAO.getBankAccountByUser(userSession);
+		return bankAccountsListByUser;	
+	}
+
+	@Override
+	public List<BankAccount> getBankAccountByUser(int userId) throws BusinessException 
+	{
+//		List<BankAccount> bankAccountsListByUser = null;
+//		bankAccountsListByUser = bankAccountDAO.getBankAccountByUser(userId);
+//		return bankAccountsListByUser;	
+		return null;
+	}
 }

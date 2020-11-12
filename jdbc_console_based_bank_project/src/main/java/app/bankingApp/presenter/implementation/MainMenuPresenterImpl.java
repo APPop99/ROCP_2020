@@ -12,6 +12,8 @@ import app.bankingApp.presenter.CustomerMenuPresenter;
 import app.bankingApp.presenter.EmployeeMenuPresenter;
 import app.bankingApp.presenter.MainMenuPresenter;
 import app.bankingApp.service.UserService;
+import app.bankingApp.service.EmailValidatorService;
+import app.bankingApp.service.implementation.EmailValidatorServiceImpl;
 import app.bankingApp.service.implementation.UserServiceImpl;
 import app.bankingApp.exception.BusinessException;
 import app.bankingApp.model.StatusUser;
@@ -127,7 +129,7 @@ public class MainMenuPresenterImpl implements MainMenuPresenter
 			Long phoneNumber = Long.parseLong(scannerUserCreation.nextLine());
 			
 			String email = "";
-			boolean isEmailFormatValid = false;
+			EmailValidatorService isEmailFormatValid = new EmailValidatorServiceImpl();
 			boolean isEmailFormatValidAndUnique = false;
 
 			//instantiate an object that will be used () to transfer data to and from Service layer 
@@ -143,26 +145,30 @@ public class MainMenuPresenterImpl implements MainMenuPresenter
 					email = scannerUserCreation.nextLine();					
 				} while(userServiceEmailCheck.isUserByEmailDuplicate(email) != true);
 				
-				while (isEmailFormatValid == false)	
-				{
-					//Test if the format of email is valid, as it is used as username
-					
-					if (email.matches("^[\\w-_\\.+]*[\\w-_\\.]\\@([\\w]+\\.)+[\\w]+[\\w]$")) 
-					{
-//						System.out.println("Email format is valid!");
-						log.info("Email format is valid");
-						isEmailFormatValid = true;
-						break;
-					} 
-					else 
-					{
-						isEmailFormatValid = false;
-						System.out.println("Email format is not valid. Please enter an email with a valid format!");
-						log.info("Email format is not valid. Please enter an email with a valid format!");
-					}
-				}	
 				
-				isEmailFormatValidAndUnique = true;
+//				while (isEmailFormatValid == false)	
+//				{
+//					//Test if the format of email is valid, as it is used as username
+//					
+//					if (email.matches("^[\\w-_\\.+]*[\\w-_\\.]\\@([\\w]+\\.)+[\\w]+[\\w]$")) 
+//					{
+////						System.out.println("Email format is valid!");
+//						log.info("Email format is valid");
+//						isEmailFormatValid = true;
+//						break;
+//					} 
+//					else 
+//					{
+//						isEmailFormatValid = false;
+//						System.out.println("Email format is not valid. Please enter an email with a valid format!");
+//						log.info("Email format is not valid. Please enter an email with a valid format!");
+//					}
+//				}
+				
+				if (isEmailFormatValid.isEmailValid(email) == true)
+				{				
+					isEmailFormatValidAndUnique = true;
+				}
 			}
 			
 			//Date of Birth is read from keyboard and validated
@@ -266,6 +272,40 @@ public class MainMenuPresenterImpl implements MainMenuPresenter
 //		scannerUserCreation.close();
 	}
 
+//	private EmailValidator isEmailValid(String email) {
+//		// TODO Auto-generated method stub
+//		return null;
+//	}
+
+//	public boolean EmailValidator(String email)
+//	{
+//		boolean isEmailFormatValid = false;
+//		
+//		final String PASSWORD_PATTERN = "^[\\w-_\\.+]*[\\w-_\\.]\\@([\\w]+\\.)+[\\w]+[\\w]$";
+//		
+//		while (isEmailFormatValid == false)	
+//		{
+//			//Test if the format of email is valid, as it is used as username
+//			
+//			
+//			if (email.matches(PASSWORD_PATTERN))
+//			{
+////				System.out.println("Email format is valid!");
+//				log.info("Email format is valid");
+//				isEmailFormatValid = true;
+//				break;
+//			} 
+//			else 
+//			{
+//				isEmailFormatValid = false;
+//				System.out.println("Email format is not valid. Please enter an email with a valid format!");
+//				log.info("Email format is not valid. Please enter an email with a valid format!");
+//			}
+//		}	
+//		
+//		return isEmailFormatValid;
+//	}
+	
 	@Override
 	public User loginUser() 
 	{
@@ -339,6 +379,13 @@ public class MainMenuPresenterImpl implements MainMenuPresenter
 				return user;
 			}
 		}
+		return null;
+	}
+
+	@Override
+	public Boolean validate(String arg) 
+	{
+		// TODO Auto-generated method stub
 		return null;
 	}
 }

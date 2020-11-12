@@ -15,31 +15,36 @@ class MyServiceImplTest {
 	private static MyService service;
 	
 	@BeforeAll
-	public static void setUpService() {
+	public static void setUpService() 
+	{
 		service=new MyServiceImpl();
 	}
 
 	@Test
-	void testIsValidPrimeNumber() {
+	void testIsValidPrimeNumber() 
+	{
 		boolean b=service.isValidPrimeNumber(3);
 		//assertEquals(true, b);
 		assertTrue(b);
 	}
 	
 	@Test
-	void testIsValidPrimeNumberNegative() {
+	void testIsValidPrimeNumberNegative() 
+	{
 		boolean b=service.isValidPrimeNumber(6);
 		//assertEquals(true, b);
 		assertFalse(b);
 	}
 
 	@Test
-	void testIsValidMobileNumber() {
+	void testIsValidMobileNumber() 
+	{
 		assertEquals(true, service.isValidMobileNumber("+1-1234567890"));
 	}
 	
 	@Test
-	void testIsValidMobileNumberForNull() {
+	void testIsValidMobileNumberForNull() 
+	{
 		assertEquals(false, service.isValidMobileNumber(null));
 	}
 

@@ -12,4 +12,6 @@ public interface MainMenuPresenter
 	public void createNewUser();
 
 	public User loginUser();
+
+	public Boolean validate(String arg);
 }

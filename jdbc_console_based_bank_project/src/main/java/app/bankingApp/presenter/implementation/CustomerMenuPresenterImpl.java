@@ -1,15 +1,26 @@
 package app.bankingApp.presenter.implementation;
 
+import java.sql.Timestamp;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.Scanner;
+import java.lang.Math;
+//import java.util.Random;
+//import java.util.stream.LongStream;
 
 import org.apache.log4j.Logger;
 
+//import app.bankingApp.DAO.dbUtil.LongStream;
 import app.bankingApp.exception.BusinessException;
+import app.bankingApp.model.BankAccount;
+import app.bankingApp.model.StatusAccount;
 import app.bankingApp.model.StatusUser;
 import app.bankingApp.model.User;
 import app.bankingApp.presenter.CustomerMenuPresenter;
+import app.bankingApp.service.BankAccountService;
 //import app.bankingApp.presenter.MainMenuPresenter;
 import app.bankingApp.service.UserService;
+import app.bankingApp.service.implementation.BankAccountServiceImpl;
 import app.bankingApp.service.implementation.UserServiceImpl;
 
 public class CustomerMenuPresenterImpl implements CustomerMenuPresenter
@@ -28,7 +39,7 @@ public class CustomerMenuPresenterImpl implements CustomerMenuPresenter
 		System.out.println("Allows a logged in Customer to operate the apps' features!\n");
 		Scanner scannerCustomerMenu = new Scanner(System.in);
 		
-		System.out.println("Welcome to Console based Bank / Customer Menu!");
+		System.out.println(userSession.getFirstName() + " " + userSession.getLastName() + ": Welcome to Console based Bank / Customer Menu!");
 		System.out.println("----------------------------------------------");
 		
 		int choice = 0;
@@ -60,8 +71,11 @@ public class CustomerMenuPresenterImpl implements CustomerMenuPresenter
 			switch (choice)
 			{
 				case 1:
-					//open an account 
-					System.out.println("Feature not yet implemented!");
+					//apply for a bank account 
+					System.out.println("Method <New Bank Account Registration> will create a new Bank Account and submit it for Bank's approval!");
+					log.info("Method <New Bank Account Registration> will create a new Bank Account and submit it for Bank's approval!");
+					CustomerMenuPresenter createBankAccount = new CustomerMenuPresenterImpl(userSession);
+					createBankAccount.createNewBankAccount(userSession);
 					break;
 				case 2:
 					//view the balance of an account
@@ -145,12 +159,17 @@ public class CustomerMenuPresenterImpl implements CustomerMenuPresenter
 						{
 							System.out.println("User with " + userSession.getId() + " | "+userSession.getFirstName() 
 							+ " "+userSession.getLastName()+" already submitted a request for Bank's approval for a Customer Acoount");
+							log.info("User with " + userSession.getId() + " | "+userSession.getFirstName() 
+							+ " "+userSession.getLastName()+" already submitted a request for Bank's approval for a Customer Acoount");
+
 							break;
 						}
 					}
 					else
 					{
 						System.out.println("User with " + userSession.getId() + " | "+userSession.getFirstName() 
+						+ " "+userSession.getLastName()+" already has Customer status");
+						log.info("User with " + userSession.getId() + " | "+userSession.getFirstName() 
 						+ " "+userSession.getLastName()+" already has Customer status");
 						break;
 					}
@@ -213,5 +232,94 @@ public class CustomerMenuPresenterImpl implements CustomerMenuPresenter
 			log.info(e.getMessage());
 		}
 		System.out.println("");		
+	}
+
+	@Override
+	public void createNewBankAccount(User userSession) 
+	{
+		Scanner scannerUserCreation = new Scanner(System.in);
+
+		//instantiate an object that will be used () to transfer data to and from Service layer 
+		BankAccountService bankAccountService = new BankAccountServiceImpl();
+		
+		System.out.println("System will generate the details for the new Bank Account you wish to open:");
+		try 
+		{
+			//generated a 9-digits random number as Bank Account Number 
+			//test with the database the unicity of the Bank Account number generated
+			long bankAccountNumber = 0;		
+			boolean isBankAccountNumberUnique = false;
+			
+			while(isBankAccountNumberUnique == false)
+			{
+				do
+				{	//apply random function to generate a 9 digit bank account number;
+					bankAccountNumber = (long)(Math.random()*1000000 + 100000000L);
+					log.info("Bank Account number randomly generated is: " + bankAccountNumber);
+				} while(bankAccountService.isBankAccountDuplicate(bankAccountNumber) != true);
+				isBankAccountNumberUnique = true;
+			}
+
+			double bankAccountBalance = 0;
+			int bankAccountOwnerId = userSession.getId();
+			
+			//Code Here for SERVICE LAYER
+			BankAccount newBankAccount = new BankAccount(bankAccountNumber, bankAccountBalance, bankAccountOwnerId);
+			
+			StatusAccount statusBankAccount = StatusAccount.PENDING;
+			newBankAccount.setStatusBankAccount(statusBankAccount);
+			
+			Timestamp dateBankAccountCreation = new Timestamp(System.currentTimeMillis());
+			newBankAccount.setDateBankAccountCreation(dateBankAccountCreation); 			
+			
+			Timestamp dateBankAccountApproval = null; 
+			newBankAccount.setDateBankAccountApproval(dateBankAccountApproval);
+			
+			Timestamp dateBankAccountDeletion = null;
+			newBankAccount.setDateBankAccountDeletion(dateBankAccountDeletion);
+
+			if(bankAccountService.createNewBankAccount(userSession, newBankAccount) > 0)
+			{
+				System.out.println("A new bank account was generated for the User: " + userSession.getFirstName() + 
+						" " + userSession.getLastName() + "and will be sent to Bank for approval! Bank Account details are: ");
+				log.info("A new bank account was created for the User: " + userSession.getFirstName() + 
+						" "+userSession.getLastName() + "and will be sent to Bank for approval! Bank Account details are: ");				
+
+				Date date = new Date(newBankAccount.getDateBankAccountCreation().getTime());
+				SimpleDateFormat formatter = new SimpleDateFormat("E, dd MMMM yyyy"); 
+				
+				System.out.println("User id: " + userSession.getId() + " | " + userSession.getFirstName() + " " 
+						+ userSession.getLastName() + " | Bank Account number: " + newBankAccount.getBankAccountNumber() + 
+						" | Date of Bank Account creation: " + formatter.format(date));				
+				log.info("User id: " + userSession.getId() + " | " + userSession.getFirstName() + " " 
+						+ userSession.getLastName() + " | Bank Account number: " + newBankAccount.getBankAccountNumber() + 
+						" | Date of Bank Account creation: " + formatter.format(date));
+
+				//save the newly created bank account into the the temp table for Bank's approval
+				System.out.println("Dear customer " + userSession.getFirstName() + " " + userSession.getLastName() 
+					+ ", the newly generated bank account with number " + newBankAccount.getBankAccountNumber() 
+					+ " will be saved in temp db waiting for Bank's approval.");
+				log.info("Dear customer " + userSession.getFirstName() + " " + userSession.getLastName() 
+					+ ", the newly generated bank account with number " + newBankAccount.getBankAccountNumber() 
+					+ " will be saved in temp db waiting for Bank's approval.");
+
+				//update the Bank Account approval status in corresponding table
+				newBankAccount.setBankAccountApprovalPending(true); //set value to true - Bank Account approval is pending
+				newBankAccount.setBankAccountApproved(false);		//set value to false - this Bank Account has not yet been approved by the Bank 
+				
+				if (bankAccountService.addNewBankAccountToApprovalTable(userSession, newBankAccount)>0)
+				{
+					System.out.println("User: "+ userSession.getId() + " | " + userSession.getFirstName() + " " 
+							+ userSession.getLastName()+" was saved in temp db waiting for approval");
+					log.info("User: "+ userSession.getId() + " | " + userSession.getFirstName() + " " 
+							+ userSession.getLastName()+" was saved in temp db waiting for approval");				
+				}
+			}
+		}
+		catch (BusinessException e) 
+		{
+			System.out.println(e.getMessage());
+		}
+		System.out.println("");
 	}
 }

@@ -17,8 +17,8 @@ public class User
 	private Timestamp dateUserAccountDeletion;
 	private StatusUser statusUser;
 	private int statusUserId;
-	private boolean customerApprovalStatus;
-	private boolean customerApprovalPending;
+	private boolean isCustomerStatusApproved;
+	private boolean isCustomerApprovalPending;
 	
 	public int getId() 
 	{
@@ -157,17 +157,17 @@ public class User
 	}
 	public boolean isCustomerStatusApproved() 
 	{
-		return customerApprovalStatus;
+		return isCustomerStatusApproved;
 	}
-	public void setCustomerStatusApproved(boolean customerApprovalStatus) 
+	public void setCustomerStatusApproved(boolean isCustomerStatusApproved) 
 	{
-		this.customerApprovalStatus = customerApprovalStatus;
+		this.isCustomerStatusApproved = isCustomerStatusApproved;
 	}
 	public boolean isCustomerApprovalPending() 
 	{
-		return customerApprovalPending;
+		return isCustomerApprovalPending;
 	}
-	public void setCustomerApprovalPending(boolean customerApprovalPending) {
-		this.customerApprovalPending = customerApprovalPending;
+	public void setCustomerApprovalPending(boolean isCustomerApprovalPending) {
+		this.isCustomerApprovalPending = isCustomerApprovalPending;
 	}
 }

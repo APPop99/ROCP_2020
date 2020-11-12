@@ -1,4 +1,4 @@
-package app.bankingApp.DAO;
+package app.bankingApp.service;
 
 import java.util.List;
 
@@ -6,11 +6,12 @@ import app.bankingApp.exception.BusinessException;
 import app.bankingApp.model.BankAccount;
 import app.bankingApp.model.User;
 
-public interface BankAccountOperationsDAO 
+public interface BankAccountService 
 {
 	//CREATE operation
 	public int createNewBankAccount(User user, BankAccount bankAccount)throws BusinessException;
-	
+	public int addNewBankAccountToApprovalTable(User user, BankAccount bankAccount) throws BusinessException;
+
 	//UPDATE operation
 	public int updateBankAccount(User user, BankAccount bankAccount)throws BusinessException;
 	public void transferFundsOut(int sourceBankAccounId, int destinationBankAccounId, Double transferAmount, int userId) throws BusinessException;
@@ -28,5 +29,6 @@ public interface BankAccountOperationsDAO
 	public List<BankAccount> getAccountsList(int userId) throws BusinessException;
 	public List<BankAccount> getAllBankAccountsList() throws BusinessException;
 	public boolean isBankAccountDuplicate(long bankAccountNumber) throws BusinessException;
-	public int addNewBankAccountToApprovalTable(User user, BankAccount bankAccount) throws BusinessException;
+	public List<BankAccount> getBankAccountsFromApprovalTable(boolean bankAccountApprovalPendingStatus)  throws BusinessException;
+	public BankAccount getUserById(int id) throws BusinessException;
 }

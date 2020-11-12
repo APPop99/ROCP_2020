@@ -1,5 +1,6 @@
 package app.bankingApp.presenter.implementation;
 
+import app.bankingApp.model.BankAccount;
 import app.bankingApp.model.User;
 import app.bankingApp.presenter.SupervisorMenuPresenter;
 
@@ -15,5 +16,11 @@ public class SupervisorMenuPresenterImpl implements SupervisorMenuPresenter
 	public void approveCustomerUserAccount(User userSession) 
 	{
 		// TODO Auto-generated method stub
+	}
+
+	@Override
+	public void approveBankAccount(User userSession, BankAccount bankAccount) {
+		// TODO Auto-generated method stub
+		
 	}
 }

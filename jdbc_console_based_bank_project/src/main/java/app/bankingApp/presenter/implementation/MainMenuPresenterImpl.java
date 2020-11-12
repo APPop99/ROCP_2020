@@ -53,13 +53,13 @@ public class MainMenuPresenterImpl implements MainMenuPresenter
 			switch (choice)
 			{
 				case 1:
-					System.out.println("Method <New user registration> will create a new User!");
+//					System.out.println("Method <New user registration> will create a new User!");
 					log.info("Method <New user registration> will create a new User!");
 					MainMenuPresenter createUser = new MainMenuPresenterImpl();
 					createUser.createNewUser();
 					break;
 				case 2:
-					System.out.println("Method <User login> will allow a registered user to login!");
+//					System.out.println("Method <User login> will allow a registered user to login!");
 					log.info("Method <User login> will allow a registered user to login!");
 					MainMenuPresenter loginUserMenu = new MainMenuPresenterImpl();
 					User userSession = loginUserMenu.loginUser();
@@ -149,7 +149,7 @@ public class MainMenuPresenterImpl implements MainMenuPresenter
 					
 					if (email.matches("^[\\w-_\\.+]*[\\w-_\\.]\\@([\\w]+\\.)+[\\w]+[\\w]$")) 
 					{
-						System.out.println("Email format is valid!");
+//						System.out.println("Email format is valid!");
 						log.info("Email format is valid");
 						isEmailFormatValid = true;
 						break;
@@ -157,8 +157,8 @@ public class MainMenuPresenterImpl implements MainMenuPresenter
 					else 
 					{
 						isEmailFormatValid = false;
-						System.out.println("Email format is not valid");
-						log.info("Email format is not valid");
+						System.out.println("Email format is not valid. Please enter an email with a valid format!");
+						log.info("Email format is not valid. Please enter an email with a valid format!");
 					}
 				}	
 				
@@ -169,9 +169,11 @@ public class MainMenuPresenterImpl implements MainMenuPresenter
 			//This part (dob processing) should be optimized at refactor and moved to an Util package
 			System.out.print("Please enter User's date of birth (format dd/mm/yyy): ");
 			String dobString = scannerUserCreation.nextLine();
+			
 			SimpleDateFormat sdfDobString = new SimpleDateFormat("dd/MM/yyyy");
 			sdfDobString.setLenient(false);
 			Date dob=null;
+			
 			try 
 			{
 				dob = sdfDobString.parse(dobString);
@@ -185,6 +187,7 @@ public class MainMenuPresenterImpl implements MainMenuPresenter
 			//This part (email validation) should be optimized at refactor and moved to an Util package
 			String password= "";
 			boolean isPasswordValid = false;
+			
 			while (isPasswordValid == false)
 			{
 				System.out.println("Please enter User's password: \n"
@@ -262,18 +265,7 @@ public class MainMenuPresenterImpl implements MainMenuPresenter
 		System.out.println("");
 //		scannerUserCreation.close();
 	}
-/*
-	private boolean isDuplicateEmail(String email, List<User> usersList) 
-	{
-		for (User user : usersList) {
-			if (email.equals(user.getEmail())) {
-				System.out.println("Username already exists with the same email.");
-				return true;
-			}
-		}
-		return false;
-	}
-*/
+
 	@Override
 	public User loginUser() 
 	{
@@ -298,19 +290,24 @@ public class MainMenuPresenterImpl implements MainMenuPresenter
 			if (loginSuccessful(email, password, userList)) 
 			{
 				
-				System.out.println("Login successful!\n");
+//				System.out.println("Login successful!\n");
+				log.info("Login successful!\n");
 				userLogin = selectUser(email, password, userList); 
 				
 				Date date = new Date(userLogin.getDateUserAccountCreation().getTime());
 				SimpleDateFormat formatter = new SimpleDateFormat("E, dd MMMM yyyy"); 
 				
-				System.out.println("User logged in has the following details:");
+				System.out.println("User logged in successfully with the following details:");
 				System.out.println("User id: " + userLogin.getId() + " | " + userLogin.getFirstName() + " " 
+						+ userLogin.getLastName() + " | " + userLogin.getEmail() + " | " + formatter.format(date));
+				log.info("User logged in successfully with the following details:");
+				log.info("User id: " + userLogin.getId() + " | " + userLogin.getFirstName() + " " 
 						+ userLogin.getLastName() + " | " + userLogin.getEmail() + " | " + formatter.format(date));
 				return userLogin;
 			}
 			else {
 				System.out.println("Login failed. Credentials are not correct. Please try again.\n");
+				log.info("Login failed. Credentials are not correct. Please try again.\n");
 //				scannerUserLogin.close();
 				return null;
 			}

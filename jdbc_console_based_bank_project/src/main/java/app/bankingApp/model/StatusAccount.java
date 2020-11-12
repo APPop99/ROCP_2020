@@ -2,5 +2,5 @@ package app.bankingApp.model;
 
 public enum StatusAccount 
 {
-	PENDING, APPROVED, DECLINED
+	PENDING, APPROVED, DECLINED, INACTIVE
 }

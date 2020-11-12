@@ -10,11 +10,14 @@ public interface UserOperationsDAO
 {
 	//CREATE operation
 	public int createUser(User user)throws BusinessException;
+	
 	//UPDATE operation
 	public int updateUser(User user)throws BusinessException;
 	public int addNonCustomerUserToApprovalTable(User user)throws BusinessException;
+	
 	//DELETE operation
 	public void deleteUser(/*to include parameters*/)throws BusinessException;
+	
 	//READ operation
 	public User getUserById(int id) throws BusinessException;
 	public boolean isUserByEmailDuplicate(String email) throws BusinessException;

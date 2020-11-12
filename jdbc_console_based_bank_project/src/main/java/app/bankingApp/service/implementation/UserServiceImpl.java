@@ -32,8 +32,8 @@ public class UserServiceImpl implements UserService
 	@Override
 	public int updateUser(User user) throws BusinessException 
 	{
-//		System.out.println("Here is the CreateUser Method from Service layer");
-		log.info("Here is the createCustomerToBeApproved Method from Service layer");
+//		System.out.println("Here is the Update User Status to Customer method from Service layer");
+		log.info("Here is the Update User Status to Customer method from Service layer");
 		int c = userDAO.updateUser(user);		
 		return c;
 	}
@@ -54,7 +54,8 @@ public class UserServiceImpl implements UserService
 	}
 
 	@Override
-	public boolean isUserByEmailDuplicate(String email) throws BusinessException {
+	public boolean isUserByEmailDuplicate(String email) throws BusinessException 
+	{
 //		System.out.println("Here is the getUserByEmail Method from Service layer");
 		log.info("Here is the getUserByEmail Method from Service layer");		
 //		List<User> usersListByEmail = null;
@@ -116,7 +117,7 @@ public class UserServiceImpl implements UserService
 	@Override
 	public int addNonCustomerUserToApprovalTable(User user) throws BusinessException 
 	{
-		System.out.println("Here is the <Add NonCustomer User To Approval Table> Method from Service layer");
+//		System.out.println("Here is the <Add NonCustomer User To Approval Table> Method from Service layer");
 		log.info("Here is the <Add NonCustomer User To Approval Table> Method from Service layer");
 		int c = userDAO.addNonCustomerUserToApprovalTable(user);		
 		return c;

@@ -63,7 +63,8 @@ public class UserOperationsDAOImpl implements app.bankingApp.DAO.UserOperationsD
 		} 
 		catch (ClassNotFoundException | SQLException e) 
 		{
-			System.out.println(e); // take off this line when in production
+//			System.out.println(e); // take off this line when in production
+			log.info(e);
 			throw new BusinessException("Internal error occured.. Kindly contact SYSADMIN");
 		}		
 		return c;
@@ -103,7 +104,7 @@ public class UserOperationsDAOImpl implements app.bankingApp.DAO.UserOperationsD
 		}
 		catch (ClassNotFoundException | SQLException e) 
 		{	
-			System.out.println(e); // take off this line when in production
+//			System.out.println(e); // take off this line when in production
 			log.info(e);
 			throw new BusinessException("Internal error occured... Kindly contact SYSADMIN");
 		}  
@@ -139,7 +140,7 @@ public class UserOperationsDAOImpl implements app.bankingApp.DAO.UserOperationsD
 		}
 		catch (ClassNotFoundException | SQLException e) 
 		{	
-			System.out.println(e); // take off this line when in production
+//			System.out.println(e); // take off this line when in production
 			log.info(e);
 			throw new BusinessException("Internal error occured... Kindly contact SYSADMIN");
 		}  
@@ -175,7 +176,8 @@ public class UserOperationsDAOImpl implements app.bankingApp.DAO.UserOperationsD
 		}
 		catch (ClassNotFoundException | SQLException e) 
 		{	
-			System.out.println(e); // take off this line when in production
+//			System.out.println(e); // take off this line when in production
+			log.info(e);
 			throw new BusinessException("Internal error occured.. Kindly contact SYSADMIN");
 		} 
 		return usersList;
@@ -213,7 +215,7 @@ public class UserOperationsDAOImpl implements app.bankingApp.DAO.UserOperationsD
 		}
 		catch (ClassNotFoundException | SQLException e) 
 		{	
-			System.out.println(e); // take off this line when in production
+//			System.out.println(e); // take off this line when in production
 			log.info(e);
 			throw new BusinessException("Internal error occured... Kindly contact SYSADMIN");
 		} 
@@ -223,7 +225,7 @@ public class UserOperationsDAOImpl implements app.bankingApp.DAO.UserOperationsD
 	@Override
 	public int addNonCustomerUserToApprovalTable(User user) throws BusinessException 
 	{
-		System.out.println("Here is the <Add NonCustomer User To Approval Table> Method from DAO layer");
+//		System.out.println("Here is the <Add NonCustomer User To Approval Table> Method from DAO layer");
 		log.info("Here is the <Add NonCustomer User To Approval Table> Method from DAO layer");
 		
 		int c = 0;
@@ -243,7 +245,7 @@ public class UserOperationsDAOImpl implements app.bankingApp.DAO.UserOperationsD
 		}	
 		catch (ClassNotFoundException | SQLException e) 
 		{	
-				System.out.println(e); // take off this line when in production
+//				System.out.println(e); // take off this line when in production
 				log.info(e);
 				throw new BusinessException("Internal error occured... Kindly contact SYSADMIN");
 		} 
@@ -288,7 +290,7 @@ public class UserOperationsDAOImpl implements app.bankingApp.DAO.UserOperationsD
 	@Override
 	public int updateUser(User user) throws BusinessException 
 	{
-		System.out.println("Here is the <Change User Status> Method from DAO layer");
+//		System.out.println("Here is the <Change User Status> Method from DAO layer");
 		log.info("Here is the <Change User Status and Change Customer Acct Approval Status> Method from DAO layer");
 		int c = 0;
 		int d = 0;
@@ -314,7 +316,8 @@ public class UserOperationsDAOImpl implements app.bankingApp.DAO.UserOperationsD
 		}
 		catch (ClassNotFoundException | SQLException e) 
 		{
-			System.out.println(e);	// take off this line when in production
+//			System.out.println(e);	// take off this line when in production
+			log.info(e);
 			throw new BusinessException("Internal error occured... Please contact SYSADMIN");
 		} 
 		if (c!=0 && d!=0)
@@ -365,7 +368,7 @@ public class UserOperationsDAOImpl implements app.bankingApp.DAO.UserOperationsD
 		}
 		catch (ClassNotFoundException | SQLException e) 
 		{	
-			System.out.println(e); // take off this line when in production
+//			System.out.println(e); // take off this line when in production
 			log.info(e);
 			throw new BusinessException("Internal error occured... Kindly contact SYSADMIN");
 		} 

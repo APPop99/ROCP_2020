@@ -19,7 +19,7 @@ public class SupervisorMenuPresenterImpl implements SupervisorMenuPresenter
 	}
 
 	@Override
-	public void approveBankAccount(User userSession, BankAccount bankAccount) {
+	public void approveBankAccount(User userSession) {
 		// TODO Auto-generated method stub
 		
 	}

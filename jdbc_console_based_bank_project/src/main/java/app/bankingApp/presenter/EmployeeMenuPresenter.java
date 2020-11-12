@@ -10,7 +10,7 @@ public interface EmployeeMenuPresenter
 
 	public void approveCustomerUserAccount(User userSession);
 
-	public void approveBankAccount(User userSession, BankAccount bankAccount);
+	public void approveBankAccount(User userSession);
 
 	public void getBankAccountListyByUser();
 

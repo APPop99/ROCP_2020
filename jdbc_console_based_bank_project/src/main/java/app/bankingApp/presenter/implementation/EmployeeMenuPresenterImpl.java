@@ -88,7 +88,7 @@ public class EmployeeMenuPresenterImpl implements EmployeeMenuPresenter
 					log.info("Method <Approve New Bank Account> will approve or reject Customer's request to open a new bank account!");
 
 					EmployeeMenuPresenter approveNewBankAccount = new EmployeeMenuPresenterImpl(userSession);
-					approveNewBankAccount.approveCustomerUserAccount(userSession);					
+					approveNewBankAccount.approveBankAccount(userSession);					
 					break;
 				case 3:
 					//view a customer's bank accounts
@@ -257,7 +257,7 @@ public class EmployeeMenuPresenterImpl implements EmployeeMenuPresenter
 	}
 
 	@Override
-	public void approveBankAccount(User userSession, BankAccount bankAccount) 
+	public void approveBankAccount(User userSession) 
 	{
 		//instantiate an object that will be used () to transfer data to and from Service layer 
 		BankAccountService bankAccountService = new BankAccountServiceImpl();
@@ -343,16 +343,16 @@ public class EmployeeMenuPresenterImpl implements EmployeeMenuPresenter
 							{
 								System.out.println("Bank Account found with id " + id+" details are : ");
 								System.out.println("User: "+ userSession.getId() + " | " + userSession.getFirstName() + " " 
-										+ userSession.getLastName() + " | New Bank Account Id: " + bankAccount.getBankAccountId() + 
-										" | New Bank Account Number: " + bankAccount.getBankAccountNumber() + 
-										" | New Bank Account Approval Status Pending?: " + bankAccount.isBankAccountApprovalPending() +  
-										" | Approval Status: " + bankAccount.isBankAccountApproved());
+										+ userSession.getLastName() + " | New Bank Account Id: " + newBankAccount.getBankAccountId() + 
+										" | New Bank Account Number: " + newBankAccount.getBankAccountNumber() + 
+										" | New Bank Account Approval Status Pending?: " + newBankAccount.isBankAccountApprovalPending() +  
+										" | Approval Status: " + newBankAccount.isBankAccountApproved());
 								log.info("Bank Account found with id " + id+" details are : ");
 								log.info("User: "+ userSession.getId() + " | " + userSession.getFirstName() + " " 
-										+ userSession.getLastName() + " | New Bank Account Id: " + bankAccount.getBankAccountId() + 
-										" | New Bank Account Number: " + bankAccount.getBankAccountNumber() + 
-										" | New Bank Account Approval Status Pending?: " + bankAccount.isBankAccountApprovalPending() +  
-										" | Approval Status: " + bankAccount.isBankAccountApproved());
+										+ userSession.getLastName() + " | New Bank Account Id: " + newBankAccount.getBankAccountId() + 
+										" | New Bank Account Number: " + newBankAccount.getBankAccountNumber() + 
+										" | New Bank Account Approval Status Pending?: " + newBankAccount.isBankAccountApprovalPending() +  
+										" | Approval Status: " + newBankAccount.isBankAccountApproved());
 								
 								// to print only needed details: id, fname, lname, email, crtStatus
 								System.out.println("Approve the request of Activating Customer Account? (Y - approve / N - reject)");
@@ -366,18 +366,18 @@ public class EmployeeMenuPresenterImpl implements EmployeeMenuPresenter
 								case "Y":
 									//Code Here for SERVICE LAYER
 									//change User Status to CUSTOMER, bank_acct_appr_status to true, bank_acct_appr_pending to false
-									bankAccount.setStatusBankAccount(StatusAccount.APPROVED);	//set New Bank Account status to 'APPROVED'
-									bankAccount.setBankAccountApprovalPending(false);	//set value to false - Customer Account approval is done
-									bankAccount.setBankAccountApproved(true);			//set value to true - this User is approved as Customer 
-									bankAccountService.updateBankAccount(userSession, bankAccount);
+									newBankAccount.setStatusBankAccount(StatusAccount.APPROVED);	//set New Bank Account status to 'APPROVED'
+									newBankAccount.setBankAccountApprovalPending(false);	//set value to false - Customer Account approval is done
+									newBankAccount.setBankAccountApproved(true);			//set value to true - this User is approved as Customer 
+									bankAccountService.updateBankAccount(userSession, newBankAccount);
 									break;
 								case "N":
 									//Code Here for SERVICE LAYER
 									//change Bank Account status to REJECTED, bank_acct_appr_status to false, bank_acct_appr_pending to false
-									bankAccount.setStatusBankAccount(StatusAccount.DECLINED);	//set New Bank Account status to 'DECLINED'
-									bankAccount.setBankAccountApprovalPending(false); 	//set value to false - Customer Account approval is done
-									bankAccount.setBankAccountApproved(false);	//set value to false - this User's request to be approved as Customer is denied 
-									bankAccountService.updateBankAccount(userSession, bankAccount);
+									newBankAccount.setStatusBankAccount(StatusAccount.DECLINED);	//set New Bank Account status to 'DECLINED'
+									newBankAccount.setBankAccountApprovalPending(false); 	//set value to false - Customer Account approval is done
+									newBankAccount.setBankAccountApproved(false);	//set value to false - this User's request to be approved as Customer is denied 
+									bankAccountService.updateBankAccount(userSession, newBankAccount);
 									break;
 								default: 
 									System.out.println("Please enter only 'Y' or 'N' to continue!");

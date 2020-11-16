@@ -593,3 +593,784 @@ This user has de-activated (deleted) all his/her bank accounts
 [INFO]        app.bankingApp.presenter.implementation.MainMenuPresenterImpl       org.postgresql.util.PSQLException: ERROR: operator does not exist: character varying = integer
   Hint: No operator matches the given name and argument type(s). You might need to add explicit type casts.
   Position: 229             12-noiembrie-2020 joi EET 21:24:39        
+[INFO]        app.bankingApp.presenter.implementation.MainMenuPresenterImpl       Method <New user registration> will create a new User!             12-noiembrie-2020 joi EET 21:32:15        
+[INFO]        app.bankingApp.presenter.implementation.MainMenuPresenterImpl       Method <User login> will allow a registered user to login!             12-noiembrie-2020 joi EET 21:32:39        
+[INFO]        app.bankingApp.presenter.implementation.MainMenuPresenterImpl       Here is the getUsersByEmail Method from Service layer             12-noiembrie-2020 joi EET 21:33:07        
+[INFO]        app.bankingApp.presenter.implementation.MainMenuPresenterImpl       Here is the getUsersByEmail Method from DAO layer             12-noiembrie-2020 joi EET 21:33:07        
+[INFO]        app.bankingApp.presenter.implementation.MainMenuPresenterImpl       Login successful!
+             12-noiembrie-2020 joi EET 21:33:07        
+[INFO]        app.bankingApp.presenter.implementation.MainMenuPresenterImpl       User logged in successfully with the following details:             12-noiembrie-2020 joi EET 21:33:07        
+[INFO]        app.bankingApp.presenter.implementation.MainMenuPresenterImpl       User id: 21 | Ron Ronson | r@r.com | J, 12 noiembrie 2020             12-noiembrie-2020 joi EET 21:33:07        
+[INFO]        app.bankingApp.presenter.implementation.MainMenuPresenterImpl       This customer has a bank account created and has status: CUSTOMER
+             12-noiembrie-2020 joi EET 21:33:07        
+[INFO]        app.bankingApp.presenter.implementation.MainMenuPresenterImpl       Method <New Bank Account Registration> will create a new Bank Account and submit it for Bank's approval!             12-noiembrie-2020 joi EET 21:33:12        
+[INFO]        app.bankingApp.presenter.implementation.MainMenuPresenterImpl       System will generate the details for the new Bank Account you wish to open:             12-noiembrie-2020 joi EET 21:33:12        
+[INFO]        app.bankingApp.presenter.implementation.MainMenuPresenterImpl       Bank Account number randomly generated is: 100602757             12-noiembrie-2020 joi EET 21:33:12        
+[INFO]        app.bankingApp.presenter.implementation.MainMenuPresenterImpl       Here is the isBankAccountDuplicate Method from Account Service layer             12-noiembrie-2020 joi EET 21:33:12        
+[INFO]        app.bankingApp.presenter.implementation.MainMenuPresenterImpl       Here is the getBankAccountByNumber Method from DAO layer             12-noiembrie-2020 joi EET 21:33:12        
+[INFO]        app.bankingApp.presenter.implementation.MainMenuPresenterImpl       org.postgresql.util.PSQLException: ERROR: syntax error at or near "as"
+  Position: 212             12-noiembrie-2020 joi EET 21:33:12        
+[INFO]        app.bankingApp.presenter.implementation.MainMenuPresenterImpl       Method <User login> will allow a registered user to login!             12-noiembrie-2020 joi EET 21:36:52        
+[INFO]        app.bankingApp.presenter.implementation.MainMenuPresenterImpl       Here is the getUsersByEmail Method from Service layer             12-noiembrie-2020 joi EET 21:37:01        
+[INFO]        app.bankingApp.presenter.implementation.MainMenuPresenterImpl       Here is the getUsersByEmail Method from DAO layer             12-noiembrie-2020 joi EET 21:37:01        
+[INFO]        app.bankingApp.presenter.implementation.MainMenuPresenterImpl       Login successful!
+             12-noiembrie-2020 joi EET 21:37:02        
+[INFO]        app.bankingApp.presenter.implementation.MainMenuPresenterImpl       User logged in successfully with the following details:             12-noiembrie-2020 joi EET 21:37:02        
+[INFO]        app.bankingApp.presenter.implementation.MainMenuPresenterImpl       User id: 21 | Ron Ronson | r@r.com | J, 12 noiembrie 2020             12-noiembrie-2020 joi EET 21:37:02        
+[INFO]        app.bankingApp.presenter.implementation.MainMenuPresenterImpl       This customer has a bank account created and has status: CUSTOMER
+             12-noiembrie-2020 joi EET 21:37:02        
+[INFO]        app.bankingApp.presenter.implementation.MainMenuPresenterImpl       Method <New Bank Account Registration> will create a new Bank Account and submit it for Bank's approval!             12-noiembrie-2020 joi EET 21:37:05        
+[INFO]        app.bankingApp.presenter.implementation.MainMenuPresenterImpl       System will generate the details for the new Bank Account you wish to open:             12-noiembrie-2020 joi EET 21:37:05        
+[INFO]        app.bankingApp.presenter.implementation.MainMenuPresenterImpl       Bank Account number randomly generated is: 100302476             12-noiembrie-2020 joi EET 21:37:05        
+[INFO]        app.bankingApp.presenter.implementation.MainMenuPresenterImpl       Here is the isBankAccountDuplicate Method from Account Service layer             12-noiembrie-2020 joi EET 21:37:05        
+[INFO]        app.bankingApp.presenter.implementation.MainMenuPresenterImpl       Here is the getBankAccountByNumber Method from DAO layer             12-noiembrie-2020 joi EET 21:37:05        
+[INFO]        app.bankingApp.presenter.implementation.MainMenuPresenterImpl       org.postgresql.util.PSQLException: ERROR: syntax error at or near "as"
+  Position: 212             12-noiembrie-2020 joi EET 21:37:05        
+[INFO]        app.bankingApp.presenter.implementation.MainMenuPresenterImpl       Method <User login> will allow a registered user to login!             12-noiembrie-2020 joi EET 21:41:16        
+[INFO]        app.bankingApp.presenter.implementation.MainMenuPresenterImpl       Here is the getUsersByEmail Method from Service layer             12-noiembrie-2020 joi EET 21:41:22        
+[INFO]        app.bankingApp.presenter.implementation.MainMenuPresenterImpl       Here is the getUsersByEmail Method from DAO layer             12-noiembrie-2020 joi EET 21:41:22        
+[INFO]        app.bankingApp.presenter.implementation.MainMenuPresenterImpl       Login successful!
+             12-noiembrie-2020 joi EET 21:41:22        
+[INFO]        app.bankingApp.presenter.implementation.MainMenuPresenterImpl       User logged in successfully with the following details:             12-noiembrie-2020 joi EET 21:41:22        
+[INFO]        app.bankingApp.presenter.implementation.MainMenuPresenterImpl       User id: 21 | Ron Ronson | r@r.com | J, 12 noiembrie 2020             12-noiembrie-2020 joi EET 21:41:22        
+[INFO]        app.bankingApp.presenter.implementation.MainMenuPresenterImpl       This customer has a bank account created and has status: CUSTOMER
+             12-noiembrie-2020 joi EET 21:41:22        
+[INFO]        app.bankingApp.presenter.implementation.MainMenuPresenterImpl       Method <New Bank Account Registration> will create a new Bank Account and submit it for Bank's approval!             12-noiembrie-2020 joi EET 21:41:25        
+[INFO]        app.bankingApp.presenter.implementation.MainMenuPresenterImpl       System will generate the details for the new Bank Account you wish to open:             12-noiembrie-2020 joi EET 21:41:25        
+[INFO]        app.bankingApp.presenter.implementation.MainMenuPresenterImpl       Bank Account number randomly generated is: 100288578             12-noiembrie-2020 joi EET 21:41:25        
+[INFO]        app.bankingApp.presenter.implementation.MainMenuPresenterImpl       Here is the isBankAccountDuplicate Method from Account Service layer             12-noiembrie-2020 joi EET 21:41:25        
+[INFO]        app.bankingApp.presenter.implementation.MainMenuPresenterImpl       Here is the getBankAccountByNumber Method from DAO layer             12-noiembrie-2020 joi EET 21:41:25        
+[INFO]        app.bankingApp.presenter.implementation.MainMenuPresenterImpl       org.postgresql.util.PSQLException: ERROR: syntax error at or near "as"
+  Position: 212             12-noiembrie-2020 joi EET 21:41:26        
+[INFO]        app.bankingApp.presenter.implementation.MainMenuPresenterImpl       Method <User login> will allow a registered user to login!             12-noiembrie-2020 joi EET 21:43:13        
+[INFO]        app.bankingApp.presenter.implementation.MainMenuPresenterImpl       Here is the getUsersByEmail Method from Service layer             12-noiembrie-2020 joi EET 21:43:29        
+[INFO]        app.bankingApp.presenter.implementation.MainMenuPresenterImpl       Here is the getUsersByEmail Method from DAO layer             12-noiembrie-2020 joi EET 21:43:29        
+[INFO]        app.bankingApp.presenter.implementation.MainMenuPresenterImpl       Login successful!
+             12-noiembrie-2020 joi EET 21:43:29        
+[INFO]        app.bankingApp.presenter.implementation.MainMenuPresenterImpl       User logged in successfully with the following details:             12-noiembrie-2020 joi EET 21:43:29        
+[INFO]        app.bankingApp.presenter.implementation.MainMenuPresenterImpl       User id: 21 | Ron Ronson | r@r.com | J, 12 noiembrie 2020             12-noiembrie-2020 joi EET 21:43:29        
+[INFO]        app.bankingApp.presenter.implementation.MainMenuPresenterImpl       This customer has a bank account created and has status: CUSTOMER
+             12-noiembrie-2020 joi EET 21:43:29        
+[INFO]        app.bankingApp.presenter.implementation.MainMenuPresenterImpl       Method <New Bank Account Registration> will create a new Bank Account and submit it for Bank's approval!             12-noiembrie-2020 joi EET 21:43:33        
+[INFO]        app.bankingApp.presenter.implementation.MainMenuPresenterImpl       System will generate the details for the new Bank Account you wish to open:             12-noiembrie-2020 joi EET 21:43:33        
+[INFO]        app.bankingApp.presenter.implementation.MainMenuPresenterImpl       Bank Account number randomly generated is: 100098704             12-noiembrie-2020 joi EET 21:43:33        
+[INFO]        app.bankingApp.presenter.implementation.MainMenuPresenterImpl       Here is the isBankAccountDuplicate Method from Account Service layer             12-noiembrie-2020 joi EET 21:43:33        
+[INFO]        app.bankingApp.presenter.implementation.MainMenuPresenterImpl       Here is the getBankAccountByNumber Method from DAO layer             12-noiembrie-2020 joi EET 21:43:33        
+[INFO]        app.bankingApp.presenter.implementation.MainMenuPresenterImpl       org.postgresql.util.PSQLException: ERROR: syntax error at or near "as"
+  Position: 212             12-noiembrie-2020 joi EET 21:43:33        
+[INFO]        app.bankingApp.presenter.implementation.MainMenuPresenterImpl       Method <User login> will allow a registered user to login!             12-noiembrie-2020 joi EET 21:45:23        
+[INFO]        app.bankingApp.presenter.implementation.MainMenuPresenterImpl       Here is the getUsersByEmail Method from Service layer             12-noiembrie-2020 joi EET 21:45:28        
+[INFO]        app.bankingApp.presenter.implementation.MainMenuPresenterImpl       Here is the getUsersByEmail Method from DAO layer             12-noiembrie-2020 joi EET 21:45:28        
+[INFO]        app.bankingApp.presenter.implementation.MainMenuPresenterImpl       Login failed. Credentials are not correct. Please try again.
+             12-noiembrie-2020 joi EET 21:45:29        
+[INFO]        app.bankingApp.presenter.implementation.MainMenuPresenterImpl       Method <User login> will allow a registered user to login!             12-noiembrie-2020 joi EET 21:45:47        
+[INFO]        app.bankingApp.presenter.implementation.MainMenuPresenterImpl       Here is the getUsersByEmail Method from Service layer             12-noiembrie-2020 joi EET 21:46:02        
+[INFO]        app.bankingApp.presenter.implementation.MainMenuPresenterImpl       Here is the getUsersByEmail Method from DAO layer             12-noiembrie-2020 joi EET 21:46:02        
+[INFO]        app.bankingApp.presenter.implementation.MainMenuPresenterImpl       Login successful!
+             12-noiembrie-2020 joi EET 21:46:02        
+[INFO]        app.bankingApp.presenter.implementation.MainMenuPresenterImpl       User logged in successfully with the following details:             12-noiembrie-2020 joi EET 21:46:02        
+[INFO]        app.bankingApp.presenter.implementation.MainMenuPresenterImpl       User id: 21 | Ron Ronson | r@r.com | J, 12 noiembrie 2020             12-noiembrie-2020 joi EET 21:46:02        
+[INFO]        app.bankingApp.presenter.implementation.MainMenuPresenterImpl       This customer has a bank account created and has status: CUSTOMER
+             12-noiembrie-2020 joi EET 21:46:02        
+[INFO]        app.bankingApp.presenter.implementation.MainMenuPresenterImpl       Method <New Bank Account Registration> will create a new Bank Account and submit it for Bank's approval!             12-noiembrie-2020 joi EET 21:46:05        
+[INFO]        app.bankingApp.presenter.implementation.MainMenuPresenterImpl       System will generate the details for the new Bank Account you wish to open:             12-noiembrie-2020 joi EET 21:46:05        
+[INFO]        app.bankingApp.presenter.implementation.MainMenuPresenterImpl       Bank Account number randomly generated is: 100946299             12-noiembrie-2020 joi EET 21:46:05        
+[INFO]        app.bankingApp.presenter.implementation.MainMenuPresenterImpl       Here is the isBankAccountDuplicate Method from Account Service layer             12-noiembrie-2020 joi EET 21:46:05        
+[INFO]        app.bankingApp.presenter.implementation.MainMenuPresenterImpl       Here is the getBankAccountByNumber Method from DAO layer             12-noiembrie-2020 joi EET 21:46:05        
+[INFO]        app.bankingApp.presenter.implementation.MainMenuPresenterImpl       org.postgresql.util.PSQLException: ERROR: syntax error at or near "as"
+  Position: 212             12-noiembrie-2020 joi EET 21:46:05        
+[INFO]        app.bankingApp.presenter.implementation.MainMenuPresenterImpl       Method <New user registration> will create a new User!             12-noiembrie-2020 joi EET 21:47:40        
+[INFO]        app.bankingApp.presenter.implementation.MainMenuPresenterImpl       Here is the getUserByEmail Method from Service layer             12-noiembrie-2020 joi EET 21:48:02        
+[INFO]        app.bankingApp.presenter.implementation.MainMenuPresenterImpl       Here is the getUserByEmail Method from DAO layer             12-noiembrie-2020 joi EET 21:48:02        
+[INFO]        app.bankingApp.presenter.implementation.MainMenuPresenterImpl       Email format is valid             12-noiembrie-2020 joi EET 21:48:02        
+[INFO]        app.bankingApp.presenter.implementation.MainMenuPresenterImpl       Password is not valid!             12-noiembrie-2020 joi EET 21:48:20        
+[INFO]        app.bankingApp.presenter.implementation.MainMenuPresenterImpl       Password is not valid!             12-noiembrie-2020 joi EET 21:48:37        
+[INFO]        app.bankingApp.presenter.implementation.MainMenuPresenterImpl       Password is valid             12-noiembrie-2020 joi EET 21:48:49        
+[INFO]        app.bankingApp.presenter.implementation.MainMenuPresenterImpl       Here is the CreateUser Method from Service layer             12-noiembrie-2020 joi EET 21:49:10        
+[INFO]        app.bankingApp.presenter.implementation.MainMenuPresenterImpl       Here is the CreateUser Method from DAO layer             12-noiembrie-2020 joi EET 21:49:10        
+[INFO]        app.bankingApp.presenter.implementation.MainMenuPresenterImpl       User is created in DB with below details:              12-noiembrie-2020 joi EET 21:49:10        
+[INFO]        app.bankingApp.presenter.implementation.MainMenuPresenterImpl       User id: 22 | Ted Teds | t@t.com | J, 12 noiembrie 2020             12-noiembrie-2020 joi EET 21:49:10        
+[INFO]        app.bankingApp.presenter.implementation.MainMenuPresenterImpl       Method <User login> will allow a registered user to login!             12-noiembrie-2020 joi EET 21:49:25        
+[INFO]        app.bankingApp.presenter.implementation.MainMenuPresenterImpl       Here is the getUsersByEmail Method from Service layer             12-noiembrie-2020 joi EET 21:49:46        
+[INFO]        app.bankingApp.presenter.implementation.MainMenuPresenterImpl       Here is the getUsersByEmail Method from DAO layer             12-noiembrie-2020 joi EET 21:49:46        
+[INFO]        app.bankingApp.presenter.implementation.MainMenuPresenterImpl       Login successful!
+             12-noiembrie-2020 joi EET 21:49:46        
+[INFO]        app.bankingApp.presenter.implementation.MainMenuPresenterImpl       User logged in successfully with the following details:             12-noiembrie-2020 joi EET 21:49:46        
+[INFO]        app.bankingApp.presenter.implementation.MainMenuPresenterImpl       User id: 20 | Admin Bank | admin@bank.com | J, 12 noiembrie 2020             12-noiembrie-2020 joi EET 21:49:46        
+[INFO]        app.bankingApp.presenter.implementation.MainMenuPresenterImpl       This user is an employee, with role: EMPLOYEE
+             12-noiembrie-2020 joi EET 21:49:46        
+[INFO]        app.bankingApp.presenter.implementation.MainMenuPresenterImpl       Method <Approve Customer Account for NonCustomer User> will approve or reject the User's request to become a new Customer!             12-noiembrie-2020 joi EET 21:49:56        
+[INFO]        app.bankingApp.presenter.implementation.MainMenuPresenterImpl       Here is the getUsersFromApprovalTable Method from Service layer             12-noiembrie-2020 joi EET 21:49:56        
+[INFO]        app.bankingApp.presenter.implementation.MainMenuPresenterImpl       Here is the getUsersFromApprovalTable Method from DAO layer             12-noiembrie-2020 joi EET 21:49:56        
+[INFO]        app.bankingApp.presenter.implementation.MainMenuPresenterImpl       We found 2 users in the DB waiting to get their Customer status/account approved... Detailed list is:             12-noiembrie-2020 joi EET 21:49:56        
+[INFO]        app.bankingApp.presenter.implementation.MainMenuPresenterImpl       User: 3 | Cornel Caminski | Email: c@c.com | User Status: NONCUSTOMER | Approval Status: PENDING             12-noiembrie-2020 joi EET 21:49:56        
+[INFO]        app.bankingApp.presenter.implementation.MainMenuPresenterImpl       User: 4 | Don Donson | Email: d@d.com | User Status: NONCUSTOMER | Approval Status: PENDING             12-noiembrie-2020 joi EET 21:49:56        
+[INFO]        app.bankingApp.presenter.implementation.MainMenuPresenterImpl       Method <User login> will allow a registered user to login!             12-noiembrie-2020 joi EET 21:50:26        
+[INFO]        app.bankingApp.presenter.implementation.MainMenuPresenterImpl       Here is the getUsersByEmail Method from Service layer             12-noiembrie-2020 joi EET 21:50:46        
+[INFO]        app.bankingApp.presenter.implementation.MainMenuPresenterImpl       Here is the getUsersByEmail Method from DAO layer             12-noiembrie-2020 joi EET 21:50:46        
+[INFO]        app.bankingApp.presenter.implementation.MainMenuPresenterImpl       Login successful!
+             12-noiembrie-2020 joi EET 21:50:46        
+[INFO]        app.bankingApp.presenter.implementation.MainMenuPresenterImpl       User logged in successfully with the following details:             12-noiembrie-2020 joi EET 21:50:46        
+[INFO]        app.bankingApp.presenter.implementation.MainMenuPresenterImpl       User id: 22 | Ted Teds | t@t.com | J, 12 noiembrie 2020             12-noiembrie-2020 joi EET 21:50:46        
+[INFO]        app.bankingApp.presenter.implementation.MainMenuPresenterImpl       This customer does not have a Customer Account created/approved and has status: NONCUSTOMER
+             12-noiembrie-2020 joi EET 21:50:46        
+[INFO]        app.bankingApp.presenter.implementation.MainMenuPresenterImpl       Method <Add NonCustomer User To Approval Table> will register for Bank's reviewal process the User's request to become a new Customer!             12-noiembrie-2020 joi EET 21:50:55        
+[INFO]        app.bankingApp.presenter.implementation.MainMenuPresenterImpl       User with id 22will be saved in temp db waiting for approval.             12-noiembrie-2020 joi EET 21:51:00        
+[INFO]        app.bankingApp.presenter.implementation.MainMenuPresenterImpl       Here is the <Add NonCustomer User To Approval Table> Method from Service layer             12-noiembrie-2020 joi EET 21:51:00        
+[INFO]        app.bankingApp.presenter.implementation.MainMenuPresenterImpl       Here is the <Add NonCustomer User To Approval Table> Method from DAO layer             12-noiembrie-2020 joi EET 21:51:00        
+[INFO]        app.bankingApp.presenter.implementation.MainMenuPresenterImpl       User: 22 | Ted Teds was saved in temp db waiting for approval             12-noiembrie-2020 joi EET 21:51:00        
+[INFO]        app.bankingApp.presenter.implementation.MainMenuPresenterImpl       Method <User login> will allow a registered user to login!             12-noiembrie-2020 joi EET 21:51:15        
+[INFO]        app.bankingApp.presenter.implementation.MainMenuPresenterImpl       Here is the getUsersByEmail Method from Service layer             12-noiembrie-2020 joi EET 21:51:31        
+[INFO]        app.bankingApp.presenter.implementation.MainMenuPresenterImpl       Here is the getUsersByEmail Method from DAO layer             12-noiembrie-2020 joi EET 21:51:31        
+[INFO]        app.bankingApp.presenter.implementation.MainMenuPresenterImpl       Login successful!
+             12-noiembrie-2020 joi EET 21:51:32        
+[INFO]        app.bankingApp.presenter.implementation.MainMenuPresenterImpl       User logged in successfully with the following details:             12-noiembrie-2020 joi EET 21:51:32        
+[INFO]        app.bankingApp.presenter.implementation.MainMenuPresenterImpl       User id: 20 | Admin Bank | admin@bank.com | J, 12 noiembrie 2020             12-noiembrie-2020 joi EET 21:51:32        
+[INFO]        app.bankingApp.presenter.implementation.MainMenuPresenterImpl       This user is an employee, with role: EMPLOYEE
+             12-noiembrie-2020 joi EET 21:51:32        
+[INFO]        app.bankingApp.presenter.implementation.MainMenuPresenterImpl       Method <Approve Customer Account for NonCustomer User> will approve or reject the User's request to become a new Customer!             12-noiembrie-2020 joi EET 21:51:36        
+[INFO]        app.bankingApp.presenter.implementation.MainMenuPresenterImpl       Here is the getUsersFromApprovalTable Method from Service layer             12-noiembrie-2020 joi EET 21:51:36        
+[INFO]        app.bankingApp.presenter.implementation.MainMenuPresenterImpl       Here is the getUsersFromApprovalTable Method from DAO layer             12-noiembrie-2020 joi EET 21:51:36        
+[INFO]        app.bankingApp.presenter.implementation.MainMenuPresenterImpl       We found 3 users in the DB waiting to get their Customer status/account approved... Detailed list is:             12-noiembrie-2020 joi EET 21:51:36        
+[INFO]        app.bankingApp.presenter.implementation.MainMenuPresenterImpl       User: 3 | Cornel Caminski | Email: c@c.com | User Status: NONCUSTOMER | Approval Status: PENDING             12-noiembrie-2020 joi EET 21:51:36        
+[INFO]        app.bankingApp.presenter.implementation.MainMenuPresenterImpl       User: 4 | Don Donson | Email: d@d.com | User Status: NONCUSTOMER | Approval Status: PENDING             12-noiembrie-2020 joi EET 21:51:36        
+[INFO]        app.bankingApp.presenter.implementation.MainMenuPresenterImpl       User: 22 | Ted Teds | Email: t@t.com | User Status: NONCUSTOMER | Approval Status: PENDING             12-noiembrie-2020 joi EET 21:51:36        
+[INFO]        app.bankingApp.presenter.implementation.MainMenuPresenterImpl       Here is the <Get Use By ID> Method from Service layer             12-noiembrie-2020 joi EET 21:51:49        
+[INFO]        app.bankingApp.presenter.implementation.MainMenuPresenterImpl       Here is the <Get User By Id> method from DAO layer             12-noiembrie-2020 joi EET 21:51:49        
+[INFO]        app.bankingApp.presenter.implementation.MainMenuPresenterImpl       User found with id 22 details are :              12-noiembrie-2020 joi EET 21:51:49        
+[INFO]        app.bankingApp.presenter.implementation.MainMenuPresenterImpl       User: 22 | Ted Teds | Email: t@t.com | User Status: NONCUSTOMER | Approval Status Pending?: true             12-noiembrie-2020 joi EET 21:51:49        
+[INFO]        app.bankingApp.presenter.implementation.MainMenuPresenterImpl       Here is the Update User Status to Customer method from Service layer             12-noiembrie-2020 joi EET 21:51:56        
+[INFO]        app.bankingApp.presenter.implementation.MainMenuPresenterImpl       Here is the <Change User Status and Change Customer Acct Approval Status> Method from DAO layer             12-noiembrie-2020 joi EET 21:51:56        
+[INFO]        app.bankingApp.presenter.implementation.MainMenuPresenterImpl       Here is the <Get Use By ID> Method from Service layer             12-noiembrie-2020 joi EET 21:52:13        
+[INFO]        app.bankingApp.presenter.implementation.MainMenuPresenterImpl       Here is the <Get User By Id> method from DAO layer             12-noiembrie-2020 joi EET 21:52:13        
+[INFO]        app.bankingApp.presenter.implementation.MainMenuPresenterImpl       User found with id 3 details are :              12-noiembrie-2020 joi EET 21:52:13        
+[INFO]        app.bankingApp.presenter.implementation.MainMenuPresenterImpl       User: 3 | Cornel Caminski | Email: c@c.com | User Status: NONCUSTOMER | Approval Status Pending?: true             12-noiembrie-2020 joi EET 21:52:13        
+[INFO]        app.bankingApp.presenter.implementation.MainMenuPresenterImpl       Here is the Update User Status to Customer method from Service layer             12-noiembrie-2020 joi EET 21:52:17        
+[INFO]        app.bankingApp.presenter.implementation.MainMenuPresenterImpl       Here is the <Change User Status and Change Customer Acct Approval Status> Method from DAO layer             12-noiembrie-2020 joi EET 21:52:17        
+[INFO]        app.bankingApp.presenter.implementation.MainMenuPresenterImpl       Method <User login> will allow a registered user to login!             12-noiembrie-2020 joi EET 22:28:04        
+[INFO]        app.bankingApp.presenter.implementation.MainMenuPresenterImpl       Here is the getUsersByEmail Method from Service layer             12-noiembrie-2020 joi EET 22:28:41        
+[INFO]        app.bankingApp.presenter.implementation.MainMenuPresenterImpl       Here is the getUsersByEmail Method from DAO layer             12-noiembrie-2020 joi EET 22:28:41        
+[INFO]        app.bankingApp.presenter.implementation.MainMenuPresenterImpl       Login successful!
+             12-noiembrie-2020 joi EET 22:28:42        
+[INFO]        app.bankingApp.presenter.implementation.MainMenuPresenterImpl       User logged in successfully with the following details:             12-noiembrie-2020 joi EET 22:28:42        
+[INFO]        app.bankingApp.presenter.implementation.MainMenuPresenterImpl       User id: 21 | Ron Ronson | r@r.com | J, 12 noiembrie 2020             12-noiembrie-2020 joi EET 22:28:42        
+[INFO]        app.bankingApp.presenter.implementation.MainMenuPresenterImpl       This customer has a bank account created and has status: CUSTOMER
+             12-noiembrie-2020 joi EET 22:28:42        
+[INFO]        app.bankingApp.presenter.implementation.MainMenuPresenterImpl       Method <New Bank Account Registration> will create a new Bank Account and submit it for Bank's approval!             12-noiembrie-2020 joi EET 22:28:53        
+[INFO]        app.bankingApp.presenter.implementation.MainMenuPresenterImpl       System will generate the details for the new Bank Account you wish to open:             12-noiembrie-2020 joi EET 22:28:53        
+[INFO]        app.bankingApp.presenter.implementation.MainMenuPresenterImpl       Bank Account number randomly generated is: 100792630             12-noiembrie-2020 joi EET 22:28:53        
+[INFO]        app.bankingApp.presenter.implementation.MainMenuPresenterImpl       Here is the isBankAccountDuplicate Method from Account Service layer             12-noiembrie-2020 joi EET 22:28:53        
+[INFO]        app.bankingApp.presenter.implementation.MainMenuPresenterImpl       Here is the getBankAccountByNumber Method from DAO layer             12-noiembrie-2020 joi EET 22:28:53        
+[INFO]        app.bankingApp.presenter.implementation.MainMenuPresenterImpl       org.postgresql.util.PSQLException: ERROR: syntax error at or near "as"
+  Position: 212             12-noiembrie-2020 joi EET 22:28:53        
+[INFO]        app.bankingApp.presenter.implementation.MainMenuPresenterImpl       Method <User login> will allow a registered user to login!             12-noiembrie-2020 joi EET 22:29:51        
+[INFO]        app.bankingApp.presenter.implementation.MainMenuPresenterImpl       Here is the getUsersByEmail Method from Service layer             12-noiembrie-2020 joi EET 22:29:58        
+[INFO]        app.bankingApp.presenter.implementation.MainMenuPresenterImpl       Here is the getUsersByEmail Method from DAO layer             12-noiembrie-2020 joi EET 22:29:58        
+[INFO]        app.bankingApp.presenter.implementation.MainMenuPresenterImpl       Login successful!
+             12-noiembrie-2020 joi EET 22:29:58        
+[INFO]        app.bankingApp.presenter.implementation.MainMenuPresenterImpl       User logged in successfully with the following details:             12-noiembrie-2020 joi EET 22:29:58        
+[INFO]        app.bankingApp.presenter.implementation.MainMenuPresenterImpl       User id: 21 | Ron Ronson | r@r.com | J, 12 noiembrie 2020             12-noiembrie-2020 joi EET 22:29:58        
+[INFO]        app.bankingApp.presenter.implementation.MainMenuPresenterImpl       This customer has a bank account created and has status: CUSTOMER
+             12-noiembrie-2020 joi EET 22:29:58        
+[INFO]        app.bankingApp.presenter.implementation.MainMenuPresenterImpl       Method <New Bank Account Registration> will create a new Bank Account and submit it for Bank's approval!             12-noiembrie-2020 joi EET 22:30:01        
+[INFO]        app.bankingApp.presenter.implementation.MainMenuPresenterImpl       System will generate the details for the new Bank Account you wish to open:             12-noiembrie-2020 joi EET 22:30:01        
+[INFO]        app.bankingApp.presenter.implementation.MainMenuPresenterImpl       Bank Account number randomly generated is: 100487897             12-noiembrie-2020 joi EET 22:30:01        
+[INFO]        app.bankingApp.presenter.implementation.MainMenuPresenterImpl       Here is the isBankAccountDuplicate Method from Account Service layer             12-noiembrie-2020 joi EET 22:30:01        
+[INFO]        app.bankingApp.presenter.implementation.MainMenuPresenterImpl       Here is the getBankAccountByNumber Method from DAO layer             12-noiembrie-2020 joi EET 22:30:01        
+[INFO]        app.bankingApp.presenter.implementation.MainMenuPresenterImpl       org.postgresql.util.PSQLException: ERROR: syntax error at or near "as"
+  Position: 212             12-noiembrie-2020 joi EET 22:30:01        
+[INFO]        app.bankingApp.presenter.implementation.MainMenuPresenterImpl       Method <User login> will allow a registered user to login!             12-noiembrie-2020 joi EET 22:51:29        
+[INFO]        app.bankingApp.presenter.implementation.MainMenuPresenterImpl       Here is the getUsersByEmail Method from Service layer             12-noiembrie-2020 joi EET 22:51:41        
+[INFO]        app.bankingApp.presenter.implementation.MainMenuPresenterImpl       Here is the getUsersByEmail Method from DAO layer             12-noiembrie-2020 joi EET 22:51:41        
+[INFO]        app.bankingApp.presenter.implementation.MainMenuPresenterImpl       Login successful!
+             12-noiembrie-2020 joi EET 22:51:41        
+[INFO]        app.bankingApp.presenter.implementation.MainMenuPresenterImpl       User logged in successfully with the following details:             12-noiembrie-2020 joi EET 22:51:41        
+[INFO]        app.bankingApp.presenter.implementation.MainMenuPresenterImpl       User id: 21 | Ron Ronson | r@r.com | J, 12 noiembrie 2020             12-noiembrie-2020 joi EET 22:51:41        
+[INFO]        app.bankingApp.presenter.implementation.MainMenuPresenterImpl       This customer has a bank account created and has status: CUSTOMER
+             12-noiembrie-2020 joi EET 22:51:41        
+[INFO]        app.bankingApp.presenter.implementation.MainMenuPresenterImpl       Method <New Bank Account Registration> will create a new Bank Account and submit it for Bank's approval!             12-noiembrie-2020 joi EET 22:51:44        
+[INFO]        app.bankingApp.presenter.implementation.MainMenuPresenterImpl       System will generate the details for the new Bank Account you wish to open:             12-noiembrie-2020 joi EET 22:51:44        
+[INFO]        app.bankingApp.presenter.implementation.MainMenuPresenterImpl       Bank Account number randomly generated is: 100729586             12-noiembrie-2020 joi EET 22:51:44        
+[INFO]        app.bankingApp.presenter.implementation.MainMenuPresenterImpl       Here is the isBankAccountDuplicate Method from Account Service layer             12-noiembrie-2020 joi EET 22:51:44        
+[INFO]        app.bankingApp.presenter.implementation.MainMenuPresenterImpl       Here is the isBankAccountDuplicate Method from DAO layer             12-noiembrie-2020 joi EET 22:51:44        
+[INFO]        app.bankingApp.presenter.implementation.MainMenuPresenterImpl       Here is the CreateNewBank method from Service layer             12-noiembrie-2020 joi EET 22:51:45        
+[INFO]        app.bankingApp.presenter.implementation.MainMenuPresenterImpl       Here is the Create New Bank Account method from DAO layer             12-noiembrie-2020 joi EET 22:51:45        
+[INFO]        app.bankingApp.presenter.implementation.MainMenuPresenterImpl       org.postgresql.util.PSQLException: ERROR: column "date_bank_account_approval" of relation "bank_account" does not exist
+  Position: 141             12-noiembrie-2020 joi EET 22:51:45        
+[INFO]        app.bankingApp.presenter.implementation.MainMenuPresenterImpl       Method <User login> will allow a registered user to login!             12-noiembrie-2020 joi EET 23:01:37        
+[INFO]        app.bankingApp.presenter.implementation.MainMenuPresenterImpl       Here is the getUsersByEmail Method from Service layer             12-noiembrie-2020 joi EET 23:01:44        
+[INFO]        app.bankingApp.presenter.implementation.MainMenuPresenterImpl       Here is the getUsersByEmail Method from DAO layer             12-noiembrie-2020 joi EET 23:01:44        
+[INFO]        app.bankingApp.presenter.implementation.MainMenuPresenterImpl       Login failed. Credentials are not correct. Please try again.
+             12-noiembrie-2020 joi EET 23:01:45        
+[INFO]        app.bankingApp.presenter.implementation.MainMenuPresenterImpl       Method <User login> will allow a registered user to login!             12-noiembrie-2020 joi EET 23:02:30        
+[INFO]        app.bankingApp.presenter.implementation.MainMenuPresenterImpl       Here is the getUsersByEmail Method from Service layer             12-noiembrie-2020 joi EET 23:02:35        
+[INFO]        app.bankingApp.presenter.implementation.MainMenuPresenterImpl       Here is the getUsersByEmail Method from DAO layer             12-noiembrie-2020 joi EET 23:02:35        
+[INFO]        app.bankingApp.presenter.implementation.MainMenuPresenterImpl       Login successful!
+             12-noiembrie-2020 joi EET 23:02:35        
+[INFO]        app.bankingApp.presenter.implementation.MainMenuPresenterImpl       User logged in successfully with the following details:             12-noiembrie-2020 joi EET 23:02:35        
+[INFO]        app.bankingApp.presenter.implementation.MainMenuPresenterImpl       User id: 21 | Ron Ronson | r@r.com | J, 12 noiembrie 2020             12-noiembrie-2020 joi EET 23:02:35        
+[INFO]        app.bankingApp.presenter.implementation.MainMenuPresenterImpl       This customer has a bank account created and has status: CUSTOMER
+             12-noiembrie-2020 joi EET 23:02:35        
+[INFO]        app.bankingApp.presenter.implementation.MainMenuPresenterImpl       Method <New Bank Account Registration> will create a new Bank Account and submit it for Bank's approval!             12-noiembrie-2020 joi EET 23:02:39        
+[INFO]        app.bankingApp.presenter.implementation.MainMenuPresenterImpl       System will generate the details for the new Bank Account you wish to open:             12-noiembrie-2020 joi EET 23:02:39        
+[INFO]        app.bankingApp.presenter.implementation.MainMenuPresenterImpl       Bank Account number randomly generated is: 100141407             12-noiembrie-2020 joi EET 23:02:39        
+[INFO]        app.bankingApp.presenter.implementation.MainMenuPresenterImpl       Here is the isBankAccountDuplicate Method from Account Service layer             12-noiembrie-2020 joi EET 23:02:39        
+[INFO]        app.bankingApp.presenter.implementation.MainMenuPresenterImpl       Here is the isBankAccountDuplicate Method from DAO layer             12-noiembrie-2020 joi EET 23:02:39        
+[INFO]        app.bankingApp.presenter.implementation.MainMenuPresenterImpl       Here is the CreateNewBank method from Service layer             12-noiembrie-2020 joi EET 23:02:39        
+[INFO]        app.bankingApp.presenter.implementation.MainMenuPresenterImpl       Here is the Create New Bank Account method from DAO layer             12-noiembrie-2020 joi EET 23:02:39        
+[INFO]        app.bankingApp.presenter.implementation.MainMenuPresenterImpl       org.postgresql.util.PSQLException: ERROR: column "date_bank_account_approval" of relation "bank_account" does not exist
+  Position: 141             12-noiembrie-2020 joi EET 23:02:39        
+[INFO]        app.bankingApp.presenter.implementation.MainMenuPresenterImpl       Method <User login> will allow a registered user to login!             12-noiembrie-2020 joi EET 23:05:04        
+[INFO]        app.bankingApp.presenter.implementation.MainMenuPresenterImpl       Here is the getUsersByEmail Method from Service layer             12-noiembrie-2020 joi EET 23:05:41        
+[INFO]        app.bankingApp.presenter.implementation.MainMenuPresenterImpl       Here is the getUsersByEmail Method from DAO layer             12-noiembrie-2020 joi EET 23:05:41        
+[INFO]        app.bankingApp.presenter.implementation.MainMenuPresenterImpl       Login successful!
+             12-noiembrie-2020 joi EET 23:05:41        
+[INFO]        app.bankingApp.presenter.implementation.MainMenuPresenterImpl       User logged in successfully with the following details:             12-noiembrie-2020 joi EET 23:05:41        
+[INFO]        app.bankingApp.presenter.implementation.MainMenuPresenterImpl       User id: 21 | Ron Ronson | r@r.com | J, 12 noiembrie 2020             12-noiembrie-2020 joi EET 23:05:41        
+[INFO]        app.bankingApp.presenter.implementation.MainMenuPresenterImpl       This customer has a bank account created and has status: CUSTOMER
+             12-noiembrie-2020 joi EET 23:05:41        
+[INFO]        app.bankingApp.presenter.implementation.MainMenuPresenterImpl       Method <New Bank Account Registration> will create a new Bank Account and submit it for Bank's approval!             12-noiembrie-2020 joi EET 23:05:43        
+[INFO]        app.bankingApp.presenter.implementation.MainMenuPresenterImpl       System will generate the details for the new Bank Account you wish to open:             12-noiembrie-2020 joi EET 23:05:43        
+[INFO]        app.bankingApp.presenter.implementation.MainMenuPresenterImpl       Bank Account number randomly generated is: 100905683             12-noiembrie-2020 joi EET 23:05:43        
+[INFO]        app.bankingApp.presenter.implementation.MainMenuPresenterImpl       Here is the isBankAccountDuplicate Method from Account Service layer             12-noiembrie-2020 joi EET 23:05:43        
+[INFO]        app.bankingApp.presenter.implementation.MainMenuPresenterImpl       Here is the isBankAccountDuplicate Method from DAO layer             12-noiembrie-2020 joi EET 23:05:43        
+[INFO]        app.bankingApp.presenter.implementation.MainMenuPresenterImpl       Here is the CreateNewBank method from Service layer             12-noiembrie-2020 joi EET 23:05:43        
+[INFO]        app.bankingApp.presenter.implementation.MainMenuPresenterImpl       Here is the Create New Bank Account method from DAO layer             12-noiembrie-2020 joi EET 23:05:43        
+[INFO]        app.bankingApp.presenter.implementation.MainMenuPresenterImpl       org.postgresql.util.PSQLException: ERROR: column "date_bank_account_approval" of relation "bank_account" does not exist
+  Position: 141             12-noiembrie-2020 joi EET 23:05:43        
+[INFO]        app.bankingApp.presenter.implementation.MainMenuPresenterImpl       Method <User login> will allow a registered user to login!             12-noiembrie-2020 joi EET 23:15:43        
+[INFO]        app.bankingApp.presenter.implementation.MainMenuPresenterImpl       Here is the getUsersByEmail Method from Service layer             12-noiembrie-2020 joi EET 23:16:04        
+[INFO]        app.bankingApp.presenter.implementation.MainMenuPresenterImpl       Here is the getUsersByEmail Method from DAO layer             12-noiembrie-2020 joi EET 23:16:04        
+[INFO]        app.bankingApp.presenter.implementation.MainMenuPresenterImpl       Login successful!
+             12-noiembrie-2020 joi EET 23:16:04        
+[INFO]        app.bankingApp.presenter.implementation.MainMenuPresenterImpl       User logged in successfully with the following details:             12-noiembrie-2020 joi EET 23:16:04        
+[INFO]        app.bankingApp.presenter.implementation.MainMenuPresenterImpl       User id: 21 | Ron Ronson | r@r.com | J, 12 noiembrie 2020             12-noiembrie-2020 joi EET 23:16:04        
+[INFO]        app.bankingApp.presenter.implementation.MainMenuPresenterImpl       This customer has a bank account created and has status: CUSTOMER
+             12-noiembrie-2020 joi EET 23:16:04        
+[INFO]        app.bankingApp.presenter.implementation.MainMenuPresenterImpl       Method <New Bank Account Registration> will create a new Bank Account and submit it for Bank's approval!             12-noiembrie-2020 joi EET 23:16:19        
+[INFO]        app.bankingApp.presenter.implementation.MainMenuPresenterImpl       System will generate the details for the new Bank Account you wish to open:             12-noiembrie-2020 joi EET 23:16:19        
+[INFO]        app.bankingApp.presenter.implementation.MainMenuPresenterImpl       Bank Account number randomly generated is: 100906981             12-noiembrie-2020 joi EET 23:16:19        
+[INFO]        app.bankingApp.presenter.implementation.MainMenuPresenterImpl       Here is the isBankAccountDuplicate Method from Account Service layer             12-noiembrie-2020 joi EET 23:16:19        
+[INFO]        app.bankingApp.presenter.implementation.MainMenuPresenterImpl       Here is the isBankAccountDuplicate Method from DAO layer             12-noiembrie-2020 joi EET 23:16:19        
+[INFO]        app.bankingApp.presenter.implementation.MainMenuPresenterImpl       Here is the CreateNewBank method from Service layer             12-noiembrie-2020 joi EET 23:16:19        
+[INFO]        app.bankingApp.presenter.implementation.MainMenuPresenterImpl       Here is the Create New Bank Account method from DAO layer             12-noiembrie-2020 joi EET 23:16:19        
+[INFO]        app.bankingApp.presenter.implementation.MainMenuPresenterImpl       org.postgresql.util.PSQLException: ERROR: column "date_bank_account_approval" of relation "bank_account" does not exist
+  Position: 141             12-noiembrie-2020 joi EET 23:16:19        
+[INFO]        app.bankingApp.presenter.implementation.MainMenuPresenterImpl       Method <User login> will allow a registered user to login!             12-noiembrie-2020 joi EET 23:17:56        
+[INFO]        app.bankingApp.presenter.implementation.MainMenuPresenterImpl       Here is the getUsersByEmail Method from Service layer             12-noiembrie-2020 joi EET 23:18:01        
+[INFO]        app.bankingApp.presenter.implementation.MainMenuPresenterImpl       Here is the getUsersByEmail Method from DAO layer             12-noiembrie-2020 joi EET 23:18:01        
+[INFO]        app.bankingApp.presenter.implementation.MainMenuPresenterImpl       Login successful!
+             12-noiembrie-2020 joi EET 23:18:01        
+[INFO]        app.bankingApp.presenter.implementation.MainMenuPresenterImpl       User logged in successfully with the following details:             12-noiembrie-2020 joi EET 23:18:01        
+[INFO]        app.bankingApp.presenter.implementation.MainMenuPresenterImpl       User id: 21 | Ron Ronson | r@r.com | J, 12 noiembrie 2020             12-noiembrie-2020 joi EET 23:18:01        
+[INFO]        app.bankingApp.presenter.implementation.MainMenuPresenterImpl       This customer has a bank account created and has status: CUSTOMER
+             12-noiembrie-2020 joi EET 23:18:01        
+[INFO]        app.bankingApp.presenter.implementation.MainMenuPresenterImpl       Method <New Bank Account Registration> will create a new Bank Account and submit it for Bank's approval!             12-noiembrie-2020 joi EET 23:18:03        
+[INFO]        app.bankingApp.presenter.implementation.MainMenuPresenterImpl       System will generate the details for the new Bank Account you wish to open:             12-noiembrie-2020 joi EET 23:18:03        
+[INFO]        app.bankingApp.presenter.implementation.MainMenuPresenterImpl       Bank Account number randomly generated is: 100092912             12-noiembrie-2020 joi EET 23:18:03        
+[INFO]        app.bankingApp.presenter.implementation.MainMenuPresenterImpl       Here is the isBankAccountDuplicate Method from Account Service layer             12-noiembrie-2020 joi EET 23:18:03        
+[INFO]        app.bankingApp.presenter.implementation.MainMenuPresenterImpl       Here is the isBankAccountDuplicate Method from DAO layer             12-noiembrie-2020 joi EET 23:18:03        
+[INFO]        app.bankingApp.presenter.implementation.MainMenuPresenterImpl       Here is the CreateNewBank method from Service layer             12-noiembrie-2020 joi EET 23:18:03        
+[INFO]        app.bankingApp.presenter.implementation.MainMenuPresenterImpl       Here is the Create New Bank Account method from DAO layer             12-noiembrie-2020 joi EET 23:18:03        
+[INFO]        app.bankingApp.presenter.implementation.MainMenuPresenterImpl       org.postgresql.util.PSQLException: ERROR: column "date_bank_account_approval" of relation "bank_account" does not exist
+  Position: 141             12-noiembrie-2020 joi EET 23:18:03        
+[INFO]        app.bankingApp.presenter.implementation.MainMenuPresenterImpl       Method <User login> will allow a registered user to login!             12-noiembrie-2020 joi EET 23:35:15        
+[INFO]        app.bankingApp.presenter.implementation.MainMenuPresenterImpl       Here is the getUsersByEmail Method from Service layer             12-noiembrie-2020 joi EET 23:35:31        
+[INFO]        app.bankingApp.presenter.implementation.MainMenuPresenterImpl       Here is the getUsersByEmail Method from DAO layer             12-noiembrie-2020 joi EET 23:35:31        
+[INFO]        app.bankingApp.presenter.implementation.MainMenuPresenterImpl       Login successful!
+             12-noiembrie-2020 joi EET 23:35:31        
+[INFO]        app.bankingApp.presenter.implementation.MainMenuPresenterImpl       User logged in successfully with the following details:             12-noiembrie-2020 joi EET 23:35:31        
+[INFO]        app.bankingApp.presenter.implementation.MainMenuPresenterImpl       User id: 22 | Ted Teds | t@t.com | J, 12 noiembrie 2020             12-noiembrie-2020 joi EET 23:35:31        
+[INFO]        app.bankingApp.presenter.implementation.MainMenuPresenterImpl       This customer has a bank account created and has status: CUSTOMER
+             12-noiembrie-2020 joi EET 23:35:31        
+[INFO]        app.bankingApp.presenter.implementation.MainMenuPresenterImpl       Method <New Bank Account Registration> will create a new Bank Account and submit it for Bank's approval!             12-noiembrie-2020 joi EET 23:35:35        
+[INFO]        app.bankingApp.presenter.implementation.MainMenuPresenterImpl       System will generate the details for the new Bank Account you wish to open:             12-noiembrie-2020 joi EET 23:35:35        
+[INFO]        app.bankingApp.presenter.implementation.MainMenuPresenterImpl       Bank Account number randomly generated is: 100265483             12-noiembrie-2020 joi EET 23:35:35        
+[INFO]        app.bankingApp.presenter.implementation.MainMenuPresenterImpl       Here is the isBankAccountDuplicate Method from Account Service layer             12-noiembrie-2020 joi EET 23:35:35        
+[INFO]        app.bankingApp.presenter.implementation.MainMenuPresenterImpl       Here is the isBankAccountDuplicate Method from DAO layer             12-noiembrie-2020 joi EET 23:35:35        
+[INFO]        app.bankingApp.presenter.implementation.MainMenuPresenterImpl       org.postgresql.util.PSQLException: ERROR: column "date_bank_account_creation" does not exist
+  Hint: Perhaps you meant to reference the column "ba.date_bank_acct_creation".
+  Position: 69             12-noiembrie-2020 joi EET 23:35:35        
+[INFO]        app.bankingApp.presenter.implementation.MainMenuPresenterImpl       Method <User login> will allow a registered user to login!             12-noiembrie-2020 joi EET 23:36:56        
+[INFO]        app.bankingApp.presenter.implementation.MainMenuPresenterImpl       Here is the getUsersByEmail Method from Service layer             12-noiembrie-2020 joi EET 23:37:02        
+[INFO]        app.bankingApp.presenter.implementation.MainMenuPresenterImpl       Here is the getUsersByEmail Method from DAO layer             12-noiembrie-2020 joi EET 23:37:02        
+[INFO]        app.bankingApp.presenter.implementation.MainMenuPresenterImpl       Login successful!
+             12-noiembrie-2020 joi EET 23:37:03        
+[INFO]        app.bankingApp.presenter.implementation.MainMenuPresenterImpl       User logged in successfully with the following details:             12-noiembrie-2020 joi EET 23:37:03        
+[INFO]        app.bankingApp.presenter.implementation.MainMenuPresenterImpl       User id: 22 | Ted Teds | t@t.com | J, 12 noiembrie 2020             12-noiembrie-2020 joi EET 23:37:03        
+[INFO]        app.bankingApp.presenter.implementation.MainMenuPresenterImpl       This customer has a bank account created and has status: CUSTOMER
+             12-noiembrie-2020 joi EET 23:37:03        
+[INFO]        app.bankingApp.presenter.implementation.MainMenuPresenterImpl       Method <New Bank Account Registration> will create a new Bank Account and submit it for Bank's approval!             12-noiembrie-2020 joi EET 23:37:05        
+[INFO]        app.bankingApp.presenter.implementation.MainMenuPresenterImpl       System will generate the details for the new Bank Account you wish to open:             12-noiembrie-2020 joi EET 23:37:05        
+[INFO]        app.bankingApp.presenter.implementation.MainMenuPresenterImpl       Bank Account number randomly generated is: 100096258             12-noiembrie-2020 joi EET 23:37:05        
+[INFO]        app.bankingApp.presenter.implementation.MainMenuPresenterImpl       Here is the isBankAccountDuplicate Method from Account Service layer             12-noiembrie-2020 joi EET 23:37:05        
+[INFO]        app.bankingApp.presenter.implementation.MainMenuPresenterImpl       Here is the isBankAccountDuplicate Method from DAO layer             12-noiembrie-2020 joi EET 23:37:05        
+[INFO]        app.bankingApp.presenter.implementation.MainMenuPresenterImpl       org.postgresql.util.PSQLException: ERROR: column "date_bank_account_creation" does not exist
+  Hint: Perhaps you meant to reference the column "ba.date_bank_acct_creation".
+  Position: 69             12-noiembrie-2020 joi EET 23:37:05        
+[INFO]        app.bankingApp.presenter.implementation.MainMenuPresenterImpl       Method <User login> will allow a registered user to login!             12-noiembrie-2020 joi EET 23:44:20        
+[INFO]        app.bankingApp.presenter.implementation.MainMenuPresenterImpl       Here is the getUsersByEmail Method from Service layer             12-noiembrie-2020 joi EET 23:44:25        
+[INFO]        app.bankingApp.presenter.implementation.MainMenuPresenterImpl       Here is the getUsersByEmail Method from DAO layer             12-noiembrie-2020 joi EET 23:44:25        
+[INFO]        app.bankingApp.presenter.implementation.MainMenuPresenterImpl       Login successful!
+             12-noiembrie-2020 joi EET 23:44:25        
+[INFO]        app.bankingApp.presenter.implementation.MainMenuPresenterImpl       User logged in successfully with the following details:             12-noiembrie-2020 joi EET 23:44:25        
+[INFO]        app.bankingApp.presenter.implementation.MainMenuPresenterImpl       User id: 22 | Ted Teds | t@t.com | J, 12 noiembrie 2020             12-noiembrie-2020 joi EET 23:44:25        
+[INFO]        app.bankingApp.presenter.implementation.MainMenuPresenterImpl       This customer has a bank account created and has status: CUSTOMER
+             12-noiembrie-2020 joi EET 23:44:25        
+[INFO]        app.bankingApp.presenter.implementation.MainMenuPresenterImpl       Method <New Bank Account Registration> will create a new Bank Account and submit it for Bank's approval!             12-noiembrie-2020 joi EET 23:44:33        
+[INFO]        app.bankingApp.presenter.implementation.MainMenuPresenterImpl       System will generate the details for the new Bank Account you wish to open:             12-noiembrie-2020 joi EET 23:44:33        
+[INFO]        app.bankingApp.presenter.implementation.MainMenuPresenterImpl       Bank Account number randomly generated is: 100590363             12-noiembrie-2020 joi EET 23:44:33        
+[INFO]        app.bankingApp.presenter.implementation.MainMenuPresenterImpl       Here is the isBankAccountDuplicate Method from Account Service layer             12-noiembrie-2020 joi EET 23:44:33        
+[INFO]        app.bankingApp.presenter.implementation.MainMenuPresenterImpl       Here is the isBankAccountDuplicate Method from DAO layer             12-noiembrie-2020 joi EET 23:44:33        
+[INFO]        app.bankingApp.presenter.implementation.MainMenuPresenterImpl       Here is the CreateNewBank method from Service layer             12-noiembrie-2020 joi EET 23:44:33        
+[INFO]        app.bankingApp.presenter.implementation.MainMenuPresenterImpl       Here is the Create New Bank Account method from DAO layer             12-noiembrie-2020 joi EET 23:44:33        
+[INFO]        app.bankingApp.presenter.implementation.MainMenuPresenterImpl       A new bank account was created for the User: Ted Tedsand will be sent to Bank for approval! Bank Account details are:              12-noiembrie-2020 joi EET 23:44:33        
+[INFO]        app.bankingApp.presenter.implementation.MainMenuPresenterImpl       User id: 22 | Ted Teds | Bank Account number: 100590363 | Date of Bank Account creation: J, 12 noiembrie 2020             12-noiembrie-2020 joi EET 23:44:33        
+[INFO]        app.bankingApp.presenter.implementation.MainMenuPresenterImpl       Dear customer Ted Teds, the newly generated bank account with number 100590363 will be saved in temp db waiting for Bank's approval.             12-noiembrie-2020 joi EET 23:44:33        
+[INFO]        app.bankingApp.presenter.implementation.MainMenuPresenterImpl       Here is the <Add New Bank Account To Approval Table> Method from Service layer             12-noiembrie-2020 joi EET 23:44:33        
+[INFO]        app.bankingApp.presenter.implementation.MainMenuPresenterImpl       Here is the <Add New Bank Account To Approval Table> Method from DAO layer             12-noiembrie-2020 joi EET 23:44:33        
+[INFO]        app.bankingApp.presenter.implementation.MainMenuPresenterImpl       User: 22 | Ted Teds was saved in temp db waiting for approval             12-noiembrie-2020 joi EET 23:44:34        
+[INFO]        app.bankingApp.presenter.implementation.MainMenuPresenterImpl       Method <User login> will allow a registered user to login!             12-noiembrie-2020 joi EET 23:49:42        
+[INFO]        app.bankingApp.presenter.implementation.MainMenuPresenterImpl       Here is the getUsersByEmail Method from Service layer             12-noiembrie-2020 joi EET 23:50:41        
+[INFO]        app.bankingApp.presenter.implementation.MainMenuPresenterImpl       Here is the getUsersByEmail Method from DAO layer             12-noiembrie-2020 joi EET 23:50:41        
+[INFO]        app.bankingApp.presenter.implementation.MainMenuPresenterImpl       Login successful!
+             12-noiembrie-2020 joi EET 23:50:41        
+[INFO]        app.bankingApp.presenter.implementation.MainMenuPresenterImpl       User logged in successfully with the following details:             12-noiembrie-2020 joi EET 23:50:41        
+[INFO]        app.bankingApp.presenter.implementation.MainMenuPresenterImpl       User id: 21 | Ron Ronson | r@r.com | J, 12 noiembrie 2020             12-noiembrie-2020 joi EET 23:50:41        
+[INFO]        app.bankingApp.presenter.implementation.MainMenuPresenterImpl       This customer has a bank account created and has status: CUSTOMER
+             12-noiembrie-2020 joi EET 23:50:41        
+[INFO]        app.bankingApp.presenter.implementation.MainMenuPresenterImpl       Method <User login> will allow a registered user to login!             12-noiembrie-2020 joi EET 23:52:48        
+[INFO]        app.bankingApp.presenter.implementation.MainMenuPresenterImpl       Here is the getUsersByEmail Method from Service layer             12-noiembrie-2020 joi EET 23:53:05        
+[INFO]        app.bankingApp.presenter.implementation.MainMenuPresenterImpl       Here is the getUsersByEmail Method from DAO layer             12-noiembrie-2020 joi EET 23:53:05        
+[INFO]        app.bankingApp.presenter.implementation.MainMenuPresenterImpl       Login successful!
+             12-noiembrie-2020 joi EET 23:53:05        
+[INFO]        app.bankingApp.presenter.implementation.MainMenuPresenterImpl       User logged in successfully with the following details:             12-noiembrie-2020 joi EET 23:53:05        
+[INFO]        app.bankingApp.presenter.implementation.MainMenuPresenterImpl       User id: 20 | Admin Bank | admin@bank.com | J, 12 noiembrie 2020             12-noiembrie-2020 joi EET 23:53:05        
+[INFO]        app.bankingApp.presenter.implementation.MainMenuPresenterImpl       This user is an employee, with role: EMPLOYEE
+             12-noiembrie-2020 joi EET 23:53:05        
+[INFO]        app.bankingApp.presenter.implementation.MainMenuPresenterImpl       Method <Approve New Bank Account> will approve or reject Customer's request to open a new bank account!             12-noiembrie-2020 joi EET 23:53:16        
+[INFO]        app.bankingApp.presenter.implementation.MainMenuPresenterImpl       Retrieve and display a list with all Users that request that their new Bank Accounts created to be approved.             12-noiembrie-2020 joi EET 23:53:16        
+[INFO]        app.bankingApp.presenter.implementation.MainMenuPresenterImpl       Method <Approve Customer Account for NonCustomer User> will approve or reject the User's request to become a new Customer!             12-noiembrie-2020 joi EET 23:53:52        
+[INFO]        app.bankingApp.presenter.implementation.MainMenuPresenterImpl       Here is the getUsersFromApprovalTable Method from Service layer             12-noiembrie-2020 joi EET 23:53:52        
+[INFO]        app.bankingApp.presenter.implementation.MainMenuPresenterImpl       Here is the getUsersFromApprovalTable Method from DAO layer             12-noiembrie-2020 joi EET 23:53:52        
+[INFO]        app.bankingApp.presenter.implementation.MainMenuPresenterImpl       We found 1 users in the DB waiting to get their Customer status/account approved... Detailed list is:             12-noiembrie-2020 joi EET 23:53:52        
+[INFO]        app.bankingApp.presenter.implementation.MainMenuPresenterImpl       User: 4 | Don Donson | Email: d@d.com | User Status: NONCUSTOMER | Approval Status: PENDING             12-noiembrie-2020 joi EET 23:53:52        
+[INFO]        app.bankingApp.presenter.implementation.MainMenuPresenterImpl       Method <Approve New Bank Account> will approve or reject Customer's request to open a new bank account!             12-noiembrie-2020 joi EET 23:54:36        
+[INFO]        app.bankingApp.presenter.implementation.MainMenuPresenterImpl       Retrieve and display a list with all Users that request that their new Bank Accounts created to be approved.             12-noiembrie-2020 joi EET 23:54:36        
+[INFO]        app.bankingApp.presenter.implementation.MainMenuPresenterImpl       Method <User login> will allow a registered user to login!             13-noiembrie-2020 vineri EET 00:25:46        
+[INFO]        app.bankingApp.presenter.implementation.MainMenuPresenterImpl       Here is the getUsersByEmail Method from Service layer             13-noiembrie-2020 vineri EET 00:26:03        
+[INFO]        app.bankingApp.presenter.implementation.MainMenuPresenterImpl       Here is the getUsersByEmail Method from DAO layer             13-noiembrie-2020 vineri EET 00:26:03        
+[INFO]        app.bankingApp.presenter.implementation.MainMenuPresenterImpl       Login successful!
+             13-noiembrie-2020 vineri EET 00:26:04        
+[INFO]        app.bankingApp.presenter.implementation.MainMenuPresenterImpl       User logged in successfully with the following details:             13-noiembrie-2020 vineri EET 00:26:04        
+[INFO]        app.bankingApp.presenter.implementation.MainMenuPresenterImpl       User id: 20 | Admin Bank | admin@bank.com | J, 12 noiembrie 2020             13-noiembrie-2020 vineri EET 00:26:04        
+[INFO]        app.bankingApp.presenter.implementation.MainMenuPresenterImpl       This user is an employee, with role: EMPLOYEE
+             13-noiembrie-2020 vineri EET 00:26:04        
+[INFO]        app.bankingApp.presenter.implementation.MainMenuPresenterImpl       Method <Approve New Bank Account> will approve or reject Customer's request to open a new bank account!             13-noiembrie-2020 vineri EET 00:26:08        
+[INFO]        app.bankingApp.presenter.implementation.MainMenuPresenterImpl       Retrieve and display a list with all Users that request that their new Bank Accounts created to be approved.             13-noiembrie-2020 vineri EET 00:26:08        
+[INFO]        app.bankingApp.presenter.implementation.MainMenuPresenterImpl       Here is the getBankAccountsFromApprovalTable Method from Service layer             13-noiembrie-2020 vineri EET 00:26:08        
+[INFO]        app.bankingApp.presenter.implementation.MainMenuPresenterImpl       Here is the getBankAccountsFromApprovalTable Method from DAO layer             13-noiembrie-2020 vineri EET 00:26:08        
+[INFO]        app.bankingApp.presenter.implementation.MainMenuPresenterImpl       We found 1 new bank accounts in the DB waiting to get their status approved... Detailed list is:             13-noiembrie-2020 vineri EET 00:26:08        
+[INFO]        app.bankingApp.presenter.implementation.MainMenuPresenterImpl       User: 20 | Admin Bank | New Bank Account Id: 3 | New Bank Account Number: 100590363 | New Bank Account Status: PENDING | Approval Status: PENDING             13-noiembrie-2020 vineri EET 00:26:08        
+[INFO]        app.bankingApp.presenter.implementation.MainMenuPresenterImpl       Method <Approve New Bank Account> will approve or reject Customer's request to open a new bank account!             13-noiembrie-2020 vineri EET 00:26:49        
+[INFO]        app.bankingApp.presenter.implementation.MainMenuPresenterImpl       Retrieve and display a list with all Users that request that their new Bank Accounts created to be approved.             13-noiembrie-2020 vineri EET 00:26:49        
+[INFO]        app.bankingApp.presenter.implementation.MainMenuPresenterImpl       Here is the getBankAccountsFromApprovalTable Method from Service layer             13-noiembrie-2020 vineri EET 00:26:49        
+[INFO]        app.bankingApp.presenter.implementation.MainMenuPresenterImpl       Here is the getBankAccountsFromApprovalTable Method from DAO layer             13-noiembrie-2020 vineri EET 00:26:49        
+[INFO]        app.bankingApp.presenter.implementation.MainMenuPresenterImpl       We found 1 new bank accounts in the DB waiting to get their status approved... Detailed list is:             13-noiembrie-2020 vineri EET 00:26:49        
+[INFO]        app.bankingApp.presenter.implementation.MainMenuPresenterImpl       User: 20 | Admin Bank | New Bank Account Id: 3 | New Bank Account Number: 100590363 | New Bank Account Status: PENDING | Approval Status: PENDING             13-noiembrie-2020 vineri EET 00:26:49        
+[INFO]        app.bankingApp.presenter.implementation.MainMenuPresenterImpl       Method <User login> will allow a registered user to login!             13-noiembrie-2020 vineri EET 00:33:03        
+[INFO]        app.bankingApp.presenter.implementation.MainMenuPresenterImpl       Here is the getUsersByEmail Method from Service layer             13-noiembrie-2020 vineri EET 00:33:13        
+[INFO]        app.bankingApp.presenter.implementation.MainMenuPresenterImpl       Here is the getUsersByEmail Method from DAO layer             13-noiembrie-2020 vineri EET 00:33:13        
+[INFO]        app.bankingApp.presenter.implementation.MainMenuPresenterImpl       Login successful!
+             13-noiembrie-2020 vineri EET 00:33:13        
+[INFO]        app.bankingApp.presenter.implementation.MainMenuPresenterImpl       User logged in successfully with the following details:             13-noiembrie-2020 vineri EET 00:33:13        
+[INFO]        app.bankingApp.presenter.implementation.MainMenuPresenterImpl       User id: 21 | Ron Ronson | r@r.com | J, 12 noiembrie 2020             13-noiembrie-2020 vineri EET 00:33:13        
+[INFO]        app.bankingApp.presenter.implementation.MainMenuPresenterImpl       This customer has a bank account created and has status: CUSTOMER
+             13-noiembrie-2020 vineri EET 00:33:13        
+[INFO]        app.bankingApp.presenter.implementation.MainMenuPresenterImpl       Method <New Bank Account Registration> will create a new Bank Account and submit it for Bank's approval!             13-noiembrie-2020 vineri EET 00:34:52        
+[INFO]        app.bankingApp.presenter.implementation.MainMenuPresenterImpl       System will generate the details for the new Bank Account you wish to open:             13-noiembrie-2020 vineri EET 00:34:52        
+[INFO]        app.bankingApp.presenter.implementation.MainMenuPresenterImpl       Bank Account number randomly generated is: 100410664             13-noiembrie-2020 vineri EET 00:34:52        
+[INFO]        app.bankingApp.presenter.implementation.MainMenuPresenterImpl       Here is the isBankAccountDuplicate Method from Account Service layer             13-noiembrie-2020 vineri EET 00:34:52        
+[INFO]        app.bankingApp.presenter.implementation.MainMenuPresenterImpl       Here is the isBankAccountDuplicate Method from DAO layer             13-noiembrie-2020 vineri EET 00:34:52        
+[INFO]        app.bankingApp.presenter.implementation.MainMenuPresenterImpl       Here is the CreateNewBank method from Service layer             13-noiembrie-2020 vineri EET 00:34:52        
+[INFO]        app.bankingApp.presenter.implementation.MainMenuPresenterImpl       Here is the Create New Bank Account method from DAO layer             13-noiembrie-2020 vineri EET 00:34:52        
+[INFO]        app.bankingApp.presenter.implementation.MainMenuPresenterImpl       A new bank account was created for the User: Ron Ronsonand will be sent to Bank for approval! Bank Account details are:              13-noiembrie-2020 vineri EET 00:34:52        
+[INFO]        app.bankingApp.presenter.implementation.MainMenuPresenterImpl       User id: 21 | Ron Ronson | Bank Account number: 100410664 | Date of Bank Account creation: V, 13 noiembrie 2020             13-noiembrie-2020 vineri EET 00:34:52        
+[INFO]        app.bankingApp.presenter.implementation.MainMenuPresenterImpl       Dear customer Ron Ronson, the newly generated bank account with number 100410664 will be saved in temp db waiting for Bank's approval.             13-noiembrie-2020 vineri EET 00:34:52        
+[INFO]        app.bankingApp.presenter.implementation.MainMenuPresenterImpl       Here is the <Add New Bank Account To Approval Table> Method from Service layer             13-noiembrie-2020 vineri EET 00:34:52        
+[INFO]        app.bankingApp.presenter.implementation.MainMenuPresenterImpl       Here is the <Add New Bank Account To Approval Table> Method from DAO layer             13-noiembrie-2020 vineri EET 00:34:52        
+[INFO]        app.bankingApp.presenter.implementation.MainMenuPresenterImpl       org.postgresql.util.PSQLException: ERROR: duplicate key value violates unique constraint "bank_account_for_approval_pk"
+  Detail: Key (id_bank_acct_4_approval)=(2) already exists.             13-noiembrie-2020 vineri EET 00:34:52        
+[INFO]        app.bankingApp.presenter.implementation.MainMenuPresenterImpl       Method <User login> will allow a registered user to login!             13-noiembrie-2020 vineri EET 00:35:01        
+[INFO]        app.bankingApp.presenter.implementation.MainMenuPresenterImpl       Here is the getUsersByEmail Method from Service layer             13-noiembrie-2020 vineri EET 00:35:17        
+[INFO]        app.bankingApp.presenter.implementation.MainMenuPresenterImpl       Here is the getUsersByEmail Method from DAO layer             13-noiembrie-2020 vineri EET 00:35:17        
+[INFO]        app.bankingApp.presenter.implementation.MainMenuPresenterImpl       Login successful!
+             13-noiembrie-2020 vineri EET 00:35:18        
+[INFO]        app.bankingApp.presenter.implementation.MainMenuPresenterImpl       User logged in successfully with the following details:             13-noiembrie-2020 vineri EET 00:35:18        
+[INFO]        app.bankingApp.presenter.implementation.MainMenuPresenterImpl       User id: 20 | Admin Bank | admin@bank.com | J, 12 noiembrie 2020             13-noiembrie-2020 vineri EET 00:35:18        
+[INFO]        app.bankingApp.presenter.implementation.MainMenuPresenterImpl       This user is an employee, with role: EMPLOYEE
+             13-noiembrie-2020 vineri EET 00:35:18        
+[INFO]        app.bankingApp.presenter.implementation.MainMenuPresenterImpl       Method <Approve New Bank Account> will approve or reject Customer's request to open a new bank account!             13-noiembrie-2020 vineri EET 00:35:27        
+[INFO]        app.bankingApp.presenter.implementation.MainMenuPresenterImpl       Retrieve and display a list with all Users that request that their new Bank Accounts created to be approved.             13-noiembrie-2020 vineri EET 00:35:27        
+[INFO]        app.bankingApp.presenter.implementation.MainMenuPresenterImpl       Here is the getBankAccountsFromApprovalTable Method from Service layer             13-noiembrie-2020 vineri EET 00:35:27        
+[INFO]        app.bankingApp.presenter.implementation.MainMenuPresenterImpl       Here is the getBankAccountsFromApprovalTable Method from DAO layer             13-noiembrie-2020 vineri EET 00:35:27        
+[INFO]        app.bankingApp.presenter.implementation.MainMenuPresenterImpl       We found 2 new bank accounts in the DB waiting to get their status approved... Detailed list is:             13-noiembrie-2020 vineri EET 00:35:27        
+[INFO]        app.bankingApp.presenter.implementation.MainMenuPresenterImpl       User: 20 | Admin Bank | New Bank Account Id: 2 | New Bank Account Number: 100092912 | New Bank Account Status: PENDING | Approval Status: PENDING             13-noiembrie-2020 vineri EET 00:35:27        
+[INFO]        app.bankingApp.presenter.implementation.MainMenuPresenterImpl       User: 20 | Admin Bank | New Bank Account Id: 3 | New Bank Account Number: 100590363 | New Bank Account Status: PENDING | Approval Status: PENDING             13-noiembrie-2020 vineri EET 00:35:27        
+[INFO]        app.bankingApp.presenter.implementation.MainMenuPresenterImpl       Here is the <Get Bank Account By Id> method from DAO layer             13-noiembrie-2020 vineri EET 00:35:42        
+[INFO]        app.bankingApp.presenter.implementation.MainMenuPresenterImpl       org.postgresql.util.PSQLException: The column name bank_account_balance was not found in this ResultSet.             13-noiembrie-2020 vineri EET 00:35:42        
+[INFO]        app.bankingApp.presenter.implementation.MainMenuPresenterImpl       Method <User login> will allow a registered user to login!             13-noiembrie-2020 vineri EET 00:45:39        
+[INFO]        app.bankingApp.presenter.implementation.MainMenuPresenterImpl       Here is the getUsersByEmail Method from Service layer             13-noiembrie-2020 vineri EET 00:45:47        
+[INFO]        app.bankingApp.presenter.implementation.MainMenuPresenterImpl       Here is the getUsersByEmail Method from DAO layer             13-noiembrie-2020 vineri EET 00:45:47        
+[INFO]        app.bankingApp.presenter.implementation.MainMenuPresenterImpl       Login successful!
+             13-noiembrie-2020 vineri EET 00:45:48        
+[INFO]        app.bankingApp.presenter.implementation.MainMenuPresenterImpl       User logged in successfully with the following details:             13-noiembrie-2020 vineri EET 00:45:48        
+[INFO]        app.bankingApp.presenter.implementation.MainMenuPresenterImpl       User id: 20 | Admin Bank | admin@bank.com | J, 12 noiembrie 2020             13-noiembrie-2020 vineri EET 00:45:48        
+[INFO]        app.bankingApp.presenter.implementation.MainMenuPresenterImpl       This user is an employee, with role: EMPLOYEE
+             13-noiembrie-2020 vineri EET 00:45:48        
+[INFO]        app.bankingApp.presenter.implementation.MainMenuPresenterImpl       Method <Approve New Bank Account> will approve or reject Customer's request to open a new bank account!             13-noiembrie-2020 vineri EET 00:45:51        
+[INFO]        app.bankingApp.presenter.implementation.MainMenuPresenterImpl       Retrieve and display a list with all Users that request that their new Bank Accounts created to be approved.             13-noiembrie-2020 vineri EET 00:45:51        
+[INFO]        app.bankingApp.presenter.implementation.MainMenuPresenterImpl       Here is the getBankAccountsFromApprovalTable Method from Service layer             13-noiembrie-2020 vineri EET 00:45:51        
+[INFO]        app.bankingApp.presenter.implementation.MainMenuPresenterImpl       Here is the getBankAccountsFromApprovalTable Method from DAO layer             13-noiembrie-2020 vineri EET 00:45:51        
+[INFO]        app.bankingApp.presenter.implementation.MainMenuPresenterImpl       We found 2 new bank accounts in the DB waiting to get their status approved... Detailed list is:             13-noiembrie-2020 vineri EET 00:45:51        
+[INFO]        app.bankingApp.presenter.implementation.MainMenuPresenterImpl       User: 20 | Admin Bank | New Bank Account Id: 2 | New Bank Account Number: 100092912 | New Bank Account Status: PENDING | Approval Status: PENDING             13-noiembrie-2020 vineri EET 00:45:51        
+[INFO]        app.bankingApp.presenter.implementation.MainMenuPresenterImpl       User: 20 | Admin Bank | New Bank Account Id: 3 | New Bank Account Number: 100590363 | New Bank Account Status: PENDING | Approval Status: PENDING             13-noiembrie-2020 vineri EET 00:45:51        
+[INFO]        app.bankingApp.presenter.implementation.MainMenuPresenterImpl       Here is the <Get Bank Account By Id> method from DAO layer             13-noiembrie-2020 vineri EET 00:45:56        
+[INFO]        app.bankingApp.presenter.implementation.MainMenuPresenterImpl       Bank Account found with id 2 details are :              13-noiembrie-2020 vineri EET 00:45:56        
+[INFO]        app.bankingApp.presenter.implementation.MainMenuPresenterImpl       User: 20 | Admin Bank | New Bank Account Id: 2 | New Bank Account Number: 100092912 | New Bank Account Approval Status Pending?: false | Approval Status: false             13-noiembrie-2020 vineri EET 00:45:56        
+[INFO]        app.bankingApp.presenter.implementation.MainMenuPresenterImpl       Here is the Update Bank Account approval status method from Service layer             13-noiembrie-2020 vineri EET 00:46:06        
+[INFO]        app.bankingApp.presenter.implementation.MainMenuPresenterImpl       Here is the <Change Bank Account Status> method from DAO layer             13-noiembrie-2020 vineri EET 00:46:06        
+[INFO]        app.bankingApp.presenter.implementation.MainMenuPresenterImpl       Method <Approve New Bank Account> will approve or reject Customer's request to open a new bank account!             13-noiembrie-2020 vineri EET 00:46:19        
+[INFO]        app.bankingApp.presenter.implementation.MainMenuPresenterImpl       Retrieve and display a list with all Users that request that their new Bank Accounts created to be approved.             13-noiembrie-2020 vineri EET 00:46:19        
+[INFO]        app.bankingApp.presenter.implementation.MainMenuPresenterImpl       Here is the getBankAccountsFromApprovalTable Method from Service layer             13-noiembrie-2020 vineri EET 00:46:19        
+[INFO]        app.bankingApp.presenter.implementation.MainMenuPresenterImpl       Here is the getBankAccountsFromApprovalTable Method from DAO layer             13-noiembrie-2020 vineri EET 00:46:19        
+[INFO]        app.bankingApp.presenter.implementation.MainMenuPresenterImpl       We found 1 new bank accounts in the DB waiting to get their status approved... Detailed list is:             13-noiembrie-2020 vineri EET 00:46:19        
+[INFO]        app.bankingApp.presenter.implementation.MainMenuPresenterImpl       User: 20 | Admin Bank | New Bank Account Id: 3 | New Bank Account Number: 100590363 | New Bank Account Status: PENDING | Approval Status: PENDING             13-noiembrie-2020 vineri EET 00:46:19        
+[INFO]        app.bankingApp.presenter.implementation.MainMenuPresenterImpl       Method <User login> will allow a registered user to login!             13-noiembrie-2020 vineri EET 13:21:02        
+[INFO]        app.bankingApp.presenter.implementation.MainMenuPresenterImpl       Here is the getUsersByEmail Method from Service layer             13-noiembrie-2020 vineri EET 13:21:25        
+[INFO]        app.bankingApp.presenter.implementation.MainMenuPresenterImpl       Here is the getUsersByEmail Method from DAO layer             13-noiembrie-2020 vineri EET 13:21:25        
+[INFO]        app.bankingApp.presenter.implementation.MainMenuPresenterImpl       Login successful!
+             13-noiembrie-2020 vineri EET 13:21:26        
+[INFO]        app.bankingApp.presenter.implementation.MainMenuPresenterImpl       User logged in successfully with the following details:             13-noiembrie-2020 vineri EET 13:21:26        
+[INFO]        app.bankingApp.presenter.implementation.MainMenuPresenterImpl       User id: 20 | Admin Bank | admin@bank.com | J, 12 noiembrie 2020             13-noiembrie-2020 vineri EET 13:21:26        
+[INFO]        app.bankingApp.presenter.implementation.MainMenuPresenterImpl       This user is an employee, with role: EMPLOYEE
+             13-noiembrie-2020 vineri EET 13:21:26        
+[INFO]        app.bankingApp.presenter.implementation.MainMenuPresenterImpl       Method <Approve New Bank Account> will approve or reject Customer's request to open a new bank account!             13-noiembrie-2020 vineri EET 13:21:59        
+[INFO]        app.bankingApp.presenter.implementation.MainMenuPresenterImpl       Retrieve and display a list with all Users that request that their new Bank Accounts created to be approved.             13-noiembrie-2020 vineri EET 13:21:59        
+[INFO]        app.bankingApp.presenter.implementation.MainMenuPresenterImpl       Here is the getBankAccountsFromApprovalTable Method from Service layer             13-noiembrie-2020 vineri EET 13:21:59        
+[INFO]        app.bankingApp.presenter.implementation.MainMenuPresenterImpl       Here is the getBankAccountsFromApprovalTable Method from DAO layer             13-noiembrie-2020 vineri EET 13:21:59        
+[INFO]        app.bankingApp.presenter.implementation.MainMenuPresenterImpl       Method <Approve New Bank Account> will approve or reject Customer's request to open a new bank account!             13-noiembrie-2020 vineri EET 13:23:11        
+[INFO]        app.bankingApp.presenter.implementation.MainMenuPresenterImpl       Retrieve and display a list with all Users that request that their new Bank Accounts created to be approved.             13-noiembrie-2020 vineri EET 13:23:11        
+[INFO]        app.bankingApp.presenter.implementation.MainMenuPresenterImpl       Here is the getBankAccountsFromApprovalTable Method from Service layer             13-noiembrie-2020 vineri EET 13:23:11        
+[INFO]        app.bankingApp.presenter.implementation.MainMenuPresenterImpl       Here is the getBankAccountsFromApprovalTable Method from DAO layer             13-noiembrie-2020 vineri EET 13:23:11        
+[INFO]        app.bankingApp.presenter.implementation.MainMenuPresenterImpl       We found 2 new bank accounts in the DB waiting to get their status approved... Detailed list is:             13-noiembrie-2020 vineri EET 13:23:11        
+[INFO]        app.bankingApp.presenter.implementation.MainMenuPresenterImpl       User: 20 | Admin Bank | New Bank Account Id: 2 | New Bank Account Number: 100092912 | New Bank Account Status: APPROVED | Approval Status: PENDING             13-noiembrie-2020 vineri EET 13:23:11        
+[INFO]        app.bankingApp.presenter.implementation.MainMenuPresenterImpl       User: 20 | Admin Bank | New Bank Account Id: 3 | New Bank Account Number: 100590363 | New Bank Account Status: PENDING | Approval Status: PENDING             13-noiembrie-2020 vineri EET 13:23:11        
+[INFO]        app.bankingApp.presenter.implementation.MainMenuPresenterImpl       Here is the <Get Bank Account By Id> method from DAO layer             13-noiembrie-2020 vineri EET 13:23:27        
+[INFO]        app.bankingApp.presenter.implementation.MainMenuPresenterImpl       Bank Account found with id 2 details are :              13-noiembrie-2020 vineri EET 13:23:27        
+[INFO]        app.bankingApp.presenter.implementation.MainMenuPresenterImpl       User: 20 | Admin Bank | New Bank Account Id: 2 | New Bank Account Number: 100092912 | New Bank Account Approval Status Pending?: false | Approval Status: false             13-noiembrie-2020 vineri EET 13:23:27        
+[INFO]        app.bankingApp.presenter.implementation.MainMenuPresenterImpl       Here is the Update Bank Account approval status method from Service layer             13-noiembrie-2020 vineri EET 13:23:34        
+[INFO]        app.bankingApp.presenter.implementation.MainMenuPresenterImpl       Here is the <Change Bank Account Status> method from DAO layer             13-noiembrie-2020 vineri EET 13:23:34        
+[ERROR]        app.bankingApp.presenter.implementation.MainMenuPresenterImpl       Error occured in UPDATEBANKACCOUNTSTATUS sql!             13-noiembrie-2020 vineri EET 13:23:34        
+[INFO]        app.bankingApp.presenter.implementation.MainMenuPresenterImpl       Here is the <Get Bank Account By Id> method from DAO layer             13-noiembrie-2020 vineri EET 13:24:02        
+[INFO]        app.bankingApp.presenter.implementation.MainMenuPresenterImpl       Bank Account found with id 3 details are :              13-noiembrie-2020 vineri EET 13:24:02        
+[INFO]        app.bankingApp.presenter.implementation.MainMenuPresenterImpl       User: 20 | Admin Bank | New Bank Account Id: 3 | New Bank Account Number: 100590363 | New Bank Account Approval Status Pending?: false | Approval Status: false             13-noiembrie-2020 vineri EET 13:24:02        
+[INFO]        app.bankingApp.presenter.implementation.MainMenuPresenterImpl       Here is the Update Bank Account approval status method from Service layer             13-noiembrie-2020 vineri EET 13:24:09        
+[INFO]        app.bankingApp.presenter.implementation.MainMenuPresenterImpl       Here is the <Change Bank Account Status> method from DAO layer             13-noiembrie-2020 vineri EET 13:24:09        
+[ERROR]        app.bankingApp.presenter.implementation.MainMenuPresenterImpl       Error occured in UPDATEBANKACCOUNTSTATUS sql!             13-noiembrie-2020 vineri EET 13:24:09        
+[INFO]        app.bankingApp.presenter.implementation.MainMenuPresenterImpl       Method <User login> will allow a registered user to login!             13-noiembrie-2020 vineri EET 13:40:30        
+[INFO]        app.bankingApp.presenter.implementation.MainMenuPresenterImpl       Here is the getUsersByEmail Method from Service layer             13-noiembrie-2020 vineri EET 13:40:42        
+[INFO]        app.bankingApp.presenter.implementation.MainMenuPresenterImpl       Here is the getUsersByEmail Method from DAO layer             13-noiembrie-2020 vineri EET 13:40:42        
+[INFO]        app.bankingApp.presenter.implementation.MainMenuPresenterImpl       Login successful!
+             13-noiembrie-2020 vineri EET 13:40:43        
+[INFO]        app.bankingApp.presenter.implementation.MainMenuPresenterImpl       User logged in successfully with the following details:             13-noiembrie-2020 vineri EET 13:40:43        
+[INFO]        app.bankingApp.presenter.implementation.MainMenuPresenterImpl       User id: 21 | Ron Ronson | r@r.com | J, 12 noiembrie 2020             13-noiembrie-2020 vineri EET 13:40:43        
+[INFO]        app.bankingApp.presenter.implementation.MainMenuPresenterImpl       This customer has a bank account created and has status: CUSTOMER
+             13-noiembrie-2020 vineri EET 13:40:43        
+[INFO]        app.bankingApp.presenter.implementation.MainMenuPresenterImpl       Method <View Bank Account Balance> allows User to see Bank Account balance!             13-noiembrie-2020 vineri EET 13:40:53        
+[INFO]        app.bankingApp.presenter.implementation.MainMenuPresenterImpl       View Bank Account Balance method allows a User to see the balance of one of his/her Bank Accounts.             13-noiembrie-2020 vineri EET 13:40:53        
+[ERROR]        app.bankingApp.presenter.implementation.MainMenuPresenterImpl       org.postgresql.util.PSQLException: ERROR: operator does not exist: character varying = integer
+  Hint: No operator matches the given name and argument type(s). You might need to add explicit type casts.
+  Position: 226             13-noiembrie-2020 vineri EET 13:40:54        
+[INFO]        app.bankingApp.presenter.implementation.MainMenuPresenterImpl       Method <Deposit amount in Bank Account> allows a Customer to deposit funds into a selected Bank Account he/she owns!             13-noiembrie-2020 vineri EET 13:40:59        
+[INFO]        app.bankingApp.presenter.implementation.MainMenuPresenterImpl       View Bank Account Balance method allows a User to see the balance of one of his/her Bank Accounts.             13-noiembrie-2020 vineri EET 13:40:59        
+[ERROR]        app.bankingApp.presenter.implementation.MainMenuPresenterImpl       org.postgresql.util.PSQLException: ERROR: operator does not exist: character varying = integer
+  Hint: No operator matches the given name and argument type(s). You might need to add explicit type casts.
+  Position: 226             13-noiembrie-2020 vineri EET 13:40:59        
+[INFO]        app.bankingApp.presenter.implementation.MainMenuPresenterImpl       Here is the <Get Bank Account By Id> method from DAO layer             13-noiembrie-2020 vineri EET 13:41:00        
+[INFO]        app.bankingApp.presenter.implementation.MainMenuPresenterImpl       Method <User login> will allow a registered user to login!             13-noiembrie-2020 vineri EET 13:41:47        
+[INFO]        app.bankingApp.presenter.implementation.MainMenuPresenterImpl       Here is the getUsersByEmail Method from Service layer             13-noiembrie-2020 vineri EET 13:42:05        
+[INFO]        app.bankingApp.presenter.implementation.MainMenuPresenterImpl       Here is the getUsersByEmail Method from DAO layer             13-noiembrie-2020 vineri EET 13:42:05        
+[INFO]        app.bankingApp.presenter.implementation.MainMenuPresenterImpl       Login successful!
+             13-noiembrie-2020 vineri EET 13:42:05        
+[INFO]        app.bankingApp.presenter.implementation.MainMenuPresenterImpl       User logged in successfully with the following details:             13-noiembrie-2020 vineri EET 13:42:05        
+[INFO]        app.bankingApp.presenter.implementation.MainMenuPresenterImpl       User id: 20 | Admin Bank | admin@bank.com | J, 12 noiembrie 2020             13-noiembrie-2020 vineri EET 13:42:05        
+[INFO]        app.bankingApp.presenter.implementation.MainMenuPresenterImpl       This user is an employee, with role: EMPLOYEE
+             13-noiembrie-2020 vineri EET 13:42:05        
+[INFO]        app.bankingApp.presenter.implementation.MainMenuPresenterImpl       Method <Approve New Bank Account> will approve or reject Customer's request to open a new bank account!             13-noiembrie-2020 vineri EET 13:42:13        
+[INFO]        app.bankingApp.presenter.implementation.MainMenuPresenterImpl       Retrieve and display a list with all Users that request that their new Bank Accounts created to be approved.             13-noiembrie-2020 vineri EET 13:42:13        
+[INFO]        app.bankingApp.presenter.implementation.MainMenuPresenterImpl       Here is the getBankAccountsFromApprovalTable Method from Service layer             13-noiembrie-2020 vineri EET 13:42:13        
+[INFO]        app.bankingApp.presenter.implementation.MainMenuPresenterImpl       Here is the getBankAccountsFromApprovalTable Method from DAO layer             13-noiembrie-2020 vineri EET 13:42:13        
+[INFO]        app.bankingApp.presenter.implementation.MainMenuPresenterImpl       We found 2 new bank accounts in the DB waiting to get their status approved... Detailed list is:             13-noiembrie-2020 vineri EET 13:42:13        
+[INFO]        app.bankingApp.presenter.implementation.MainMenuPresenterImpl       User: 20 | Admin Bank | New Bank Account Id: 2 | New Bank Account Number: 100092912 | New Bank Account Status: PENDING | Approval Status: PENDING             13-noiembrie-2020 vineri EET 13:42:13        
+[INFO]        app.bankingApp.presenter.implementation.MainMenuPresenterImpl       User: 20 | Admin Bank | New Bank Account Id: 3 | New Bank Account Number: 100590363 | New Bank Account Status: PENDING | Approval Status: PENDING             13-noiembrie-2020 vineri EET 13:42:13        
+[INFO]        app.bankingApp.presenter.implementation.MainMenuPresenterImpl       Here is the <Get Bank Account By Id> method from DAO layer             13-noiembrie-2020 vineri EET 13:42:56        
+[INFO]        app.bankingApp.presenter.implementation.MainMenuPresenterImpl       Bank Account found with id 2 details are :              13-noiembrie-2020 vineri EET 13:42:56        
+[INFO]        app.bankingApp.presenter.implementation.MainMenuPresenterImpl       User: 20 | Admin Bank | New Bank Account Id: 2 | New Bank Account Number: 100092912 | New Bank Account Approval Status Pending?: false | Approval Status: false             13-noiembrie-2020 vineri EET 13:42:56        
+[INFO]        app.bankingApp.presenter.implementation.MainMenuPresenterImpl       Here is the Update Bank Account approval status method from Service layer             13-noiembrie-2020 vineri EET 13:43:01        
+[INFO]        app.bankingApp.presenter.implementation.MainMenuPresenterImpl       Here is the <Change Bank Account Status> method from DAO layer             13-noiembrie-2020 vineri EET 13:43:01        
+[ERROR]        app.bankingApp.presenter.implementation.MainMenuPresenterImpl       org.postgresql.util.PSQLException: ERROR: syntax error at or near "from"
+  Position: 128             13-noiembrie-2020 vineri EET 13:43:01        
+[INFO]        app.bankingApp.presenter.implementation.MainMenuPresenterImpl       Method <User login> will allow a registered user to login!             13-noiembrie-2020 vineri EET 13:52:58        
+[INFO]        app.bankingApp.presenter.implementation.MainMenuPresenterImpl       Here is the getUsersByEmail Method from Service layer             13-noiembrie-2020 vineri EET 13:53:11        
+[INFO]        app.bankingApp.presenter.implementation.MainMenuPresenterImpl       Here is the getUsersByEmail Method from DAO layer             13-noiembrie-2020 vineri EET 13:53:11        
+[INFO]        app.bankingApp.presenter.implementation.MainMenuPresenterImpl       Login successful!
+             13-noiembrie-2020 vineri EET 13:53:11        
+[INFO]        app.bankingApp.presenter.implementation.MainMenuPresenterImpl       User logged in successfully with the following details:             13-noiembrie-2020 vineri EET 13:53:11        
+[INFO]        app.bankingApp.presenter.implementation.MainMenuPresenterImpl       User id: 20 | Admin Bank | admin@bank.com | J, 12 noiembrie 2020             13-noiembrie-2020 vineri EET 13:53:11        
+[INFO]        app.bankingApp.presenter.implementation.MainMenuPresenterImpl       This user is an employee, with role: EMPLOYEE
+             13-noiembrie-2020 vineri EET 13:53:11        
+[INFO]        app.bankingApp.presenter.implementation.MainMenuPresenterImpl       Method <Approve Customer Account for NonCustomer User> will approve or reject the User's request to become a new Customer!             13-noiembrie-2020 vineri EET 13:53:17        
+[INFO]        app.bankingApp.presenter.implementation.MainMenuPresenterImpl       Here is the getUsersFromApprovalTable Method from Service layer             13-noiembrie-2020 vineri EET 13:53:17        
+[INFO]        app.bankingApp.presenter.implementation.MainMenuPresenterImpl       Here is the getUsersFromApprovalTable Method from DAO layer             13-noiembrie-2020 vineri EET 13:53:17        
+[INFO]        app.bankingApp.presenter.implementation.MainMenuPresenterImpl       We found 1 users in the DB waiting to get their Customer status/account approved... Detailed list is:             13-noiembrie-2020 vineri EET 13:53:17        
+[INFO]        app.bankingApp.presenter.implementation.MainMenuPresenterImpl       User: 4 | Don Donson | Email: d@d.com | User Status: NONCUSTOMER | Approval Status: PENDING             13-noiembrie-2020 vineri EET 13:53:17        
+[INFO]        app.bankingApp.presenter.implementation.MainMenuPresenterImpl       Method <Approve New Bank Account> will approve or reject Customer's request to open a new bank account!             13-noiembrie-2020 vineri EET 13:53:26        
+[INFO]        app.bankingApp.presenter.implementation.MainMenuPresenterImpl       Retrieve and display a list with all Users that request that their new Bank Accounts created to be approved.             13-noiembrie-2020 vineri EET 13:53:26        
+[INFO]        app.bankingApp.presenter.implementation.MainMenuPresenterImpl       Here is the getBankAccountsFromApprovalTable Method from Service layer             13-noiembrie-2020 vineri EET 13:53:26        
+[INFO]        app.bankingApp.presenter.implementation.MainMenuPresenterImpl       Here is the getBankAccountsFromApprovalTable Method from DAO layer             13-noiembrie-2020 vineri EET 13:53:26        
+[INFO]        app.bankingApp.presenter.implementation.MainMenuPresenterImpl       We found 2 new bank accounts in the DB waiting to get their status approved... Detailed list is:             13-noiembrie-2020 vineri EET 13:53:26        
+[INFO]        app.bankingApp.presenter.implementation.MainMenuPresenterImpl       User: 20 | Admin Bank | New Bank Account Id: 2 | New Bank Account Number: 100092912 | New Bank Account Owner Id: 21 | New Bank Account Status: PENDING | Approval Status: PENDING             13-noiembrie-2020 vineri EET 13:53:26        
+[INFO]        app.bankingApp.presenter.implementation.MainMenuPresenterImpl       User: 20 | Admin Bank | New Bank Account Id: 3 | New Bank Account Number: 100590363 | New Bank Account Owner Id: 22 | New Bank Account Status: PENDING | Approval Status: PENDING             13-noiembrie-2020 vineri EET 13:53:26        
+[INFO]        app.bankingApp.presenter.implementation.MainMenuPresenterImpl       Here is the <Get Bank Account By Id> method from DAO layer             13-noiembrie-2020 vineri EET 13:53:54        
+[INFO]        app.bankingApp.presenter.implementation.MainMenuPresenterImpl       Bank Account found with id 2 details are :              13-noiembrie-2020 vineri EET 13:53:54        
+[INFO]        app.bankingApp.presenter.implementation.MainMenuPresenterImpl       User: 20 | Admin Bank | New Bank Account Id: 2 | New Bank Account Number: 100092912 | New Bank Account Owner Id: 0 | New Bank Account Approval Status Pending?: false | Approval Status: false             13-noiembrie-2020 vineri EET 13:53:54        
+[INFO]        app.bankingApp.presenter.implementation.MainMenuPresenterImpl       Here is the Update Bank Account approval status method from Service layer             13-noiembrie-2020 vineri EET 13:54:28        
+[INFO]        app.bankingApp.presenter.implementation.MainMenuPresenterImpl       Here is the <Change Bank Account Status> method from DAO layer             13-noiembrie-2020 vineri EET 13:54:28        
+[ERROR]        app.bankingApp.presenter.implementation.MainMenuPresenterImpl       Error occured in UPDATEBANKACCOUNTSTATUS sql!             13-noiembrie-2020 vineri EET 13:54:28        
+[INFO]        app.bankingApp.presenter.implementation.MainMenuPresenterImpl       Method <User login> will allow a registered user to login!             13-noiembrie-2020 vineri EET 14:14:54        
+[INFO]        app.bankingApp.presenter.implementation.MainMenuPresenterImpl       Here is the getUsersByEmail Method from Service layer             13-noiembrie-2020 vineri EET 14:15:01        
+[INFO]        app.bankingApp.presenter.implementation.MainMenuPresenterImpl       Here is the getUsersByEmail Method from DAO layer             13-noiembrie-2020 vineri EET 14:15:01        
+[WARN]        app.bankingApp.presenter.implementation.MainMenuPresenterImpl       Login failed. Credentials are not correct. Please try again.
+             13-noiembrie-2020 vineri EET 14:15:01        
+[INFO]        app.bankingApp.presenter.implementation.MainMenuPresenterImpl       Method <User login> will allow a registered user to login!             13-noiembrie-2020 vineri EET 14:15:11        
+[INFO]        app.bankingApp.presenter.implementation.MainMenuPresenterImpl       Here is the getUsersByEmail Method from Service layer             13-noiembrie-2020 vineri EET 14:15:29        
+[INFO]        app.bankingApp.presenter.implementation.MainMenuPresenterImpl       Here is the getUsersByEmail Method from DAO layer             13-noiembrie-2020 vineri EET 14:15:29        
+[INFO]        app.bankingApp.presenter.implementation.MainMenuPresenterImpl       Login successful!
+             13-noiembrie-2020 vineri EET 14:15:29        
+[INFO]        app.bankingApp.presenter.implementation.MainMenuPresenterImpl       User logged in successfully with the following details:             13-noiembrie-2020 vineri EET 14:15:29        
+[INFO]        app.bankingApp.presenter.implementation.MainMenuPresenterImpl       User id: 20 | Admin Bank | admin@bank.com | J, 12 noiembrie 2020             13-noiembrie-2020 vineri EET 14:15:29        
+[INFO]        app.bankingApp.presenter.implementation.MainMenuPresenterImpl       This user is an employee, with role: EMPLOYEE
+             13-noiembrie-2020 vineri EET 14:15:29        
+[INFO]        app.bankingApp.presenter.implementation.MainMenuPresenterImpl       Method <Approve New Bank Account> will approve or reject Customer's request to open a new bank account!             13-noiembrie-2020 vineri EET 14:15:36        
+[INFO]        app.bankingApp.presenter.implementation.MainMenuPresenterImpl       Retrieve and display a list with all Users that request that their new Bank Accounts created to be approved.             13-noiembrie-2020 vineri EET 14:15:36        
+[INFO]        app.bankingApp.presenter.implementation.MainMenuPresenterImpl       Here is the getBankAccountsFromApprovalTable Method from Service layer             13-noiembrie-2020 vineri EET 14:15:36        
+[INFO]        app.bankingApp.presenter.implementation.MainMenuPresenterImpl       Here is the getBankAccountsFromApprovalTable Method from DAO layer             13-noiembrie-2020 vineri EET 14:15:36        
+[INFO]        app.bankingApp.presenter.implementation.MainMenuPresenterImpl       We found 2 new bank accounts in the DB waiting to get their status approved... Detailed list is:             13-noiembrie-2020 vineri EET 14:15:36        
+[INFO]        app.bankingApp.presenter.implementation.MainMenuPresenterImpl       User: 20 | Admin Bank | New Bank Account Details: | Id: 3 | Account Number: 100590363 | Owner Id: 22 | Account Status: PENDING | Approval Status: PENDING             13-noiembrie-2020 vineri EET 14:15:36        
+[INFO]        app.bankingApp.presenter.implementation.MainMenuPresenterImpl       User: 20 | Admin Bank | New Bank Account Details: | Id: 4 | Account Number: 100410664 | Owner Id: 21 | Account Status: PENDING | Approval Status: PENDING             13-noiembrie-2020 vineri EET 14:15:36        
+[INFO]        app.bankingApp.presenter.implementation.MainMenuPresenterImpl       Here is the <Get Bank Account By Id> method from DAO layer             13-noiembrie-2020 vineri EET 14:17:56        
+[INFO]        app.bankingApp.presenter.implementation.MainMenuPresenterImpl       Bank Account found with id 3 details are :              13-noiembrie-2020 vineri EET 14:17:56        
+[INFO]        app.bankingApp.presenter.implementation.MainMenuPresenterImpl       User: 20 | Admin Bank | New bank account details: | Id: 3 | Account Number: 100590363 | Owner Id: 0 | Account Approval Status Pending?: false | Approval Status: false             13-noiembrie-2020 vineri EET 14:17:56        
+[INFO]        app.bankingApp.presenter.implementation.MainMenuPresenterImpl       Here is the Update Bank Account approval status method from Service layer             13-noiembrie-2020 vineri EET 14:18:10        
+[INFO]        app.bankingApp.presenter.implementation.MainMenuPresenterImpl       Here is the <Change Bank Account Status> method from DAO layer             13-noiembrie-2020 vineri EET 14:18:10        
+[ERROR]        app.bankingApp.presenter.implementation.MainMenuPresenterImpl       Error occured in UPDATEBANKACCOUNTSTATUS sql!             13-noiembrie-2020 vineri EET 14:18:10        
+[INFO]        app.bankingApp.presenter.implementation.MainMenuPresenterImpl       Method <User login> will allow a registered user to login!             13-noiembrie-2020 vineri EET 14:26:31        
+[INFO]        app.bankingApp.presenter.implementation.MainMenuPresenterImpl       Here is the getUsersByEmail Method from Service layer             13-noiembrie-2020 vineri EET 14:26:48        
+[INFO]        app.bankingApp.presenter.implementation.MainMenuPresenterImpl       Here is the getUsersByEmail Method from DAO layer             13-noiembrie-2020 vineri EET 14:26:48        
+[INFO]        app.bankingApp.presenter.implementation.MainMenuPresenterImpl       Login successful!
+             13-noiembrie-2020 vineri EET 14:26:48        
+[INFO]        app.bankingApp.presenter.implementation.MainMenuPresenterImpl       User logged in successfully with the following details:             13-noiembrie-2020 vineri EET 14:26:48        
+[INFO]        app.bankingApp.presenter.implementation.MainMenuPresenterImpl       User id: 20 | Admin Bank | admin@bank.com | J, 12 noiembrie 2020             13-noiembrie-2020 vineri EET 14:26:48        
+[INFO]        app.bankingApp.presenter.implementation.MainMenuPresenterImpl       This user is an employee, with role: EMPLOYEE
+             13-noiembrie-2020 vineri EET 14:26:48        
+[INFO]        app.bankingApp.presenter.implementation.MainMenuPresenterImpl       Method <Approve New Bank Account> will approve or reject Customer's request to open a new bank account!             13-noiembrie-2020 vineri EET 14:26:51        
+[INFO]        app.bankingApp.presenter.implementation.MainMenuPresenterImpl       Retrieve and display a list with all Users that request that their new Bank Accounts created to be approved.             13-noiembrie-2020 vineri EET 14:26:51        
+[INFO]        app.bankingApp.presenter.implementation.MainMenuPresenterImpl       Here is the getBankAccountsFromApprovalTable Method from Service layer             13-noiembrie-2020 vineri EET 14:26:51        
+[INFO]        app.bankingApp.presenter.implementation.MainMenuPresenterImpl       Here is the getBankAccountsFromApprovalTable Method from DAO layer             13-noiembrie-2020 vineri EET 14:26:51        
+[INFO]        app.bankingApp.presenter.implementation.MainMenuPresenterImpl       We found 1 new bank accounts in the DB waiting to get their status approved... Detailed list is:             13-noiembrie-2020 vineri EET 14:26:51        
+[INFO]        app.bankingApp.presenter.implementation.MainMenuPresenterImpl       User: 20 | Admin Bank | New Bank Account Details: | Id: 4 | Account Number: 100410664 | Owner Id: 21 | Account Status: PENDING | Approval Status: PENDING             13-noiembrie-2020 vineri EET 14:26:51        
+[INFO]        app.bankingApp.presenter.implementation.MainMenuPresenterImpl       Here is the <Get Bank Account By Id> method from DAO layer             13-noiembrie-2020 vineri EET 14:28:46        
+[INFO]        app.bankingApp.presenter.implementation.MainMenuPresenterImpl       Bank Account found with id 4 details are :              13-noiembrie-2020 vineri EET 14:28:46        
+[INFO]        app.bankingApp.presenter.implementation.MainMenuPresenterImpl       User: 20 | Admin Bank | New bank account details: | Id: 4 | Account Number: 100410664 | Owner Id: 21 | Account Approval Status Pending?: false | Approval Status: false             13-noiembrie-2020 vineri EET 14:28:46        
+[INFO]        app.bankingApp.presenter.implementation.MainMenuPresenterImpl       Here is the Update Bank Account approval status method from Service layer             13-noiembrie-2020 vineri EET 14:28:52        
+[INFO]        app.bankingApp.presenter.implementation.MainMenuPresenterImpl       Here is the <Change Bank Account Status> method from DAO layer             13-noiembrie-2020 vineri EET 14:28:52        
+[ERROR]        app.bankingApp.presenter.implementation.MainMenuPresenterImpl       Error occured in UPDATEBANKACCOUNTSTATUS sql!             13-noiembrie-2020 vineri EET 14:28:52        
+[INFO]        app.bankingApp.presenter.implementation.MainMenuPresenterImpl       Method <View Bank Account> allows an Employee to see an User's Bank Accounts!             13-noiembrie-2020 vineri EET 19:23:19        
+[INFO]        app.bankingApp.presenter.implementation.MainMenuPresenterImpl       View Bank Accounts by User method allows a Bank Employee to see the Bank Accounts of a specified User.             13-noiembrie-2020 vineri EET 19:23:19        
+[INFO]        app.bankingApp.presenter.implementation.MainMenuPresenterImpl       Here is the <Get Use By ID> Method from Service layer             13-noiembrie-2020 vineri EET 19:23:21        
+[INFO]        app.bankingApp.presenter.implementation.MainMenuPresenterImpl       Here is the <Get User By Id> method from DAO layer             13-noiembrie-2020 vineri EET 19:23:21        
+[ERROR]        app.bankingApp.presenter.implementation.MainMenuPresenterImpl       org.postgresql.util.PSQLException: ERROR: operator does not exist: character varying = integer
+  Hint: No operator matches the given name and argument type(s). You might need to add explicit type casts.
+  Position: 226             13-noiembrie-2020 vineri EET 19:23:21        
+[INFO]        app.bankingApp.presenter.implementation.MainMenuPresenterImpl       Method <User login> will allow a registered user to login!             13-noiembrie-2020 vineri EET 21:15:48        
+[INFO]        app.bankingApp.presenter.implementation.MainMenuPresenterImpl       Here is the getUsersByEmail Method from Service layer             13-noiembrie-2020 vineri EET 21:16:04        
+[INFO]        app.bankingApp.presenter.implementation.MainMenuPresenterImpl       Here is the getUsersByEmail Method from DAO layer             13-noiembrie-2020 vineri EET 21:16:04        
+[INFO]        app.bankingApp.presenter.implementation.MainMenuPresenterImpl       Login successful!
+             13-noiembrie-2020 vineri EET 21:16:04        
+[INFO]        app.bankingApp.presenter.implementation.MainMenuPresenterImpl       
+User logged in successfully with the following details:             13-noiembrie-2020 vineri EET 21:16:04        
+[INFO]        app.bankingApp.presenter.implementation.MainMenuPresenterImpl       User id: 20 | Admin Bank | admin@bank.com | J, 12 noiembrie 2020             13-noiembrie-2020 vineri EET 21:16:04        
+[INFO]        app.bankingApp.presenter.implementation.MainMenuPresenterImpl       This user is an employee, with role: EMPLOYEE
+             13-noiembrie-2020 vineri EET 21:16:04        
+[INFO]        app.bankingApp.presenter.implementation.MainMenuPresenterImpl       
+Method <View Bank Account> allows an Employee to see an User's Bank Accounts!             13-noiembrie-2020 vineri EET 21:16:08        
+[INFO]        app.bankingApp.presenter.implementation.MainMenuPresenterImpl       View Bank Accounts by User method allows a Bank Employee to see the Bank Accounts of a specified User.             13-noiembrie-2020 vineri EET 21:16:08        
+[INFO]        app.bankingApp.presenter.implementation.MainMenuPresenterImpl       Here is the <Get Use By ID> Method from Service layer             13-noiembrie-2020 vineri EET 21:16:10        
+[INFO]        app.bankingApp.presenter.implementation.MainMenuPresenterImpl       Here is the <Get User By Id> method from DAO layer             13-noiembrie-2020 vineri EET 21:16:10        
+[ERROR]        app.bankingApp.presenter.implementation.MainMenuPresenterImpl       org.postgresql.util.PSQLException: ERROR: operator does not exist: character varying = integer
+  Hint: No operator matches the given name and argument type(s). You might need to add explicit type casts.
+  Position: 247             13-noiembrie-2020 vineri EET 21:16:10        
+[INFO]        app.bankingApp.presenter.implementation.MainMenuPresenterImpl       Method <User login> will allow a registered user to login!             13-noiembrie-2020 vineri EET 21:18:23        
+[INFO]        app.bankingApp.presenter.implementation.MainMenuPresenterImpl       Here is the getUsersByEmail Method from Service layer             13-noiembrie-2020 vineri EET 21:18:35        
+[INFO]        app.bankingApp.presenter.implementation.MainMenuPresenterImpl       Here is the getUsersByEmail Method from DAO layer             13-noiembrie-2020 vineri EET 21:18:35        
+[INFO]        app.bankingApp.presenter.implementation.MainMenuPresenterImpl       Login successful!
+             13-noiembrie-2020 vineri EET 21:18:36        
+[INFO]        app.bankingApp.presenter.implementation.MainMenuPresenterImpl       
+User logged in successfully with the following details:             13-noiembrie-2020 vineri EET 21:18:36        
+[INFO]        app.bankingApp.presenter.implementation.MainMenuPresenterImpl       User id: 20 | Admin Bank | admin@bank.com | J, 12 noiembrie 2020             13-noiembrie-2020 vineri EET 21:18:36        
+[INFO]        app.bankingApp.presenter.implementation.MainMenuPresenterImpl       This user is an employee, with role: EMPLOYEE
+             13-noiembrie-2020 vineri EET 21:18:36        
+[INFO]        app.bankingApp.presenter.implementation.MainMenuPresenterImpl       
+Method <View Bank Account> allows an Employee to see an User's Bank Accounts!             13-noiembrie-2020 vineri EET 21:18:39        
+[INFO]        app.bankingApp.presenter.implementation.MainMenuPresenterImpl       View Bank Accounts by User method allows a Bank Employee to see the Bank Accounts of a specified User.             13-noiembrie-2020 vineri EET 21:18:39        
+[INFO]        app.bankingApp.presenter.implementation.MainMenuPresenterImpl       Here is the <Get Use By ID> Method from Service layer             13-noiembrie-2020 vineri EET 21:18:41        
+[INFO]        app.bankingApp.presenter.implementation.MainMenuPresenterImpl       Here is the <Get User By Id> method from DAO layer             13-noiembrie-2020 vineri EET 21:18:41        
+[ERROR]        app.bankingApp.presenter.implementation.MainMenuPresenterImpl       org.postgresql.util.PSQLException: ERROR: operator does not exist: character varying = integer
+  Hint: No operator matches the given name and argument type(s). You might need to add explicit type casts.
+  Position: 247             13-noiembrie-2020 vineri EET 21:18:41        
+[INFO]        app.bankingApp.presenter.implementation.MainMenuPresenterImpl       Method <User login> will allow a registered user to login!             13-noiembrie-2020 vineri EET 21:27:57        
+[INFO]        app.bankingApp.presenter.implementation.MainMenuPresenterImpl       Here is the getUsersByEmail Method from Service layer             13-noiembrie-2020 vineri EET 21:28:05        
+[INFO]        app.bankingApp.presenter.implementation.MainMenuPresenterImpl       Here is the getUsersByEmail Method from DAO layer             13-noiembrie-2020 vineri EET 21:28:05        
+[INFO]        app.bankingApp.presenter.implementation.MainMenuPresenterImpl       Login successful!
+             13-noiembrie-2020 vineri EET 21:28:06        
+[INFO]        app.bankingApp.presenter.implementation.MainMenuPresenterImpl       
+User logged in successfully with the following details:             13-noiembrie-2020 vineri EET 21:28:06        
+[INFO]        app.bankingApp.presenter.implementation.MainMenuPresenterImpl       User id: 20 | Admin Bank | admin@bank.com | J, 12 noiembrie 2020             13-noiembrie-2020 vineri EET 21:28:06        
+[INFO]        app.bankingApp.presenter.implementation.MainMenuPresenterImpl       This user is an employee, with role: EMPLOYEE
+             13-noiembrie-2020 vineri EET 21:28:06        
+[INFO]        app.bankingApp.presenter.implementation.MainMenuPresenterImpl       
+Method <View Bank Account> allows an Employee to see an User's Bank Accounts!             13-noiembrie-2020 vineri EET 21:28:12        
+[INFO]        app.bankingApp.presenter.implementation.MainMenuPresenterImpl       View Bank Accounts by User method allows a Bank Employee to see the Bank Accounts of a specified User.             13-noiembrie-2020 vineri EET 21:28:12        
+[INFO]        app.bankingApp.presenter.implementation.MainMenuPresenterImpl       Here is the <Get Use By ID> Method from Service layer             13-noiembrie-2020 vineri EET 21:28:15        
+[INFO]        app.bankingApp.presenter.implementation.MainMenuPresenterImpl       Here is the <Get User By Id> method from DAO layer             13-noiembrie-2020 vineri EET 21:28:15        
+[INFO]        app.bankingApp.presenter.implementation.MainMenuPresenterImpl       We found 2 bank accounts opened by the User: Ron Ronson... Detailed list is:             13-noiembrie-2020 vineri EET 21:28:15        
+[INFO]        app.bankingApp.presenter.implementation.MainMenuPresenterImpl       Bank Account Id: 2 | Bank Account Number: 100092912 | Bank Account active since: J, 12 noiembrie 2020 | Bank Account status: APPROVED | Bank Account Balance: 0.0             13-noiembrie-2020 vineri EET 21:28:15        
+[INFO]        app.bankingApp.presenter.implementation.MainMenuPresenterImpl       Bank Account Id: 4 | Bank Account Number: 100410664 | Bank Account active since: V, 13 noiembrie 2020 | Bank Account status: DECLINED | Bank Account Balance: 0.0             13-noiembrie-2020 vineri EET 21:28:15        
+[INFO]        app.bankingApp.presenter.implementation.MainMenuPresenterImpl       Method <User login> will allow a registered user to login!             13-noiembrie-2020 vineri EET 21:32:00        
+[INFO]        app.bankingApp.presenter.implementation.MainMenuPresenterImpl       Here is the getUsersByEmail Method from Service layer             13-noiembrie-2020 vineri EET 21:32:21        
+[INFO]        app.bankingApp.presenter.implementation.MainMenuPresenterImpl       Here is the getUsersByEmail Method from DAO layer             13-noiembrie-2020 vineri EET 21:32:21        
+[INFO]        app.bankingApp.presenter.implementation.MainMenuPresenterImpl       Login successful!
+             13-noiembrie-2020 vineri EET 21:32:21        
+[INFO]        app.bankingApp.presenter.implementation.MainMenuPresenterImpl       
+User logged in successfully with the following details:             13-noiembrie-2020 vineri EET 21:32:21        
+[INFO]        app.bankingApp.presenter.implementation.MainMenuPresenterImpl       User id: 21 | Ron Ronson | r@r.com | J, 12 noiembrie 2020             13-noiembrie-2020 vineri EET 21:32:21        
+[INFO]        app.bankingApp.presenter.implementation.MainMenuPresenterImpl       This customer has a bank account created and has status: CUSTOMER
+             13-noiembrie-2020 vineri EET 21:32:21        
+[INFO]        app.bankingApp.presenter.implementation.MainMenuPresenterImpl       Method <View Bank Account Balance> allows User to see Bank Account balance!             13-noiembrie-2020 vineri EET 21:32:25        
+[INFO]        app.bankingApp.presenter.implementation.MainMenuPresenterImpl       View Bank Account Balance method allows a User to see the balance of one of his/her Bank Accounts.             13-noiembrie-2020 vineri EET 21:32:25        
+[INFO]        app.bankingApp.presenter.implementation.MainMenuPresenterImpl       We found 2 bank accounts opened by the User: Ron Ronson... Detailed list is:             13-noiembrie-2020 vineri EET 21:32:25        
+[INFO]        app.bankingApp.presenter.implementation.MainMenuPresenterImpl       Bank Account Id: 2 | Bank Account Number: 100092912 | Account active since: J, 12 noiembrie 2020 | Bank Account Balance: 0.0             13-noiembrie-2020 vineri EET 21:32:25        
+[INFO]        app.bankingApp.presenter.implementation.MainMenuPresenterImpl       Bank Account Id: 4 | Bank Account Number: 100410664 | Account active since: V, 13 noiembrie 2020 | Bank Account Balance: 0.0             13-noiembrie-2020 vineri EET 21:32:25        
+[INFO]        app.bankingApp.presenter.implementation.MainMenuPresenterImpl       Method <User login> will allow a registered user to login!             13-noiembrie-2020 vineri EET 22:26:35        
+[INFO]        app.bankingApp.presenter.implementation.MainMenuPresenterImpl       Here is the getUsersByEmail Method from Service layer             13-noiembrie-2020 vineri EET 22:26:45        
+[INFO]        app.bankingApp.presenter.implementation.MainMenuPresenterImpl       Here is the getUsersByEmail Method from DAO layer             13-noiembrie-2020 vineri EET 22:26:45        
+[INFO]        app.bankingApp.presenter.implementation.MainMenuPresenterImpl       Login successful!
+             13-noiembrie-2020 vineri EET 22:26:45        
+[INFO]        app.bankingApp.presenter.implementation.MainMenuPresenterImpl       
+User logged in successfully with the following details:             13-noiembrie-2020 vineri EET 22:26:45        
+[INFO]        app.bankingApp.presenter.implementation.MainMenuPresenterImpl       User id: 21 | Ron Ronson | r@r.com | J, 12 noiembrie 2020             13-noiembrie-2020 vineri EET 22:26:45        
+[INFO]        app.bankingApp.presenter.implementation.MainMenuPresenterImpl       This customer has a bank account created and has status: CUSTOMER
+             13-noiembrie-2020 vineri EET 22:26:45        
+[INFO]        app.bankingApp.presenter.implementation.MainMenuPresenterImpl       Method <Deposit amount in Bank Account> allows a Customer to deposit funds into a selected Bank Account he/she owns!             13-noiembrie-2020 vineri EET 22:26:50        
+[INFO]        app.bankingApp.presenter.implementation.MainMenuPresenterImpl       We found 2 bank accounts opened by the User: Ron Ronson... Detailed list is:             13-noiembrie-2020 vineri EET 22:26:50        
+[INFO]        app.bankingApp.presenter.implementation.MainMenuPresenterImpl       Bank Account Id: 2 | Bank Account Number: 100092912 | Account active since: J, 12 noiembrie 2020 | Bank Account status: APPROVED | Bank Account Balance: 0.0             13-noiembrie-2020 vineri EET 22:26:50        
+[INFO]        app.bankingApp.presenter.implementation.MainMenuPresenterImpl       Bank Account Id: 4 | Bank Account Number: 100410664 | Account active since: V, 13 noiembrie 2020 | Bank Account status: DECLINED | Bank Account Balance: 0.0             13-noiembrie-2020 vineri EET 22:26:50        
+[INFO]        app.bankingApp.presenter.implementation.MainMenuPresenterImpl       Here is the <Get Bank Account By Id> method from DAO layer             13-noiembrie-2020 vineri EET 22:26:59        
+[INFO]        app.bankingApp.presenter.implementation.MainMenuPresenterImpl       Here is the <Get Bank Account By Id> method from DAO layer             13-noiembrie-2020 vineri EET 22:27:13        
+[INFO]        app.bankingApp.presenter.implementation.MainMenuPresenterImpl       Method <User login> will allow a registered user to login!             13-noiembrie-2020 vineri EET 22:30:46        
+[INFO]        app.bankingApp.presenter.implementation.MainMenuPresenterImpl       Here is the getUsersByEmail Method from Service layer             13-noiembrie-2020 vineri EET 22:30:51        
+[INFO]        app.bankingApp.presenter.implementation.MainMenuPresenterImpl       Here is the getUsersByEmail Method from DAO layer             13-noiembrie-2020 vineri EET 22:30:51        
+[INFO]        app.bankingApp.presenter.implementation.MainMenuPresenterImpl       Login successful!
+             13-noiembrie-2020 vineri EET 22:30:51        
+[INFO]        app.bankingApp.presenter.implementation.MainMenuPresenterImpl       
+User logged in successfully with the following details:             13-noiembrie-2020 vineri EET 22:30:51        
+[INFO]        app.bankingApp.presenter.implementation.MainMenuPresenterImpl       User id: 21 | Ron Ronson | r@r.com | J, 12 noiembrie 2020             13-noiembrie-2020 vineri EET 22:30:51        
+[INFO]        app.bankingApp.presenter.implementation.MainMenuPresenterImpl       This customer has a bank account created and has status: CUSTOMER
+             13-noiembrie-2020 vineri EET 22:30:51        
+[INFO]        app.bankingApp.presenter.implementation.MainMenuPresenterImpl       Method <Deposit amount in Bank Account> allows a Customer to deposit funds into a selected Bank Account he/she owns!             13-noiembrie-2020 vineri EET 22:30:53        
+[INFO]        app.bankingApp.presenter.implementation.MainMenuPresenterImpl       We found 2 bank accounts opened by the User: Ron Ronson... Detailed list is:             13-noiembrie-2020 vineri EET 22:30:53        
+[INFO]        app.bankingApp.presenter.implementation.MainMenuPresenterImpl       Bank Account Id: 2 | Bank Account Number: 100092912 | Account active since: J, 12 noiembrie 2020 | Bank Account status: APPROVED | Bank Account Balance: 0.0             13-noiembrie-2020 vineri EET 22:30:53        
+[INFO]        app.bankingApp.presenter.implementation.MainMenuPresenterImpl       Bank Account Id: 4 | Bank Account Number: 100410664 | Account active since: V, 13 noiembrie 2020 | Bank Account status: DECLINED | Bank Account Balance: 0.0             13-noiembrie-2020 vineri EET 22:30:53        
+[INFO]        app.bankingApp.presenter.implementation.MainMenuPresenterImpl       Here is the <Get Bank Account By Id> method from DAO layer             13-noiembrie-2020 vineri EET 22:30:57        
+[INFO]        app.bankingApp.presenter.implementation.MainMenuPresenterImpl       Method <User login> will allow a registered user to login!             13-noiembrie-2020 vineri EET 22:31:34        
+[INFO]        app.bankingApp.presenter.implementation.MainMenuPresenterImpl       Here is the getUsersByEmail Method from Service layer             13-noiembrie-2020 vineri EET 22:31:39        
+[INFO]        app.bankingApp.presenter.implementation.MainMenuPresenterImpl       Here is the getUsersByEmail Method from DAO layer             13-noiembrie-2020 vineri EET 22:31:39        
+[WARN]        app.bankingApp.presenter.implementation.MainMenuPresenterImpl       Login failed. Credentials are not correct. Please try again.
+             13-noiembrie-2020 vineri EET 22:31:39        
+[INFO]        app.bankingApp.presenter.implementation.MainMenuPresenterImpl       Method <User login> will allow a registered user to login!             13-noiembrie-2020 vineri EET 22:31:52        
+[INFO]        app.bankingApp.presenter.implementation.MainMenuPresenterImpl       Here is the getUsersByEmail Method from Service layer             13-noiembrie-2020 vineri EET 22:32:00        
+[INFO]        app.bankingApp.presenter.implementation.MainMenuPresenterImpl       Here is the getUsersByEmail Method from DAO layer             13-noiembrie-2020 vineri EET 22:32:00        
+[WARN]        app.bankingApp.presenter.implementation.MainMenuPresenterImpl       Login failed. Credentials are not correct. Please try again.
+             13-noiembrie-2020 vineri EET 22:32:00        
+[INFO]        app.bankingApp.presenter.implementation.MainMenuPresenterImpl       Method <User login> will allow a registered user to login!             13-noiembrie-2020 vineri EET 22:32:12        
+[INFO]        app.bankingApp.presenter.implementation.MainMenuPresenterImpl       Here is the getUsersByEmail Method from Service layer             13-noiembrie-2020 vineri EET 22:32:17        
+[INFO]        app.bankingApp.presenter.implementation.MainMenuPresenterImpl       Here is the getUsersByEmail Method from DAO layer             13-noiembrie-2020 vineri EET 22:32:17        
+[WARN]        app.bankingApp.presenter.implementation.MainMenuPresenterImpl       Login failed. Credentials are not correct. Please try again.
+             13-noiembrie-2020 vineri EET 22:32:17        
+[INFO]        app.bankingApp.presenter.implementation.MainMenuPresenterImpl       Method <User login> will allow a registered user to login!             13-noiembrie-2020 vineri EET 22:32:32        
+[INFO]        app.bankingApp.presenter.implementation.MainMenuPresenterImpl       Here is the getUsersByEmail Method from Service layer             13-noiembrie-2020 vineri EET 22:32:37        
+[INFO]        app.bankingApp.presenter.implementation.MainMenuPresenterImpl       Here is the getUsersByEmail Method from DAO layer             13-noiembrie-2020 vineri EET 22:32:37        
+[INFO]        app.bankingApp.presenter.implementation.MainMenuPresenterImpl       Login successful!
+             13-noiembrie-2020 vineri EET 22:32:37        
+[INFO]        app.bankingApp.presenter.implementation.MainMenuPresenterImpl       
+User logged in successfully with the following details:             13-noiembrie-2020 vineri EET 22:32:37        
+[INFO]        app.bankingApp.presenter.implementation.MainMenuPresenterImpl       User id: 21 | Ron Ronson | r@r.com | J, 12 noiembrie 2020             13-noiembrie-2020 vineri EET 22:32:37        
+[INFO]        app.bankingApp.presenter.implementation.MainMenuPresenterImpl       This customer has a bank account created and has status: CUSTOMER
+             13-noiembrie-2020 vineri EET 22:32:37        
+[INFO]        app.bankingApp.presenter.implementation.MainMenuPresenterImpl       Method <Deposit amount in Bank Account> allows a Customer to deposit funds into a selected Bank Account he/she owns!             13-noiembrie-2020 vineri EET 22:32:39        
+[INFO]        app.bankingApp.presenter.implementation.MainMenuPresenterImpl       We found 2 bank accounts opened by the User: Ron Ronson... Detailed list is:             13-noiembrie-2020 vineri EET 22:32:39        
+[INFO]        app.bankingApp.presenter.implementation.MainMenuPresenterImpl       Bank Account Id: 2 | Bank Account Number: 100092912 | Account active since: J, 12 noiembrie 2020 | Bank Account status: APPROVED | Bank Account Balance: 0.0             13-noiembrie-2020 vineri EET 22:32:39        
+[INFO]        app.bankingApp.presenter.implementation.MainMenuPresenterImpl       Bank Account Id: 4 | Bank Account Number: 100410664 | Account active since: V, 13 noiembrie 2020 | Bank Account status: DECLINED | Bank Account Balance: 0.0             13-noiembrie-2020 vineri EET 22:32:39        
+[INFO]        app.bankingApp.presenter.implementation.MainMenuPresenterImpl       Here is the <Get Bank Account By Id> method from DAO layer             13-noiembrie-2020 vineri EET 22:32:52        
+[INFO]        app.bankingApp.presenter.implementation.MainMenuPresenterImpl       Method <User login> will allow a registered user to login!             13-noiembrie-2020 vineri EET 22:37:38        
+[INFO]        app.bankingApp.presenter.implementation.MainMenuPresenterImpl       Here is the getUsersByEmail Method from Service layer             13-noiembrie-2020 vineri EET 22:37:43        
+[INFO]        app.bankingApp.presenter.implementation.MainMenuPresenterImpl       Here is the getUsersByEmail Method from DAO layer             13-noiembrie-2020 vineri EET 22:37:43        
+[WARN]        app.bankingApp.presenter.implementation.MainMenuPresenterImpl       Login failed. Credentials are not correct. Please try again.
+             13-noiembrie-2020 vineri EET 22:37:44        
+[INFO]        app.bankingApp.presenter.implementation.MainMenuPresenterImpl       Method <User login> will allow a registered user to login!             13-noiembrie-2020 vineri EET 22:37:52        
+[INFO]        app.bankingApp.presenter.implementation.MainMenuPresenterImpl       Here is the getUsersByEmail Method from Service layer             13-noiembrie-2020 vineri EET 22:38:04        
+[INFO]        app.bankingApp.presenter.implementation.MainMenuPresenterImpl       Here is the getUsersByEmail Method from DAO layer             13-noiembrie-2020 vineri EET 22:38:04        
+[INFO]        app.bankingApp.presenter.implementation.MainMenuPresenterImpl       Login successful!
+             13-noiembrie-2020 vineri EET 22:38:04        
+[INFO]        app.bankingApp.presenter.implementation.MainMenuPresenterImpl       
+User logged in successfully with the following details:             13-noiembrie-2020 vineri EET 22:38:04        
+[INFO]        app.bankingApp.presenter.implementation.MainMenuPresenterImpl       User id: 21 | Ron Ronson | r@r.com | J, 12 noiembrie 2020             13-noiembrie-2020 vineri EET 22:38:04        
+[INFO]        app.bankingApp.presenter.implementation.MainMenuPresenterImpl       This customer has a bank account created and has status: CUSTOMER
+             13-noiembrie-2020 vineri EET 22:38:04        
+[INFO]        app.bankingApp.presenter.implementation.MainMenuPresenterImpl       Method <Deposit amount in Bank Account> allows a Customer to deposit funds into a selected Bank Account he/she owns!             13-noiembrie-2020 vineri EET 22:38:18        
+[INFO]        app.bankingApp.presenter.implementation.MainMenuPresenterImpl       We found 2 bank accounts opened by the User: Ron Ronson... Detailed list is:             13-noiembrie-2020 vineri EET 22:38:18        
+[INFO]        app.bankingApp.presenter.implementation.MainMenuPresenterImpl       Bank Account Id: 2 | Bank Account Number: 100092912 | Bank Owner id: 21 | Account active since: J, 12 noiembrie 2020 | Bank Account status: APPROVED | Bank Account Balance: 0.0             13-noiembrie-2020 vineri EET 22:38:18        
+[INFO]        app.bankingApp.presenter.implementation.MainMenuPresenterImpl       Bank Account Id: 4 | Bank Account Number: 100410664 | Bank Owner id: 21 | Account active since: V, 13 noiembrie 2020 | Bank Account status: DECLINED | Bank Account Balance: 0.0             13-noiembrie-2020 vineri EET 22:38:18        
+[INFO]        app.bankingApp.presenter.implementation.MainMenuPresenterImpl       Here is the <Get Bank Account By Id> method from DAO layer             13-noiembrie-2020 vineri EET 22:38:27        
+[INFO]        app.bankingApp.presenter.implementation.MainMenuPresenterImpl       Method <User login> will allow a registered user to login!             13-noiembrie-2020 vineri EET 23:14:38        
+[INFO]        app.bankingApp.presenter.implementation.MainMenuPresenterImpl       Here is the getUsersByEmail Method from Service layer             13-noiembrie-2020 vineri EET 23:14:52        
+[INFO]        app.bankingApp.presenter.implementation.MainMenuPresenterImpl       Here is the getUsersByEmail Method from DAO layer             13-noiembrie-2020 vineri EET 23:14:52        
+[INFO]        app.bankingApp.presenter.implementation.MainMenuPresenterImpl       Login successful!
+             13-noiembrie-2020 vineri EET 23:14:52        
+[INFO]        app.bankingApp.presenter.implementation.MainMenuPresenterImpl       
+User logged in successfully with the following details:             13-noiembrie-2020 vineri EET 23:14:52        
+[INFO]        app.bankingApp.presenter.implementation.MainMenuPresenterImpl       User id: 21 | Ron Ronson | r@r.com | J, 12 noiembrie 2020             13-noiembrie-2020 vineri EET 23:14:52        
+[INFO]        app.bankingApp.presenter.implementation.MainMenuPresenterImpl       This customer has a bank account created and has status: CUSTOMER
+             13-noiembrie-2020 vineri EET 23:14:52        
+[INFO]        app.bankingApp.presenter.implementation.MainMenuPresenterImpl       Method <Deposit amount in Bank Account> allows a Customer to deposit funds into a selected Bank Account he/she owns!             13-noiembrie-2020 vineri EET 23:14:55        
+[INFO]        app.bankingApp.presenter.implementation.MainMenuPresenterImpl       We found 2 bank accounts opened by the User: Ron Ronson... Detailed list is:             13-noiembrie-2020 vineri EET 23:14:55        
+[INFO]        app.bankingApp.presenter.implementation.MainMenuPresenterImpl       Bank Account Id: 2 | Bank Account Number: 100092912 | Bank Owner id: 21 | Account active since: J, 12 noiembrie 2020 | Bank Account status: APPROVED | Bank Account Balance: 0.0             13-noiembrie-2020 vineri EET 23:14:55        
+[INFO]        app.bankingApp.presenter.implementation.MainMenuPresenterImpl       Bank Account Id: 4 | Bank Account Number: 100410664 | Bank Owner id: 21 | Account active since: V, 13 noiembrie 2020 | Bank Account status: DECLINED | Bank Account Balance: 0.0             13-noiembrie-2020 vineri EET 23:14:55        
+[INFO]        app.bankingApp.presenter.implementation.MainMenuPresenterImpl       Here is the <Get Bank Account By Id> method from DAO layer             13-noiembrie-2020 vineri EET 23:15:01        
+[INFO]        app.bankingApp.presenter.implementation.MainMenuPresenterImpl       Here is the depositFundsTransaction method from Service layer             13-noiembrie-2020 vineri EET 23:15:17        
+[INFO]        app.bankingApp.presenter.implementation.MainMenuPresenterImpl       Here is the depositFunds method from DAO layer             13-noiembrie-2020 vineri EET 23:15:17        
+[INFO]        app.bankingApp.presenter.implementation.MainMenuPresenterImpl       
+On V, 13 noiembrie 2020, the amount of 500.0 was deposited in your bank account with Bank Account Id: 2 | Bank Account Number: 100092912             13-noiembrie-2020 vineri EET 23:15:17        
+[INFO]        app.bankingApp.presenter.implementation.MainMenuPresenterImpl       Here is the recordTransaction method from Service layer             13-noiembrie-2020 vineri EET 23:15:17        
+[INFO]        app.bankingApp.presenter.implementation.MainMenuPresenterImpl       Here is the recordTransaction method from DAO layer             13-noiembrie-2020 vineri EET 23:15:17        

@@ -1,5 +1,7 @@
 package app.bankingApp.presenter;
 
+//import app.bankingApp.exception.BusinessException;
+
 //import java.util.ArrayList;
 //import java.util.List;
 
@@ -12,6 +14,4 @@ public interface MainMenuPresenter
 	public void createNewUser();
 
 	public User loginUser();
-
-	public Boolean validate(String arg);
 }

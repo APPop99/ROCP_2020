@@ -2,7 +2,7 @@ package app.bankingApp.presenter;
 
 import java.util.List;
 
-import app.bankingApp.exception.BusinessException;
+//import app.bankingApp.exception.BusinessException;
 import app.bankingApp.model.BankAccount;
 import app.bankingApp.model.User;
 
@@ -21,4 +21,8 @@ public interface CustomerMenuPresenter
 	public void updateDepositFundsIntoBankAccount(User userSession);
 
 	public void updateWithdrawFundsFromBankAccount(User userSession);
+
+	public void updatePostFundsTransferFromBankAccount(User userSession);
+
+	public void updateAcceptFundsTransferIntoBankAccount(User userSession);
 }

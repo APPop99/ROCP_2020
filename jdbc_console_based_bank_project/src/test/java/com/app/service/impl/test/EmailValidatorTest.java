@@ -5,21 +5,21 @@ import java.util.Collection;
 
 import static org.junit.Assert.assertEquals;
 import org.junit.BeforeClass;
-import org.junit.jupiter.api.BeforeAll;
+//import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
-import org.junit.jupiter.api.extension.*;
+//import org.junit.jupiter.api.extension.*;
 import org.junit.runner.RunWith;
 import org.junit.runners.Parameterized;
 import org.junit.runners.Parameterized.Parameters;
 
-import app.bankingApp.service.EmailValidatorService;
-import app.bankingApp.service.implementation.EmailValidatorServiceImpl;
+import app.bankingApp.util.ValidatorUtil;
+import app.bankingApp.util.implementation.ValidatorUtilImpl;
 
 @RunWith(Parameterized.class)
 public class EmailValidatorTest 
 {	 
     private String arg;
-    private static EmailValidatorService emailValidator;
+    private static ValidatorUtil emailValidator;
     private Boolean expectedValidation;
  
     public EmailValidatorTest(String str, Boolean expectedValidation) 
@@ -31,7 +31,7 @@ public class EmailValidatorTest
     @BeforeClass
     public static void initialize() 
     {
-        emailValidator = new EmailValidatorServiceImpl();
+        emailValidator = new ValidatorUtilImpl();
     }
  
     @Parameters

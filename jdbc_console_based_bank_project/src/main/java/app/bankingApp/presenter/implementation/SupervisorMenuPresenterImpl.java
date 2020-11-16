@@ -1,6 +1,6 @@
 package app.bankingApp.presenter.implementation;
 
-import app.bankingApp.model.BankAccount;
+//import app.bankingApp.model.BankAccount;
 import app.bankingApp.model.User;
 import app.bankingApp.presenter.SupervisorMenuPresenter;
 

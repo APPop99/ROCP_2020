@@ -174,6 +174,17 @@ public class BankAccount
 		this.accountBalance = accountBalance;	
 	}
 
+	//will be main used constructor (most probably)
+	public BankAccount(int bankAccountId, long bankAccountNumber, double accountBalance, Timestamp dateBankAccountCreation, int accountOwnerId) 
+	{
+		super();
+		this.bankAccountId = bankAccountId;
+		this.bankAccountNumber = bankAccountNumber;
+		this.accountBalance = accountBalance;	
+		this.dateBankAccountCreation = dateBankAccountCreation;
+		this.accountOwnerId = accountOwnerId;	
+	}
+	
 	public BankAccount() 
 	{
 		// TODO Auto-generated constructor stub
@@ -186,6 +197,26 @@ public class BankAccount
 		this.bankAccountNumber = bankAccountNumber;
 		this.accountBalance = accountBalance;
 		this.accountOwnerId = accountOwnerId;
+	}
+
+	public BankAccount(int bankAccountId, long bankAccountNumber, int accountOwnerId, StatusAccount statusBankAccount) 
+	{
+		super();
+		this.bankAccountId = bankAccountId;
+		this.bankAccountNumber = bankAccountNumber;
+		this.accountOwnerId = accountOwnerId;	
+		this.statusBankAccount = statusBankAccount;
+	}
+
+	public BankAccount(int bankAccountId, long bankAccountNumber, int accountOwnerId, Timestamp dateBankAccountCreation, StatusAccount statusBankAccount, double accountBalance) 
+	{
+		super();
+		this.bankAccountId = bankAccountId;
+		this.bankAccountNumber = bankAccountNumber;
+		this.accountOwnerId = accountOwnerId;
+		this.dateBankAccountCreation = dateBankAccountCreation;
+		this.statusBankAccount = statusBankAccount;
+		this.accountBalance = accountBalance;
 	}
 
 	@Override

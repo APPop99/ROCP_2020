@@ -6,7 +6,9 @@ public class BankTransaction
 {
 	private int idTransaction;
 	private BankAccount sourceBankAccount;
+	private int sourceBankAccountId;
 	private BankAccount destinationBankAccount;
+	private int destinationBankAccountId;
 	private double amount;
 	private TransactionType transactionType;
 	private boolean isTransactionCleared; 		//to be user when accepting a money transfer from another account 
@@ -66,20 +68,64 @@ public class BankTransaction
 		this.transactionType = transactionType;
 	}
 	
-	public Timestamp getTransactionDate() {
+	public Timestamp getTransactionDate() 
+	{
 		return transactionDate;
 	}
 
-	public void setTransactionDate(Timestamp transactionDate) {
+	public void setTransactionDate(Timestamp transactionDate) 
+	{
 		this.transactionDate = transactionDate;
 	}
 
+	public int getSourceBankAccountId() 
+	{
+		return sourceBankAccountId;
+	}
+
+	public void setSourceBankAccountId(int sourceBankAccountId) 
+	{
+		this.sourceBankAccountId = sourceBankAccountId;
+	}
+
+	public int getDestinationBankAccountId() 
+	{
+		return destinationBankAccountId;
+	}
+
+	public void setDestinationBankAccountId(int destinationBankAccountId) 
+	{
+		this.destinationBankAccountId = destinationBankAccountId;
+	}
+	
 	public BankTransaction(int idTransaction, BankAccount sourceBankAccount, BankAccount destinationBankAccount,
-			double amount, TransactionType transactionType, Timestamp transactionDate) {
+			double amount, TransactionType transactionType, Timestamp transactionDate) 
+	{
 		super();
 		this.idTransaction = idTransaction;
 		this.sourceBankAccount = sourceBankAccount;
 		this.destinationBankAccount = destinationBankAccount;
+		this.amount = amount;
+		this.transactionType = transactionType;
+		this.transactionDate = transactionDate;
+	}
+	
+	public BankTransaction(int idTransaction, int sourceBankAccountId, int destinationBankAccountId,
+			double amount, TransactionType transactionType, Timestamp transactionDate) 
+	{
+		super();
+		this.idTransaction = idTransaction;
+		this.sourceBankAccountId = sourceBankAccountId;
+		this.destinationBankAccountId = destinationBankAccountId;
+		this.amount = amount;
+		this.transactionType = transactionType;
+		this.transactionDate = transactionDate;
+	}
+	
+	public BankTransaction(int idTransaction, double amount, TransactionType transactionType, Timestamp transactionDate) 
+	{
+		super();
+		this.idTransaction = idTransaction;
 		this.amount = amount;
 		this.transactionType = transactionType;
 		this.transactionDate = transactionDate;
@@ -106,11 +152,6 @@ public class BankTransaction
 //	}
 	
 	public BankTransaction() 
-	{
-		// TODO Auto-generated constructor stub
-	}
-
-	public BankTransaction(int int1, int int2, int int3, double double1, TransactionType valueOf, Timestamp timestamp) 
 	{
 		// TODO Auto-generated constructor stub
 	}

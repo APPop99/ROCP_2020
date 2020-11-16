@@ -32,8 +32,7 @@ public interface BankAccountService
 	public List<BankAccount> getAllBankAccountsList() throws BusinessException;
 	public boolean isBankAccountDuplicate(long bankAccountNumber) throws BusinessException;
 	public List<BankAccount> getBankAccountsFromApprovalTable(boolean bankAccountApprovalPendingStatus)  throws BusinessException;
-	public BankAccount getUserById(int id) throws BusinessException;
-	public List<BankAccount> getBankAccountByUser(User userSession) throws BusinessException;
-	public List<BankAccount> getBankAccountByUser(int userId) throws BusinessException;
+	public List<BankAccount> getBankAccountsListByUser(User userSession) throws BusinessException;
+	public List<BankAccount> getBankAccountsListByUser (int userId) throws BusinessException;
 	public List<BankTransaction> getAllTransactions() throws BusinessException;
 }

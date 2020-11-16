@@ -5,9 +5,9 @@ import java.util.List;
 import org.apache.log4j.Logger;
 
 import app.bankingApp.DAO.BankAccountOperationsDAO;
-import app.bankingApp.DAO.UserOperationsDAO;
+//import app.bankingApp.DAO.UserOperationsDAO;
 import app.bankingApp.DAO.implementation.BankAccountOperationsDAOImpl;
-import app.bankingApp.DAO.implementation.UserOperationsDAOImpl;
+//import app.bankingApp.DAO.implementation.UserOperationsDAOImpl;
 import app.bankingApp.exception.BusinessException;
 import app.bankingApp.model.BankAccount;
 import app.bankingApp.model.BankTransaction;
@@ -25,7 +25,7 @@ public class BankAccountServiceImpl implements BankAccountService
 	@Override
 	public int createNewBankAccount(User user, BankAccount bankAccount) throws BusinessException 
 	{
-		// System.out.println("Here is the CreateNewBank method from Service layer");
+//		System.out.println("Here is the CreateNewBank method from Service layer");
 		log.info("Here is the CreateNewBank method from Service layer");
 		int c = bankAccountDAO.createNewBankAccount(user, bankAccount);		
 		return c;
@@ -49,9 +49,9 @@ public class BankAccountServiceImpl implements BankAccountService
 	@Override
 	public BankAccount getBankAccountById(int id) throws BusinessException 
 	{
-		BankAccount bankAccountsListById = null;
-		bankAccountsListById = bankAccountDAO.getBankAccountById(id);
-		return bankAccountsListById;	
+		BankAccount bankAccountById = null;
+		bankAccountById = bankAccountDAO.getBankAccountById(id);
+		return bankAccountById;	
 	}
 
 	@Override
@@ -90,45 +90,44 @@ public class BankAccountServiceImpl implements BankAccountService
 	}
 
 	@Override
-	public List<BankAccount> getBankAccountsFromApprovalTable(boolean bankAccountApprovalPendingStatus)
-			throws BusinessException {
-		// TODO Auto-generated method stub
-		return null;
+	public List<BankAccount> getBankAccountsFromApprovalTable(boolean isBankAccountApprovalPending)
+			throws BusinessException 
+	{
+		//	System.out.println("Here is the getBankAccountsFromApprovalTable Method from Service layer");
+		log.info("Here is the getBankAccountsFromApprovalTable Method from Service layer");		
+		List<BankAccount> bankAccountsToBeApprovedList = null;
+		bankAccountsToBeApprovedList = bankAccountDAO.getBankAccountsFromApprovalTable(isBankAccountApprovalPending);
+		return bankAccountsToBeApprovedList;
 	}
 
 	@Override
-	public BankAccount getUserById(int id) throws BusinessException {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	@Override
-	public List<BankAccount> getBankAccountByUser(User userSession) throws BusinessException 
+	public List<BankAccount> getBankAccountsListByUser(User userSession) throws BusinessException 
 	{
 		List<BankAccount> bankAccountsListByUser = null;
-		bankAccountsListByUser = bankAccountDAO.getBankAccountByUser(userSession);
+		bankAccountsListByUser = bankAccountDAO.getBankAccountsListByUser(userSession);
 		return bankAccountsListByUser;	
 	}
 
 	@Override
-	public List<BankAccount> getBankAccountByUser(int userId) throws BusinessException 
+	public List<BankAccount> getBankAccountsListByUser(int userId) throws BusinessException 
 	{
-//		List<BankAccount> bankAccountsListByUser = null;
-//		bankAccountsListByUser = bankAccountDAO.getBankAccountByUser(userId);
-//		return bankAccountsListByUser;	
-		return null;
+		List<BankAccount> bankAccountsListByUser = null;
+		bankAccountsListByUser = bankAccountDAO.getBankAccountsListByUser(userId);
+		return bankAccountsListByUser;	
 	}
 
 	@Override
 	public int transferFundsOut(BankAccount sourceBankAccount, BankAccount destinationBankAccount,
-			Double amountToTransfer, int userId) throws BusinessException {
+			Double amountToTransfer, int userId) throws BusinessException 
+	{
 		// TODO Auto-generated method stub
 		return 0;
 	}
 
 	@Override
 	public int transferFundsIn(BankAccount sourceBankAccount, BankAccount destinationBankAccount,
-			Double amountToTransfer, int userId) throws BusinessException {
+			Double amountToTransfer, int userId) throws BusinessException 
+	{
 		// TODO Auto-generated method stub
 		return 0;
 	}
@@ -158,7 +157,7 @@ public class BankAccountServiceImpl implements BankAccountService
 	@Override
 	public int recordTransaction(BankTransaction transactionObj) throws BusinessException 
 	{
-		// System.out.println("Here is the depositFundsTransaction method from Service layer");
+//		System.out.println("Here is the depositFundsTransaction method from Service layer");
 		log.info("Here is the recordTransaction method from Service layer");
 		
 		int c = bankAccountDAO.recordTransaction(transactionObj);		
@@ -168,6 +167,9 @@ public class BankAccountServiceImpl implements BankAccountService
 	@Override
 	public List<BankTransaction> getAllTransactions() throws BusinessException 
 	{
+//		System.out.println("Here is the getAllTransactions Method from Service layer");
+		log.info("Here is the getAllTransactions Method from Service layer");	
+		
 		List<BankTransaction> bankTransactionsListAll = null;
 		bankTransactionsListAll = bankAccountDAO.getAllTransactions();
 		return bankTransactionsListAll;	

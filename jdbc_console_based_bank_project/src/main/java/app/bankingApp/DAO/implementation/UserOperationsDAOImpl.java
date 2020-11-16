@@ -1,12 +1,12 @@
 package app.bankingApp.DAO.implementation;
 
 import java.sql.Connection;
-import java.sql.Date;
+//import java.sql.Date;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.sql.Timestamp;
-import java.time.LocalDate;
+//import java.sql.Timestamp;
+//import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -64,7 +64,7 @@ public class UserOperationsDAOImpl implements app.bankingApp.DAO.UserOperationsD
 		catch (ClassNotFoundException | SQLException e) 
 		{
 //			System.out.println(e); // take off this line when in production
-			log.info(e);
+			log.error(e);
 			throw new BusinessException("Internal error occured.. Kindly contact SYSADMIN");
 		}		
 		return c;
@@ -105,7 +105,7 @@ public class UserOperationsDAOImpl implements app.bankingApp.DAO.UserOperationsD
 		catch (ClassNotFoundException | SQLException e) 
 		{	
 //			System.out.println(e); // take off this line when in production
-			log.info(e);
+			log.error(e);
 			throw new BusinessException("Internal error occured... Kindly contact SYSADMIN");
 		}  
 		return userById;
@@ -141,7 +141,7 @@ public class UserOperationsDAOImpl implements app.bankingApp.DAO.UserOperationsD
 		catch (ClassNotFoundException | SQLException e) 
 		{	
 //			System.out.println(e); // take off this line when in production
-			log.info(e);
+			log.error(e);
 			throw new BusinessException("Internal error occured... Kindly contact SYSADMIN");
 		}  
 	}
@@ -177,7 +177,7 @@ public class UserOperationsDAOImpl implements app.bankingApp.DAO.UserOperationsD
 		catch (ClassNotFoundException | SQLException e) 
 		{	
 //			System.out.println(e); // take off this line when in production
-			log.info(e);
+			log.error(e);
 			throw new BusinessException("Internal error occured.. Kindly contact SYSADMIN");
 		} 
 		return usersList;
@@ -210,13 +210,13 @@ public class UserOperationsDAOImpl implements app.bankingApp.DAO.UserOperationsD
 			} 
 			if(usersListByEmail.size()==0)
 			{
-				throw new BusinessException("No records of users with email: "+ email +" available to retrieve!");
+				System.out.println("No records of users with email: "+ email +" available to retrieve!");
 			}
 		}
 		catch (ClassNotFoundException | SQLException e) 
 		{	
 //			System.out.println(e); // take off this line when in production
-			log.info(e);
+			log.error(e);
 			throw new BusinessException("Internal error occured... Kindly contact SYSADMIN");
 		} 
 		return usersListByEmail;
@@ -232,7 +232,7 @@ public class UserOperationsDAOImpl implements app.bankingApp.DAO.UserOperationsD
 		
 		try (Connection connection=PostgresSqlConnection.getConnection())
 		{
-			System.out.println("Calling the insert query!!");
+//			System.out.println("Calling the insert query!!");
 			String sql = UserOperationsQueries.INSERTUSERTOCUSTOMERAPPROVALTABLE;
 			PreparedStatement preparedStatement = connection.prepareStatement(sql);
 			
@@ -246,7 +246,7 @@ public class UserOperationsDAOImpl implements app.bankingApp.DAO.UserOperationsD
 		catch (ClassNotFoundException | SQLException e) 
 		{	
 //				System.out.println(e); // take off this line when in production
-				log.info(e);
+				log.error(e);
 				throw new BusinessException("Internal error occured... Kindly contact SYSADMIN");
 		} 
 		return c;
@@ -317,7 +317,7 @@ public class UserOperationsDAOImpl implements app.bankingApp.DAO.UserOperationsD
 		catch (ClassNotFoundException | SQLException e) 
 		{
 //			System.out.println(e);	// take off this line when in production
-			log.info(e);
+			log.error(e);
 			throw new BusinessException("Internal error occured... Please contact SYSADMIN");
 		} 
 		if (c!=0 && d!=0)
@@ -337,7 +337,7 @@ public class UserOperationsDAOImpl implements app.bankingApp.DAO.UserOperationsD
 	}
 
 	@Override
-	public List<User> getUsersFromApprovalTable(boolean userApprovalPendingStatus) throws BusinessException 
+	public List<User> getUsersFromApprovalTable(boolean isUserApprovalPending) throws BusinessException 
 	{
 //		System.out.println("Here is the getUsersFromApprovalTable Method from DAO layer");
 		log.info("Here is the getUsersFromApprovalTable Method from DAO layer");
@@ -349,7 +349,7 @@ public class UserOperationsDAOImpl implements app.bankingApp.DAO.UserOperationsD
 			//instantiate the sql
 			String sql = UserOperationsQueries.GETUSERSBYCUSTOMERACCOUNTAPPROVALSTATUS;		// Values are passed as arguments of the method
 			PreparedStatement preparedStatement = connection.prepareStatement(sql);
-			preparedStatement.setBoolean(1, userApprovalPendingStatus);
+			preparedStatement.setBoolean(1, isUserApprovalPending);
 			ResultSet resultSet = preparedStatement.executeQuery();
 			
 			while (resultSet.next())
@@ -363,13 +363,13 @@ public class UserOperationsDAOImpl implements app.bankingApp.DAO.UserOperationsD
 			} 
 			if(usersToBeApprovedList.size()==0)
 			{
-				throw new BusinessException("No records of users with status PENDING: "+ userApprovalPendingStatus +" for their requests to get their Customer Accounts approved available to retrieve!");
+				throw new BusinessException("No records of users with status PENDING: "+ isUserApprovalPending +" for their requests to get their Customer Accounts approved available to retrieve!");
 			}
 		}
 		catch (ClassNotFoundException | SQLException e) 
 		{	
 //			System.out.println(e); // take off this line when in production
-			log.info(e);
+			log.error(e);
 			throw new BusinessException("Internal error occured... Kindly contact SYSADMIN");
 		} 
 		return usersToBeApprovedList;	

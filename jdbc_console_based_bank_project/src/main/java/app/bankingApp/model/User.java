@@ -1,7 +1,7 @@
 package app.bankingApp.model;
 
 import java.sql.Timestamp;
-import java.time.LocalDate;
+//import java.time.LocalDate;
 import java.util.Date;
 
 public class User 

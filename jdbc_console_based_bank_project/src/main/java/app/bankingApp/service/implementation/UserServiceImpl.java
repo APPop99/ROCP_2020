@@ -1,6 +1,6 @@
 package app.bankingApp.service.implementation;
 
-import java.util.ArrayList;
+//import java.util.ArrayList;
 import java.util.List;
 
 import org.apache.log4j.Logger;
@@ -8,7 +8,7 @@ import org.apache.log4j.Logger;
 import app.bankingApp.DAO.UserOperationsDAO;
 import app.bankingApp.DAO.implementation.UserOperationsDAOImpl;
 import app.bankingApp.exception.BusinessException;
-import app.bankingApp.model.Customer;
+//import app.bankingApp.model.Customer;
 import app.bankingApp.model.User;
 import app.bankingApp.presenter.implementation.MainMenuPresenterImpl;
 import app.bankingApp.service.UserService;
@@ -39,13 +39,14 @@ public class UserServiceImpl implements UserService
 	}
 
 	@Override
-	public void deleteUser(int id) throws BusinessException {
-		// TODO Auto-generated method stub
-		
+	public void deleteUser(int id) throws BusinessException 
+	{
+		// TODO Auto-generated method stub	
 	}
 
 	@Override
-	public List<User> getUsersByEmail(String email) throws BusinessException {
+	public List<User> getUsersByEmail(String email) throws BusinessException 
+	{
 //		System.out.println("Here is the getUsersByEmail Method from Service layer");
 		log.info("Here is the getUsersByEmail Method from Service layer");		
 		List<User> usersListByEmail = null;
@@ -64,7 +65,8 @@ public class UserServiceImpl implements UserService
 	}
 	
 	@Override
-	public List<User> getAllUsers() throws BusinessException {
+	public List<User> getAllUsers() throws BusinessException 
+	{
 //		System.out.println("Here is the getAllUsers Method from Service layer");
 		log.info("Here is the getAllUsers Method from Service layer");		
 		List<User> usersList = null;
@@ -73,19 +75,22 @@ public class UserServiceImpl implements UserService
 	}
 
 	@Override
-	public List<User> getUsersByLastName(String LastName) throws BusinessException {
+	public List<User> getUsersByLastName(String LastName) throws BusinessException 
+	{
 		// TODO Auto-generated method stub
 		return null;
 	}
 
 	@Override
-	public List<User> getUsersByFirstName(String firstName) throws BusinessException {
+	public List<User> getUsersByFirstName(String firstName) throws BusinessException 
+	{
 		// TODO Auto-generated method stub
 		return null;
 	}
 
 	@Override
-	public List<User> getUsersByStatus(String statusUser) throws BusinessException {
+	public List<User> getUsersByStatus(String statusUser) throws BusinessException 
+	{
 		// TODO Auto-generated method stub
 		return null;
 	}
@@ -127,8 +132,7 @@ public class UserServiceImpl implements UserService
 	public User getUserById(int id) throws BusinessException 
 	{
 //		System.out.println("Here is the <Get Use By ID> Method from Service layer");
-		log.info("Here is the <Get Use By ID> Method from Service layer");
-		
+		log.info("Here is the <Get Use By ID> Method from Service layer");	
 		User user = null;
 		user = userDAO.getUserById(id);
 		return user;

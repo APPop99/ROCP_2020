@@ -204,7 +204,7 @@ public class BankAccountOperationsDAOImpl implements BankAccountOperationsDAO
 	}
 
 	@Override
-	public int withdrawFundsTransaction(BankAccount bankAccount, double amountToWithdraw, int userId) throws BusinessException 
+	public int withdrawFundsTransaction(BankAccount bankAccount, double newBalanceToRecord, int userId) throws BusinessException 
 	{
 		int c = 0;
 //		System.out.println("Here is the withdrawFundsTransaction method from DAO layer");
@@ -213,11 +213,11 @@ public class BankAccountOperationsDAOImpl implements BankAccountOperationsDAO
 		try (Connection connection=PostgresSqlConnection.getConnection())
 		{
 			String sql = BankAccountOperationsQueries.UPDATEBANKACCOUNTBALANCE;
-			
-			double newAccountBalance = bankAccount.getAccountBalance() - amountToWithdraw;
+		
+//			double newAccountBalance = bankAccount.newBalanceToRecord() - amountToWithdraw;
 			
 			PreparedStatement preparedStatement = connection.prepareStatement(sql);
-			preparedStatement.setDouble(1, newAccountBalance);
+			preparedStatement.setDouble(1, newBalanceToRecord);
 			preparedStatement.setInt(2, bankAccount.getBankAccountId());
 //			preparedStatement.setInt(3, userId);
 			
@@ -233,7 +233,7 @@ public class BankAccountOperationsDAOImpl implements BankAccountOperationsDAO
 	}
 
 	@Override
-	public int depositFundsTransaction(BankAccount bankAccount, double amountToDeposit, int userId) throws BusinessException 
+	public int depositFundsTransaction(BankAccount bankAccount, double newBalanceToRecord, int userId) throws BusinessException 
 	{
 		int c = 0;
 //		System.out.println("Here is the depositFunds method from DAO layer");
@@ -246,8 +246,39 @@ public class BankAccountOperationsDAOImpl implements BankAccountOperationsDAO
 //			double newAccountBalance = bankAccount.getAccountBalance() + amountToDeposit;
 			
 			PreparedStatement preparedStatement = connection.prepareStatement(sql);
-			preparedStatement.setDouble(1, amountToDeposit);
+			preparedStatement.setDouble(1, newBalanceToRecord);
 			preparedStatement.setInt(2, bankAccount.getBankAccountId());
+//			preparedStatement.setInt(3, userId);
+			
+			c = preparedStatement.executeUpdate();
+		}
+		catch (ClassNotFoundException | SQLException e) 
+		{
+//			System.out.println(e);	// take off this line when in production
+			log.error(e);
+			throw new BusinessException("Internal error occured... Please contact SYSADMIN");
+		} 
+		return c;
+	}
+	
+	@Override
+	public int postTransferFundsTransaction(BankAccount selectedSourceBankAccount, double newBalanceToRecord,
+			int userId) throws BusinessException 
+	{	
+		//saves the new balance of source bank account, after a transfer is initiated from a bank account
+		int c = 0;
+//		System.out.println("Here is the postTransferFundsTransaction method from DAO layer");
+		log.info("Here is the postTransferFundsTransaction method from DAO layer");
+		
+		try (Connection connection=PostgresSqlConnection.getConnection())
+		{
+			String sql = BankAccountOperationsQueries.UPDATEBANKACCOUNTBALANCE;
+			
+//			double newAccountBalance = selectedSourceBankAccount.getAccountBalance() - newBalanceToRecord;
+			
+			PreparedStatement preparedStatement = connection.prepareStatement(sql);
+			preparedStatement.setDouble(1, newBalanceToRecord);
+			preparedStatement.setInt(2, selectedSourceBankAccount.getBankAccountId());
 //			preparedStatement.setInt(3, userId);
 			
 			c = preparedStatement.executeUpdate();
@@ -285,7 +316,8 @@ public class BankAccountOperationsDAOImpl implements BankAccountOperationsDAO
 				preparedStatement.setInt(1, transactionObj.getDestinationBankAccount().getBankAccountId());
 				preparedStatement.setDouble(2, transactionObj.getAmount());
 				preparedStatement.setTimestamp(3, transactionObj.getTransactionDate());
-				preparedStatement.setString(4, transactionObj.getTransactionType().toString());
+				preparedStatement.setString(4,transactionObj.getTransactionDescription());
+				preparedStatement.setString(5, transactionObj.getTransactionType().toString());
 				
 				c = preparedStatement.executeUpdate();
 
@@ -323,7 +355,8 @@ public class BankAccountOperationsDAOImpl implements BankAccountOperationsDAO
 					preparedStatement.setInt(1, transactionObj.getSourceBankAccount().getBankAccountId());
 					preparedStatement.setDouble(2, transactionObj.getAmount());
 					preparedStatement.setTimestamp(3, transactionObj.getTransactionDate());
-					preparedStatement.setString(4, transactionObj.getTransactionType().toString());
+					preparedStatement.setString(4,transactionObj.getTransactionDescription());
+					preparedStatement.setString(5, transactionObj.getTransactionType().toString());
 					
 					c = preparedStatement.executeUpdate();
 
@@ -359,7 +392,8 @@ public class BankAccountOperationsDAOImpl implements BankAccountOperationsDAO
 					preparedStatement.setInt(2, transactionObj.getDestinationBankAccount().getBankAccountId());
 					preparedStatement.setDouble(3, transactionObj.getAmount());
 					preparedStatement.setTimestamp(4, transactionObj.getTransactionDate());
-					preparedStatement.setString(5, transactionObj.getTransactionType().toString());
+					preparedStatement.setString(5,transactionObj.getTransactionDescription());
+					preparedStatement.setString(6, transactionObj.getTransactionType().toString());
 					
 					c = preparedStatement.executeUpdate();
 					
@@ -384,6 +418,54 @@ public class BankAccountOperationsDAOImpl implements BankAccountOperationsDAO
 				} 
 			}
 		}
+		return c;
+	}
+
+	@Override
+	public int recordTransferTransaction(BankTransaction transferFundsTransactionObj) throws BusinessException 
+	{
+		int c = 0;
+//		System.out.println("Here is the recordTransferTransaction (transfer transactions table) method from DAO layer");
+		log.info("Here is the recordTransferTransaction (transfer transactions table) method from DAO layer");
+
+		System.out.println("\nTransaction details: " + transferFundsTransactionObj);
+		
+		//regular transaction between 2 not-null accounts 
+		//(both transactions <send / receive> are recorded separately in a transfer transaction table)
+		try (Connection connection=PostgresSqlConnection.getConnection())
+		{
+			String sql = BankAccountOperationsQueries.RECORDTRANSFERTRANSACTION;
+			PreparedStatement preparedStatement = connection.prepareStatement(sql);
+
+			preparedStatement.setInt(1, transferFundsTransactionObj.getSourceBankAccount().getBankAccountId());
+			preparedStatement.setInt(2, transferFundsTransactionObj.getDestinationBankAccount().getBankAccountId());
+			preparedStatement.setDouble(3, transferFundsTransactionObj.getAmount());
+			preparedStatement.setTimestamp(4, transferFundsTransactionObj.getTransactionDate());
+			preparedStatement.setString(5,transferFundsTransactionObj.getTransactionDescription());
+			preparedStatement.setBoolean(6, transferFundsTransactionObj.isTransactionCleared());
+			preparedStatement.setString(7, transferFundsTransactionObj.getTransactionType().toString());
+			
+			c = preparedStatement.executeUpdate();
+			
+			String sql1 = BankAccountOperationsQueries.GETLASTTRANSFERTRANSACTIONINSERTED;
+			PreparedStatement preparedStatement1 = connection.prepareStatement(sql1);
+			ResultSet resultSet = preparedStatement1.executeQuery();
+
+			if (resultSet.next())
+			{
+				transferFundsTransactionObj.setIdTransaction(resultSet.getInt("id_transfer_transaction"));						
+			} else
+			{
+				throw new BusinessException("Invalid ID!!!... No matching records found for the ID = "
+					+ resultSet.getInt("id_transaction"));
+			}
+		}
+		catch (ClassNotFoundException | SQLException e) 
+		{
+//			System.out.println(e);	// take off this line when in production
+			log.error(e);
+			throw new BusinessException("Internal error occured in RECORDTRANSFERTRANSACTION sql... Please contact SYSADMIN");
+		} 	
 		return c;
 	}
 	
@@ -580,6 +662,7 @@ public class BankAccountOperationsDAOImpl implements BankAccountOperationsDAO
 						resultSet.getDouble("transaction_amount"), 
 						TransactionType.valueOf(resultSet.getString("transaction_type")), 
 						resultSet.getTimestamp("transaction_date"));
+				bankTransaction.setTransactionDescription(resultSet.getString("transaction_description"));
 				bankTransaction.setSourceBankAccountId(resultSet.getInt("id_source_bank_account"));
 				bankTransaction.setDestinationBankAccountId(resultSet.getInt("id_destination_bank_account"));
 
@@ -634,8 +717,218 @@ public class BankAccountOperationsDAOImpl implements BankAccountOperationsDAO
 		{	
 //			System.out.println(e); // take off this line when in production
 			log.error(e);
-			throw new BusinessException("Internal error occured... Kindly contact SYSADMIN");
+			throw new BusinessException("Internal error occured in GETBANKACCTSBYAPPROVALSTATUS sql... Kindly contact SYSADMIN");
 		} 
 		return bankAccountsToBeApprovedList;	
+	}
+
+	@Override
+	public BankAccount getBankAccountByNumber(Long selectedDestinationBankAccountNumber) throws BusinessException 
+	{
+//		System.out.println("Here is the <Get Bank Account By Number> method from DAO layer");
+		log.info("Here is the <Get Bank Account By Number> method from DAO layer");
+		//Instantiate an object to record/handle the results of the query 
+		BankAccount bankAccountByNumber = null;
+		
+		try (Connection connection=PostgresSqlConnection.getConnection())
+		{
+			//instantiate the sql
+			String sql = BankAccountOperationsQueries.GETBANKACCOUNTBYNUMBER;		// Values are passed as arguments of the method
+			PreparedStatement preparedStatement = connection.prepareStatement(sql);
+			preparedStatement.setLong(1, selectedDestinationBankAccountNumber);
+			
+			ResultSet resultSet = preparedStatement.executeQuery();
+			if (resultSet.next())
+			{
+				//The bank account with requested id was found
+				bankAccountByNumber = new BankAccount(resultSet.getInt("bank_account_id"), 
+						selectedDestinationBankAccountNumber, 
+						resultSet.getInt("bank_account_owner_id"),
+						resultSet.getTimestamp("date_bank_acct_creation"), 
+						StatusAccount.valueOf(resultSet.getString("type_account_status")),
+						resultSet.getDouble("bank_account_balance"));
+			} else
+			{
+				log.warn("Bank Account: " + bankAccountByNumber);
+				System.out.println("Invalid Bank Account Number!!!... No matching records found for the Bank Account Number = "
+						+ selectedDestinationBankAccountNumber);
+			}
+		}
+		catch (ClassNotFoundException | SQLException e) 
+		{	
+//			System.out.println(e); // take off this line when in production
+			log.error(e);
+			throw new BusinessException("Internal error occured in GETBANKACCOUNTBYNUMBER sql... Kindly contact SYSADMIN");
+		} 
+		return bankAccountByNumber;	
+	}
+
+	@Override
+	public List<BankTransaction> getAllTransferTransactionsByRecipientUser(User userSession, 
+			TransactionType transactionType, boolean isTransactionCleared) throws BusinessException 
+	{
+		//Instantiate an object to record/handle the results of the query 
+		List<BankTransaction> transferTransactionsListByRecipientUser = new ArrayList<>();		
+		
+		try (Connection connection=PostgresSqlConnection.getConnection())
+		{
+			//instantiate the sql
+			String sql = BankAccountOperationsQueries.GETALLTRANSFERTRANSACTIONSBYRECIPIENTUSER;		// Values are passed as arguments of the method
+			PreparedStatement preparedStatement = connection.prepareStatement(sql);
+			preparedStatement.setInt(1, userSession.getId());
+			preparedStatement.setString(2, transactionType.toString());
+			preparedStatement.setBoolean(3, isTransactionCleared);
+			ResultSet resultSet = preparedStatement.executeQuery();
+			
+			while (resultSet.next())
+			{
+				BankTransaction transferTransaction = new BankTransaction(resultSet.getInt("id_transfer_transaction"), 
+					resultSet.getInt("id_source_bank_account"), 
+					resultSet.getInt("id_destination_bank_account"), 
+					resultSet.getDouble("transfer_amount"), 
+					TransactionType.valueOf(resultSet.getString("transaction_type")), 
+					resultSet.getTimestamp("transfer_date"));
+				
+				BankAccount destinationBankAccount = new BankAccount(resultSet.getInt("id_destination_bank_account"), 
+						resultSet.getLong("destination_bk_acct_no"), 
+						resultSet.getDouble("destination_bk_acct_balance"), 
+						StatusAccount.valueOf(resultSet.getString("destination_type_acct_status")), 
+						resultSet.getInt("destination_bk_acct_owner_id")); 
+				transferTransaction.setDestinationBankAccount(destinationBankAccount);
+				
+				BankAccount sourceBankAccount = new BankAccount(resultSet.getInt("id_source_bank_account"), 
+						resultSet.getLong("source_bk_acct_no"), 
+						resultSet.getDouble("source_bk_acct_balance"), 
+						StatusAccount.valueOf(resultSet.getString("source_type_acct_status")), 
+						resultSet.getInt("source_bk_acct_owner_id")); 
+				transferTransaction.setSourceBankAccount(sourceBankAccount);
+				
+				User userSender = new User (resultSet.getInt("source_bk_acct_owner_id"),
+						resultSet.getString("sender_fname"),
+						resultSet.getString("sender_lname"));
+				transferTransaction.setUserSender(userSender);
+				
+				User userRecipient = new User (resultSet.getInt("destination_bk_acct_owner_id"),
+						resultSet.getString("recipient_fname"),
+						resultSet.getString("recipient_lname"));
+				transferTransaction.setUserRecipient(userRecipient);
+				
+				transferTransaction.setTransactionDescription(resultSet.getString("transfer_description"));
+				transferTransaction.setTransactionCleared(resultSet.getBoolean("is_transfer_cleared"));
+				
+				transferTransactionsListByRecipientUser.add(transferTransaction);
+			} 
+			if(transferTransactionsListByRecipientUser.size()==0)
+			{
+				throw new BusinessException("No records of incoming transactions for Customer with id: " 
+					+ userSession.getId() + " | " + userSession.getFirstName() + " " + userSession.getLastName()
+					+ " available to retrieve!");
+			}
+		}
+		catch (ClassNotFoundException | SQLException e) 
+		{	
+//			System.out.println(e); // take off this line when in production
+			log.error(e);
+			throw new BusinessException("Internal error occured in GETALLTRANSFERTRANSACTIONSBYRECIPIENTUSER sql... Kindly contact SYSADMIN");
+		} 
+		return transferTransactionsListByRecipientUser;
+	}
+
+	@Override
+	public BankTransaction getTransferTransactionById(int selectedTransferTransactionId) throws BusinessException 
+	{
+//		System.out.println("Here is the <getTransferTransactionById> method from DAO layer");
+		log.info("Here is the <getTransferTransactionById> method from DAO layer");
+		//Instantiate an object to record/handle the results of the query 
+		BankTransaction bankTransferTransactionById = null;
+		
+		try (Connection connection=PostgresSqlConnection.getConnection())
+		{
+			//instantiate the sql
+			String sql = BankAccountOperationsQueries.GETTRANSFERTRANSACTIONBYID;		// Values are passed as arguments of the method
+			PreparedStatement preparedStatement = connection.prepareStatement(sql);
+			preparedStatement.setInt(1, selectedTransferTransactionId);
+			
+			
+			ResultSet resultSet = preparedStatement.executeQuery();
+			if (resultSet.next())
+			{
+				//The bank account with requested id was found
+				bankTransferTransactionById = new BankTransaction(resultSet.getInt("id_transfer_transaction"), 
+					resultSet.getInt("id_source_bank_account"), 
+					resultSet.getInt("id_destination_bank_account"), 
+					resultSet.getDouble("transfer_amount"), 
+					TransactionType.valueOf(resultSet.getString("transaction_type")), 
+					resultSet.getTimestamp("transfer_date"));
+				
+				BankAccount destinationBankAccount = new BankAccount(resultSet.getInt("id_destination_bank_account"), 
+						resultSet.getLong("destination_bk_acct_no"), 
+						resultSet.getDouble("destination_bk_acct_balance"), 
+						StatusAccount.valueOf(resultSet.getString("destination_type_acct_status")), 
+						resultSet.getInt("destination_bk_acct_owner_id")); 					
+				bankTransferTransactionById.setDestinationBankAccount(destinationBankAccount);
+				
+				BankAccount sourceBankAccount = new BankAccount(resultSet.getInt("id_source_bank_account"), 
+						resultSet.getLong("source_bk_acct_no"), 
+						resultSet.getDouble("source_bk_acct_balance"), 
+						StatusAccount.valueOf(resultSet.getString("source_type_acct_status")), 
+						resultSet.getInt("source_bk_acct_owner_id")); 
+				bankTransferTransactionById.setSourceBankAccount(sourceBankAccount);
+				
+				User userSender = new User (resultSet.getInt("source_bk_acct_owner_id"),
+						resultSet.getString("sender_fname"),
+						resultSet.getString("sender_lname"));
+				bankTransferTransactionById.setUserSender(userSender);
+				
+				User userRecipient = new User (resultSet.getInt("destination_bk_acct_owner_id"),
+						resultSet.getString("recipient_fname"),
+						resultSet.getString("recipient_lname"));
+				bankTransferTransactionById.setUserRecipient(userRecipient);
+				
+				bankTransferTransactionById.setTransactionDescription(resultSet.getString("transfer_description"));
+				bankTransferTransactionById.setTransactionCleared(resultSet.getBoolean("is_transfer_cleared"));
+			} else
+			{
+				log.warn("Invalid ID!!!... No matching records found for the transaction ID = "+selectedTransferTransactionId);
+				System.out.println("Invalid ID!!!... No matching records found for the transaction ID = "+selectedTransferTransactionId);
+			}
+		}
+		catch (ClassNotFoundException | SQLException e) 
+		{	
+//			System.out.println(e); // take off this line when in production
+			log.error(e);
+			throw new BusinessException("Internal error occured in GETTRANSFERTRANSACTIONBYID sql... Kindly contact SYSADMIN");
+		} 
+		return bankTransferTransactionById;	
+	}
+
+	@Override
+	public int updateTransferTransactionClearingStatus(BankTransaction selectedTransferTransaction,
+			boolean isTransactionCleared) throws BusinessException 
+	{
+		int c = 0;
+//		System.out.println("Here is the updateTransferTransactionClearingStatus method from DAO layer");
+		log.info("Here is the updateTransferTransactionClearingStatus method from DAO layer");
+		
+		try (Connection connection=PostgresSqlConnection.getConnection())
+		{
+			String sql = BankAccountOperationsQueries.UPDATETRANSFERTRANSACTIONCLEARANCESTATUS;
+			
+//			double newAccountBalance = bankAccount.getAccountBalance() + amountToDeposit;
+			
+			PreparedStatement preparedStatement = connection.prepareStatement(sql);
+			preparedStatement.setBoolean(1, isTransactionCleared);
+			preparedStatement.setInt(2, selectedTransferTransaction.getIdTransaction());
+//			preparedStatement.setInt(3, userId);
+			
+			c = preparedStatement.executeUpdate();
+		}
+		catch (ClassNotFoundException | SQLException e) 
+		{
+//			System.out.println(e);	// take off this line when in production
+			log.error(e);
+			throw new BusinessException("Internal error occured in UPDATETRANSFERTRANSACTIONCLEARANCESTATUS sql... Please contact SYSADMIN");
+		} 
+		return c;
 	}
 }

@@ -4,6 +4,7 @@ import java.util.Date;
 import java.util.List;
 
 import app.bankingApp.model.BankAccount;
+import app.bankingApp.model.BankTransaction;
 import app.bankingApp.model.User;
 
 public interface ValidatorUtil 
@@ -24,5 +25,8 @@ public interface ValidatorUtil
 	User selectUser(String email, String password, List<User> userList);
 
 	boolean isMainMenuChoiceValid(String choice);
+
+	BankTransaction verifySelectedTransferTransaction(User userSession,
+			List<BankTransaction> tempTransferBankTransactionsListByUser);
 
 }

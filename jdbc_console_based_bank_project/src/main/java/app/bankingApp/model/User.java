@@ -143,6 +143,14 @@ public class User
 		this.statusUser = statusUser;
 	}
 	
+	public User(int id, String firstName, String lastName) 
+	{
+		super();
+		this.id = id;
+		this.firstName = firstName;
+		this.lastName = lastName;
+	}
+	
 	public User() 
 	{
 		// TODO Auto-generated constructor stub

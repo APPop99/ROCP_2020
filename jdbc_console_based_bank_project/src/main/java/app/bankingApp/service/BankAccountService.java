@@ -6,6 +6,7 @@ import app.bankingApp.exception.BusinessException;
 import app.bankingApp.model.BankAccount;
 import app.bankingApp.model.BankTransaction;
 import app.bankingApp.model.User;
+import app.bankingApp.model.TransactionType;
 
 public interface BankAccountService 
 {
@@ -31,8 +32,18 @@ public interface BankAccountService
 	public List<BankAccount> getAccountsList(int userId) throws BusinessException;
 	public List<BankAccount> getAllBankAccountsList() throws BusinessException;
 	public boolean isBankAccountDuplicate(long bankAccountNumber) throws BusinessException;
-	public List<BankAccount> getBankAccountsFromApprovalTable(boolean bankAccountApprovalPendingStatus)  throws BusinessException;
+	public List<BankAccount> getBankAccountsFromApprovalTable(boolean bankAccountApprovalPendingStatus)
+			throws BusinessException;
 	public List<BankAccount> getBankAccountsListByUser(User userSession) throws BusinessException;
 	public List<BankAccount> getBankAccountsListByUser (int userId) throws BusinessException;
 	public List<BankTransaction> getAllTransactions() throws BusinessException;
+	public BankAccount getBankAccountByNumber(Long selectedDestinationBankAccountNumber) throws BusinessException;
+	public int postTransferFundsTransaction(BankAccount selectedSourceBankAccount, 
+			double newBalanceToRecord, int id) throws BusinessException;
+	public int recordTransferTransaction(BankTransaction transferFundsTransactionObj) throws BusinessException;
+	public List<BankTransaction> getAllTransferTransactionsByRecipientUser(User userSession, 
+			TransactionType transactionType, boolean isTransactionCleared) throws BusinessException;
+	public BankTransaction getTransferTransactionById(int selectedTransferTransactionId) throws BusinessException;
+	public int updateTransferTransactionClearingStatus(BankTransaction selectedTransferTransaction, 
+			boolean isTransactionCleared) throws BusinessException;
 }

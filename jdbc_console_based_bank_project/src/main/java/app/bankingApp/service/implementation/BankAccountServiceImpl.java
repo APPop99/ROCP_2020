@@ -11,6 +11,7 @@ import app.bankingApp.DAO.implementation.BankAccountOperationsDAOImpl;
 import app.bankingApp.exception.BusinessException;
 import app.bankingApp.model.BankAccount;
 import app.bankingApp.model.BankTransaction;
+import app.bankingApp.model.TransactionType;
 import app.bankingApp.model.User;
 import app.bankingApp.presenter.implementation.MainMenuPresenterImpl;
 import app.bankingApp.service.BankAccountService;
@@ -133,24 +134,24 @@ public class BankAccountServiceImpl implements BankAccountService
 	}
 
 	@Override
-	public int withdrawFundsTransaction(BankAccount selectedBankAccount, Double amountToWithdraw, int userId)
+	public int withdrawFundsTransaction(BankAccount selectedBankAccount, Double newBalanceToRecord, int userId)
 			throws BusinessException 
 	{
 		// System.out.println("Here is the withdrawFundsTransaction method from Service layer");
 		log.info("Here is the withdrawFundsTransaction method from Service layer");
 		
-		int c = bankAccountDAO.withdrawFundsTransaction(selectedBankAccount, amountToWithdraw, userId);		
+		int c = bankAccountDAO.withdrawFundsTransaction(selectedBankAccount, newBalanceToRecord, userId);		
 		return c;
 	}
 
 	@Override
-	public int depositFundsTransaction(BankAccount selectedBankAccount, Double amountToDeposit, int userId)
+	public int depositFundsTransaction(BankAccount selectedBankAccount, Double newBalanceToRecord, int userId)
 			throws BusinessException 
 	{
 		// System.out.println("Here is the depositFundsTransaction method from Service layer");
 		log.info("Here is the depositFundsTransaction method from Service layer");
 		
-		int c = bankAccountDAO.depositFundsTransaction(selectedBankAccount, amountToDeposit, userId);		
+		int c = bankAccountDAO.depositFundsTransaction(selectedBankAccount, newBalanceToRecord, userId);		
 		return c;
 	}
 
@@ -173,5 +174,67 @@ public class BankAccountServiceImpl implements BankAccountService
 		List<BankTransaction> bankTransactionsListAll = null;
 		bankTransactionsListAll = bankAccountDAO.getAllTransactions();
 		return bankTransactionsListAll;	
+	}
+
+	@Override
+	public BankAccount getBankAccountByNumber(Long selectedDestinationBankAccountNumber) throws BusinessException 
+	{
+		BankAccount bankAccountByNumber = null;
+		bankAccountByNumber = bankAccountDAO.getBankAccountByNumber(selectedDestinationBankAccountNumber);
+		return bankAccountByNumber;		
+	}
+
+	@Override
+	public int postTransferFundsTransaction(BankAccount selectedSourceBankAccount, double newBalanceToRecord, int userId) 
+			throws BusinessException
+	{
+		// System.out.println("Here is the postTransferFundsTransaction method from Service layer");
+		log.info("Here is the postTransferFundsTransaction method from Service layer");
+		
+		int c = bankAccountDAO.postTransferFundsTransaction(selectedSourceBankAccount, newBalanceToRecord, userId);		
+		return c;
+	}
+
+	@Override
+	public int recordTransferTransaction(BankTransaction transferFundsTransactionObj) throws BusinessException 
+	{
+//		System.out.println("Here is the depositFundsTransaction method from Service layer");
+		log.info("Here is the recordTransaction method from Service layer");
+		
+		int c = bankAccountDAO.recordTransferTransaction(transferFundsTransactionObj);		
+		return c;
+	}
+
+	@Override
+	public List<BankTransaction> getAllTransferTransactionsByRecipientUser(User userSession, 
+			TransactionType transactionType, boolean isTransactionCleared) throws BusinessException 
+	{
+//		System.out.println("Method <getAllTransferTransactionsByRecipientUser> from Service layer");
+		log.info("Method <getAllTransferTransactionsByRecipientUser> from Service layer");
+		
+		List<BankTransaction> transferTransactionsListByRecipientUser = null;
+		transferTransactionsListByRecipientUser = bankAccountDAO.getAllTransferTransactionsByRecipientUser(userSession, 
+				transactionType, isTransactionCleared);
+		return transferTransactionsListByRecipientUser;
+	}
+
+	@Override
+	public BankTransaction getTransferTransactionById(int selectedTransferTransactionId) throws BusinessException 
+	{
+		log.info("Here is the getTransferTransactionById method from Service layer");
+		BankTransaction bankTransferTransactionById = null;
+		bankTransferTransactionById = bankAccountDAO.getTransferTransactionById(selectedTransferTransactionId);
+		return bankTransferTransactionById;	
+	}
+
+	@Override
+	public int updateTransferTransactionClearingStatus(BankTransaction selectedTransferTransaction, boolean isTransactionCleared)
+			throws BusinessException 
+	{
+//		System.out.println("Here is the updateTransferTransactionClearingStatus method from Service layer");
+		log.info("Here is the updateTransferTransactionClearingStatus method from Service layer");
+		
+		int c = bankAccountDAO.updateTransferTransactionClearingStatus(selectedTransferTransaction, isTransactionCleared);		
+		return c;
 	}
 }

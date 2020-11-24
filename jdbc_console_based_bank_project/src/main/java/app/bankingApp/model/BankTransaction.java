@@ -6,21 +6,24 @@ public class BankTransaction
 {
 	private int idTransaction;
 	private BankAccount sourceBankAccount;
+	private User userSender;
 	private int sourceBankAccountId;
+//	private long sourceBankAccountNumber;
 	private BankAccount destinationBankAccount;
+	private User userRecipient;
 	private int destinationBankAccountId;
+//	private long destinationBankAccountNumber;
 	private double amount;
 	private TransactionType transactionType;
 	private boolean isTransactionCleared; 		//to be user when accepting a money transfer from another account 
 	private Timestamp transactionDate;
+	private String transactionDescription;
 	
-	public int getIdTransaction() 
-	{
+	public int getIdTransaction() {
 		return idTransaction;
 	}
-	
-	public void setIdTransaction(int idTransaction) 
-	{
+
+	public void setIdTransaction(int idTransaction) {
 		this.idTransaction = idTransaction;
 	}
 
@@ -32,12 +35,60 @@ public class BankTransaction
 		this.sourceBankAccount = sourceBankAccount;
 	}
 
+	public User getUserSender() {
+		return userSender;
+	}
+
+	public void setUserSender(User userSender) {
+		this.userSender = userSender;
+	}
+
+	public int getSourceBankAccountId() {
+		return sourceBankAccountId;
+	}
+
+	public void setSourceBankAccountId(int sourceBankAccountId) {
+		this.sourceBankAccountId = sourceBankAccountId;
+	}
+
 	public BankAccount getDestinationBankAccount() {
 		return destinationBankAccount;
 	}
 
 	public void setDestinationBankAccount(BankAccount destinationBankAccount) {
 		this.destinationBankAccount = destinationBankAccount;
+	}
+
+	public User getUserRecipient() {
+		return userRecipient;
+	}
+
+	public void setUserRecipient(User userRecipient) {
+		this.userRecipient = userRecipient;
+	}
+
+	public int getDestinationBankAccountId() {
+		return destinationBankAccountId;
+	}
+
+	public void setDestinationBankAccountId(int destinationBankAccountId) {
+		this.destinationBankAccountId = destinationBankAccountId;
+	}
+
+	public double getAmount() {
+		return amount;
+	}
+
+	public void setAmount(double amount) {
+		this.amount = amount;
+	}
+
+	public TransactionType getTransactionType() {
+		return transactionType;
+	}
+
+	public void setTransactionType(TransactionType transactionType) {
+		this.transactionType = transactionType;
 	}
 
 	public boolean isTransactionCleared() {
@@ -47,57 +98,23 @@ public class BankTransaction
 	public void setTransactionCleared(boolean isTransactionCleared) {
 		this.isTransactionCleared = isTransactionCleared;
 	}
-	
-	public double getAmount() 
-	{
-		return amount;
-	}
-	
-	public void setAmount(double amount) 
-	{
-		this.amount = amount;
-	}
-	
-	public TransactionType getTransactionType() 
-	{
-		return transactionType;
-	}
-	
-	public void setTransactionType(TransactionType transactionType) 
-	{
-		this.transactionType = transactionType;
-	}
-	
-	public Timestamp getTransactionDate() 
-	{
+
+	public Timestamp getTransactionDate() {
 		return transactionDate;
 	}
 
-	public void setTransactionDate(Timestamp transactionDate) 
-	{
+	public void setTransactionDate(Timestamp transactionDate) {
 		this.transactionDate = transactionDate;
 	}
 
-	public int getSourceBankAccountId() 
-	{
-		return sourceBankAccountId;
+	public String getTransactionDescription() {
+		return transactionDescription;
 	}
 
-	public void setSourceBankAccountId(int sourceBankAccountId) 
-	{
-		this.sourceBankAccountId = sourceBankAccountId;
+	public void setTransactionDescription(String transactionDescription) {
+		this.transactionDescription = transactionDescription;
 	}
 
-	public int getDestinationBankAccountId() 
-	{
-		return destinationBankAccountId;
-	}
-
-	public void setDestinationBankAccountId(int destinationBankAccountId) 
-	{
-		this.destinationBankAccountId = destinationBankAccountId;
-	}
-	
 	public BankTransaction(int idTransaction, BankAccount sourceBankAccount, BankAccount destinationBankAccount,
 			double amount, TransactionType transactionType, Timestamp transactionDate) 
 	{
@@ -158,9 +175,11 @@ public class BankTransaction
 
 	@Override
 	public String toString() {
-		return "Transaction [idTransaction=" + idTransaction + ", sourceBankAccountId=" + sourceBankAccount
-				+ ", destinationBankAccountId=" + destinationBankAccount + ", amount=" + amount + ", transactionType="
+		return "BankTransaction [idTransaction=" + idTransaction + ", sourceBankAccount=" + sourceBankAccount
+				+ ", userSender=" + userSender + ", sourceBankAccountId=" + sourceBankAccountId
+				+ ", destinationBankAccount=" + destinationBankAccount + ", userRecipient=" + userRecipient
+				+ ", destinationBankAccountId=" + destinationBankAccountId + ", amount=" + amount + ", transactionType="
 				+ transactionType + ", isTransactionCleared=" + isTransactionCleared + ", transactionDate="
-				+ transactionDate + "]";
+				+ transactionDate + ", transactionDescription=" + transactionDescription + "]";
 	}
 }

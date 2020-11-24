@@ -12,7 +12,9 @@ import org.apache.log4j.Logger;
 
 import app.bankingApp.exception.BusinessException;
 import app.bankingApp.model.BankAccount;
+import app.bankingApp.model.BankTransaction;
 import app.bankingApp.model.StatusAccount;
+import app.bankingApp.model.TransactionType;
 import app.bankingApp.model.User;
 import app.bankingApp.presenter.implementation.MainMenuPresenterImpl;
 import app.bankingApp.service.BankAccountService;
@@ -140,71 +142,62 @@ public class ValidatorUtilImpl implements ValidatorUtil
 	
 	public BankAccount verifySelectedBankAccount(User sessionUser, List<BankAccount> bankAccountsListByUser)
 	{	
+		//several actions performed in this method can be split into smaller methods, assuring re-usability...
+		
 		//instantiate an object that will be used () to transfer data to and from Service layer 
 		BankAccountService bankAccountService = new BankAccountServiceImpl();
-		//CustomerMenuPresenter depositFundsIntoBankAccount = new CustomerMenuPresenterImpl(userSession);
-//		List<BankAccount> bankAccountsListByUser = null;
 
 		int selectedBankAccountId = 0;
 		BankAccount selectedBankAccount;
-//		boolean isUserOwnerOfBankAccount = false;
 		boolean isBankAccountApproved = false;
 
 		try
 		{
-				do
-				{
-					do //test if the selected bank account exists
+			do
+			{
+				do //test if the selected bank account exists
+				{		
+					System.out.println("Select the bank account where you want to operate the transaction: ");
+					selectedBankAccountId = Integer.parseInt(scannerValidatorUtil.nextLine());
+	
+					//Code Here for SERVICE LAYER
+					//test if the chosen bank account exists;
+					//Step 1: retrieve all bank accounts owned by the User
+					selectedBankAccount = bankAccountService.getBankAccountById(selectedBankAccountId);
+					if (selectedBankAccount == null)
 					{
-						System.out.println("Select the bank account where you want to deposit the funds: ");
-						selectedBankAccountId = Integer.parseInt(scannerValidatorUtil.nextLine());
-		
-						//Code Here for SERVICE LAYER
-						//test if the chosen bank account is included in the list of Bank Accounts owned by the Customer;
-						//Step 1: retrieve all bank accounts owned by the User
-						selectedBankAccount = bankAccountService.getBankAccountById(selectedBankAccountId);
-						if (selectedBankAccount == null)
-						{
-							System.out.println("This account does not exists.\n"
-									+ "Please select an APPROVED Bank Account from the list of bank accounts you own!");
-						}
-					} while (selectedBankAccount == null);
-										
-					if (selectedBankAccount.getAccountOwnerId() == sessionUser.getId())
-					{	
-						if (selectedBankAccount.getStatusBankAccount() == StatusAccount.APPROVED)
-						{
-							System.out.println("\nThe selected Bank Account has Id: " + selectedBankAccount.getBankAccountId() 
-							+ " | Owner id: " + selectedBankAccount.getAccountOwnerId()
-							+ " | Status: " + selectedBankAccount.getStatusBankAccount());
-							isBankAccountApproved = true;
-							return selectedBankAccount;
-						}
-						else
-						{
-							System.out.println("Your bank account has STATUS: " + selectedBankAccount.getStatusBankAccount() + " and cannot be used.\n"
-									+ "Please select an APPROVED Bank Account from the list of bank accounts you own!");
-							isBankAccountApproved = false;
-						}
-					}	
-					else
-					{
-						System.out.println("You are not the owner of this Bank Account. \n"
+						System.out.println("This account does not exists.\n"
 								+ "Please select an APPROVED Bank Account from the list of bank accounts you own!");
 					}
-				} while(selectedBankAccount.getAccountOwnerId() != sessionUser.getId() || isBankAccountApproved != true);
-				
-				//Tried to use it but didn't work 
-	//			if (bankAccountsListByUser.contains(selectedBankAccount))
-	//			{
-	//				choiceBankAcctId = true;
-	//			}
-//			scannerDepositFunds.close();
+				} while (selectedBankAccount == null);
+									
+				if (selectedBankAccount.getAccountOwnerId() == sessionUser.getId())
+				{	
+					if (selectedBankAccount.getStatusBankAccount() == StatusAccount.APPROVED)
+					{
+						System.out.println("\nThe selected Bank Account has Id: " + selectedBankAccount.getBankAccountId() 
+						+ " | Owner id: " + selectedBankAccount.getAccountOwnerId()
+						+ " | Status: " + selectedBankAccount.getStatusBankAccount());
+						isBankAccountApproved = true;
+						return selectedBankAccount;
+					}
+					else
+					{
+						System.out.println("Your bank account has STATUS: " + selectedBankAccount.getStatusBankAccount() + " and cannot be used.\n"
+								+ "Please select an APPROVED Bank Account from the list of bank accounts you own!");
+						isBankAccountApproved = false;
+					}
+				}	
+				else
+				{
+					System.out.println("You are not the owner of this Bank Account. \n"
+							+ "Please select an APPROVED Bank Account from the list of bank accounts you own!");
+				}
+			} while(selectedBankAccount.getAccountOwnerId() != sessionUser.getId() || isBankAccountApproved != true);
 		} 
 		catch (BusinessException e) 
 		{
 			System.out.println(e.getMessage());
-//			scannerDepositFunds.close();
 		}
 		return null;
 	}
@@ -231,6 +224,73 @@ public class ValidatorUtilImpl implements ValidatorUtil
 			{
 				return user;
 			}
+		}
+		return null;
+	}
+
+	@Override
+	public BankTransaction verifySelectedTransferTransaction(User userSession,
+			List<BankTransaction> tempTransferBankTransactionsListByUser) 
+	{
+//		System.out.println("Method <verifySelectedTransferTransaction> is running!");		
+		//several actions performed in this method can be split into smaller methods, assuring re-usability...
+		
+		//instantiate an object that will be used () to transfer data to and from Service layer 
+		BankAccountService bankAccountService = new BankAccountServiceImpl();
+
+		int selectedTransferTransactionId = 0;
+		BankTransaction selectedTransferTransaction;
+		boolean isTransferTransactionOK = false;
+
+		try
+		{
+			do
+			{
+				do //test if the selected bank account exists
+				{		
+					System.out.println("Select the transaction you want to evaluate: ");
+					selectedTransferTransactionId = Integer.parseInt(scannerValidatorUtil.nextLine());
+	
+					//Code Here for SERVICE LAYER
+					//test if the chosen bank account exists;
+					//Step 1: retrieve all bank accounts owned by the User
+					selectedTransferTransaction = bankAccountService.getTransferTransactionById(selectedTransferTransactionId);
+					if (selectedTransferTransaction == null)
+					{
+						System.out.println("This transaction does not exists.\n"
+								+ "Please select a transaction from the list of transaction you are involved in!");
+					}
+				} while (selectedTransferTransaction == null);
+									
+				if (selectedTransferTransaction.getUserRecipient().getId() == userSession.getId())
+				{	
+					if (selectedTransferTransaction.getTransactionType() == TransactionType.POST_FUND_TRANSFER)
+					{
+						System.out.println("\nThe selected transfer transaction has Id: " + selectedTransferTransaction.getIdTransaction() 
+						+ " | Sender: " + selectedTransferTransaction.getUserSender().getFirstName() + " " 
+								+ selectedTransferTransaction.getUserSender().getLastName()
+						+ " | Amount: " + selectedTransferTransaction.getAmount());
+						isTransferTransactionOK = true;
+						return selectedTransferTransaction;
+					}
+					else
+					{
+						System.out.println("The transaction you selected cannot be processed.\n"
+								+ "Please select a transaction from the list of transaction you are involved in!");
+						isTransferTransactionOK = false;
+					}
+				}	
+				else
+				{
+					System.out.println("You are not the recipient of the selected transfer transaction.\n"
+							+ "Please select a transaction from the list of transaction you are involved in!");
+					isTransferTransactionOK = false;
+				}
+			} while(selectedTransferTransaction.getUserRecipient().getId() != userSession.getId() || (isTransferTransactionOK != true));
+		} 
+		catch (BusinessException e) 
+		{
+			System.out.println(e.getMessage());
 		}
 		return null;
 	}

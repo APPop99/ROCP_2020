@@ -6,12 +6,9 @@ import java.util.Date;
 import java.util.List;
 import java.util.Scanner;
 import java.lang.Math;
-//import java.util.Random;
-//import java.util.stream.LongStream;
 
 import org.apache.log4j.Logger;
 
-//import app.bankingApp.DAO.dbUtil.LongStream;
 import app.bankingApp.exception.BusinessException;
 import app.bankingApp.model.BankAccount;
 import app.bankingApp.model.BankTransaction;
@@ -21,7 +18,6 @@ import app.bankingApp.model.TransactionType;
 import app.bankingApp.model.User;
 import app.bankingApp.presenter.CustomerMenuPresenter;
 import app.bankingApp.service.BankAccountService;
-//import app.bankingApp.presenter.MainMenuPresenter;
 import app.bankingApp.service.UserService;
 import app.bankingApp.service.implementation.BankAccountServiceImpl;
 import app.bankingApp.service.implementation.UserServiceImpl;
@@ -34,7 +30,6 @@ public class CustomerMenuPresenterImpl implements CustomerMenuPresenter
 {
 	private static Logger log=Logger.getLogger(MainMenuPresenterImpl.class);
 	private final Scanner scannerCustomerMenu = new Scanner(System.in);
-//	private static Scanner scannerFunds = new Scanner(System.in);
 	
 	public CustomerMenuPresenterImpl(User userLogin) 
 	{
@@ -51,7 +46,6 @@ public class CustomerMenuPresenterImpl implements CustomerMenuPresenter
 		System.out.println("----------------------------------------------");
 		
 		int choice = 0;
-//		Scanner scannerCustomerMenu = new Scanner(System.in);
 		
 		try
 		{
@@ -67,7 +61,7 @@ public class CustomerMenuPresenterImpl implements CustomerMenuPresenter
 				System.out.println("3) Make a deposit into the selected Bank Account");			
 				System.out.println("4) Make a withdrawal from the selected Bank Account");
 				System.out.println("5) Post a money transfer from the selected Bank Account");
-				System.out.println("6) Accept a trasfer into the selected Bank Account");
+				System.out.println("6) Accept a transfer into the selected Bank Account");
 				System.out.println("7) Returning to previous menu");
 				System.out.println("Please enter appropriate choice(1-7) :) ");
 
@@ -140,14 +134,11 @@ public class CustomerMenuPresenterImpl implements CustomerMenuPresenter
 
 		System.out.println("New Customer Menu!");
 		System.out.println("Allows a logged in User to apply for an approved Customer Account to use apps features!\n");
-
-//		Scanner scannerNonCustomerMenu = new Scanner(System.in);
 		
 		System.out.println("Welcome to Console based Bank / New Registered User Menu!");
 		System.out.println("---------------------------------------------------------");
 		
 		int choice = 0;
-//		Scanner scannerCustomerMenu = new Scanner(System.in);
 		
 		try
 		{
@@ -198,7 +189,6 @@ public class CustomerMenuPresenterImpl implements CustomerMenuPresenter
 						}
 					case 2:
 						//return to previous menu
-//						scannerCustomerMenu.close();
 						break;
 					default:
 						System.out.println("Please enter a number between 1 and 2!");
@@ -219,11 +209,9 @@ public class CustomerMenuPresenterImpl implements CustomerMenuPresenter
 		UserService userService = new UserServiceImpl();
 		
 		System.out.println("Please explicitly give us your acceptance for being approved as Customer:");
-//		Scanner scannerAddNonCustomerUserToApprovalTable = new Scanner(System.in);
 		
 		String choiceStatus;
 		boolean choiceBool = false;
-//		Scanner scannerCustomerMenu = new Scanner(System.in);
 		
 		try 
 		{
@@ -264,7 +252,6 @@ public class CustomerMenuPresenterImpl implements CustomerMenuPresenter
 		{
 			System.out.println(e.getMessage());
 			log.info(e.getMessage());
-//			scannerAddNonCustomerUserToApprovalTable.close();
 		}
 		System.out.println("");		
 	}
@@ -281,7 +268,7 @@ public class CustomerMenuPresenterImpl implements CustomerMenuPresenter
 		try 
 		{
 			//generated a 9-digits random number as Bank Account Number 
-			//test with the database the unicity of the Bank Account number generated
+			//test with the database the uniqueness of the Bank Account number generated
 			long bankAccountNumber = 0;		
 			boolean isBankAccountNumberUnique = false;
 			
@@ -400,7 +387,6 @@ public class CustomerMenuPresenterImpl implements CustomerMenuPresenter
 		//instantiate an object that will be used () to transfer data to and from Service layer 
 		BankAccountService bankAccountService = new BankAccountServiceImpl();
 
-		//CustomerMenuPresenter depositFundsIntoBankAccount = new CustomerMenuPresenterImpl(userSession);
 		List<BankAccount> bankAccountsListByUser = null;
 
 		//instantiate an object to handle the data display on screen
@@ -408,11 +394,9 @@ public class CustomerMenuPresenterImpl implements CustomerMenuPresenter
 
 		//instantiate an object to be used to validate the selected Bank Account Id
 		ValidatorUtil selectedBankAccountValidator = new ValidatorUtilImpl();
-
+		String transactionDescription = "";
 		BankTransaction depositFundsTransactionObj = new BankTransaction();
 		
-//		Scanner scannerFunds = new Scanner(System.in);
-
 		//get all the bank accounts a Customer has and display them on screen.
 		//Customer can choose the destination account from the list;
 		try 
@@ -433,21 +417,21 @@ public class CustomerMenuPresenterImpl implements CustomerMenuPresenter
 				amountToDeposit = Double.parseDouble(scannerCustomerMenu.nextLine());
 			} while(amountToDeposit <= 0);
 
-//			System.out.println("Current balance: " + selectedBankAccount.getAccountBalance());
-//			System.out.println("Amount to be deposited" + amountToDeposit);
 			double newBalanceToRecord = amountToDeposit + selectedBankAccount.getAccountBalance();
-//			System.out.println("New Balance to be recorded in db is: " + newBalanceToRecord);
+			
+			System.out.println("\nPlease enter a description for the deposit: ");
+			transactionDescription = scannerCustomerMenu.nextLine();
 
 			depositFundsTransactionObj.setSourceBankAccount(null);
 			depositFundsTransactionObj.setDestinationBankAccount(selectedBankAccount);
 			depositFundsTransactionObj.setAmount(newBalanceToRecord);
-//			System.out.println("new balance instantiate into transacton Obj to record is: "+depositFundsTransactionObj.getAmount());
 	
 			Timestamp transactionDate = new Timestamp(System.currentTimeMillis());
 			depositFundsTransactionObj.setTransactionDate(transactionDate);
 		
 			TransactionType transactionType = TransactionType.DEPOSIT_FUNDS;
 			depositFundsTransactionObj.setTransactionType(transactionType);
+			depositFundsTransactionObj.setTransactionDescription(transactionDescription);
 		
 			//Code Here for SERVICE LAYER
 			//update the bank account balance
@@ -488,6 +472,10 @@ public class CustomerMenuPresenterImpl implements CustomerMenuPresenter
 					+ " was recorded into the database. Transaction amount: " 
 					+ depositFundsTransactionObj.getAmount());
 			}
+			else
+			{
+				System.out.println("Transaction was not recorded in db!");
+			}
 		}
 		catch (BusinessException e) 
 		{
@@ -503,18 +491,17 @@ public class CustomerMenuPresenterImpl implements CustomerMenuPresenter
 		//instantiate an object that will be used () to transfer data to and from Service layer 
 		BankAccountService bankAccountService = new BankAccountServiceImpl();
 
-//		CustomerMenuPresenter withdrawFundsPresenterObj = new CustomerMenuPresenterImpl(userSession);
 		List<BankAccount> bankAccountsListByUser = null;
 		
 		//instantiate an object to handle the data display on screen
 		DisplayOnScreenService displayOnScreenService = new DisplayOnScreenServiceImpl();
 
 		//instantiate an object to be used to validate the selected Bank Account Id
-		ValidatorUtil isSelectedBankAccountValid = new ValidatorUtilImpl();
+		ValidatorUtil selectedBankAccountValidator = new ValidatorUtilImpl();
 
 		BankAccount selectedBankAccount = null;
+		String transactionDescription = "";
 		BankTransaction withdrawFundsTransactionObj = new BankTransaction();
-//		Scanner scannerFunds = new Scanner(System.in);
 		
 		//get all the bank accounts a Customer has and display them on screen .
 		//Customer can choose the destination account from the list;
@@ -525,7 +512,7 @@ public class CustomerMenuPresenterImpl implements CustomerMenuPresenter
 
 			//reads from keyboard, validates and returns the selected bank account from where the withdrawal will be made 
 			selectedBankAccount = 
-					isSelectedBankAccountValid.verifySelectedBankAccount(userSession, bankAccountsListByUser);
+					selectedBankAccountValidator.verifySelectedBankAccount(userSession, bankAccountsListByUser);
 			
 			double amountToWithdraw = 0;
 
@@ -540,6 +527,9 @@ public class CustomerMenuPresenterImpl implements CustomerMenuPresenter
 				
 			double newBalanceToRecord = selectedBankAccount.getAccountBalance() - amountToWithdraw;
 
+			System.out.println("\nPlease enter a description for the withdraw: ");
+			transactionDescription = scannerCustomerMenu.nextLine();
+			
 			withdrawFundsTransactionObj.setSourceBankAccount(selectedBankAccount);
 			withdrawFundsTransactionObj.setDestinationBankAccount(null);
 			withdrawFundsTransactionObj.setAmount(newBalanceToRecord);
@@ -549,6 +539,8 @@ public class CustomerMenuPresenterImpl implements CustomerMenuPresenter
 			
 			TransactionType transactionType = TransactionType.WITHDRAW_FUNDS;
 			withdrawFundsTransactionObj.setTransactionType(transactionType);
+			withdrawFundsTransactionObj.setTransactionDescription(transactionDescription);
+
 		
 			//Code Here for SERVICE LAYER
 			//update the bank account balance
@@ -577,8 +569,6 @@ public class CustomerMenuPresenterImpl implements CustomerMenuPresenter
 			//the Bank_Account table where we record only the New Balance and 
 			//the Transactions table where we record the specific amount withdrawn 
 			withdrawFundsTransactionObj.setAmount(amountToWithdraw);
-			System.out.println("\nThe amount instantiate into transacton Obj to record as transaction amount is: "
-					+ withdrawFundsTransactionObj.getAmount());
 			
 			//record the transaction in transactions' table;
 			if(bankAccountService.recordTransaction(withdrawFundsTransactionObj)>0)
@@ -590,11 +580,14 @@ public class CustomerMenuPresenterImpl implements CustomerMenuPresenter
 					+ "was recorded in the database. Transaction amount: "
 					+ withdrawFundsTransactionObj.getAmount());
 			}
+			else
+			{
+				System.out.println("Transaction was not recorded in db!");
+			}
 		}
 		catch (BusinessException e) 
 		{
 			System.out.println(e.getMessage());
-//			scannerDepositFunds.close();
 		}
 		System.out.println("");		
 	}
@@ -602,25 +595,370 @@ public class CustomerMenuPresenterImpl implements CustomerMenuPresenter
 	@Override
 	public void updatePostFundsTransferFromBankAccount(User userSession) 
 	{
-		System.out.println("Feature not yet implemented!");
 		//Step 1: select the account from where the Funds transfer will initiated
 		//Step 2: select the account where the Funds will be transfered to
 		//Step 3: read the amount to be transfered
 		//Step 4: perform the withdrawal of the funds and balance update of the sender's account
 		//Step 5: record the transaction into a temp table, until the recipient accepts the transfer
+		
+		//instantiate an object that will be used () to transfer data to and from Service layer 
+		BankAccountService bankAccountService = new BankAccountServiceImpl();
+
+		List<BankAccount> bankAccountsListByUser = null;
+
+		//instantiate an object to handle the data display on screen
+		DisplayOnScreenService displayOnScreenService = new DisplayOnScreenServiceImpl();
+
+		//instantiate an object to be used to validate the selected Bank Account Id
+		ValidatorUtil selectedBankAccountValidator = new ValidatorUtilImpl();
+
+		BankAccount selectedSourceBankAccount = null;
+		BankAccount selectedDestinationBankAccount = null;
+		Long selectedDestinationBankAccountNumber = 0L;
+		String transactionDescription = "";
+		boolean isTransactionCleared = false;
+		BankTransaction transferFundsTransactionObj = new BankTransaction();
+
+		boolean isDestinationBankAccountApproved = false;
+		
+		//Step 1:
+		try
+		{
+			bankAccountsListByUser = bankAccountService.getBankAccountsListByUser(userSession);
+			displayOnScreenService.printListOfBankAccountsByUser(bankAccountsListByUser, userSession);
+
+			//reads from keyboard, validates and returns the selected bank account from where the withdrawal will be made 
+			selectedSourceBankAccount = 
+					selectedBankAccountValidator.verifySelectedBankAccount(userSession, bankAccountsListByUser);
+			
+			
+			//Step 2:			
+			//read the Destination Account Number from keyboard
+			//or I can read the User Id / Name to whom to send the funds (?)
+			do
+			{
+				do 		
+				{
+					System.out.println("Select the bank account where you want to transfer the funds to: ");
+					selectedDestinationBankAccountNumber = Long.parseLong(scannerCustomerMenu.nextLine());
+	
+					//get the bank account data from the database and instantiate the Bank Account object
+					selectedDestinationBankAccount = bankAccountService.getBankAccountByNumber(selectedDestinationBankAccountNumber);
+
+					//test if the selected source bank account is an Existing Bank account;
+					if (selectedDestinationBankAccount == null)
+					{
+						System.out.println("This account does not exists.\n"
+								+ "Please check the Bank Account number and select a different Bank Account!");
+					}
+				} while (selectedDestinationBankAccount == null);
+			
+				//test if the selected source bank account is an Approved Bank account;
+				if (selectedDestinationBankAccount.getStatusBankAccount() == StatusAccount.APPROVED)
+				{
+					System.out.println("\nThe selected Bank Account has Id: " + selectedDestinationBankAccount.getBankAccountId() 
+					+ " | Owner id: " + selectedDestinationBankAccount.getAccountOwnerId()
+					+ " | Status: " + selectedDestinationBankAccount.getStatusBankAccount());
+					isDestinationBankAccountApproved = true;
+					break;
+				}
+				else
+				{
+					System.out.println("The chosen bank account has STATUS: " 
+						+ selectedDestinationBankAccount.getStatusBankAccount() + " and cannot be used.\n"
+						+ "Please select an APPROVED Bank Account!");
+					isDestinationBankAccountApproved = false;
+				}
+			} while(isDestinationBankAccountApproved != true);
+	
+			
+			//Step 3:
+			double amountToTransfer = 0;
+
+			do
+			{	//check if invalid transactions: 
+				//A withdrawal that would result in a negative balance.
+				//A deposit or withdrawal of negative money.
+				System.out.println("\nPlease enter the amount you want to transfer (it should be a positive amount): ");
+				System.out.println("You can withdraw a maximum amount of: " + selectedSourceBankAccount.getAccountBalance());
+				amountToTransfer = Double.parseDouble(scannerCustomerMenu.nextLine());
+			} while (amountToTransfer < 0 || (selectedSourceBankAccount.getAccountBalance()-amountToTransfer < 0));
+				
+			double newBalanceToRecord = selectedSourceBankAccount.getAccountBalance() - amountToTransfer;
+			
+			System.out.println("\nPlease enter a description for the transfer: ");
+			transactionDescription = scannerCustomerMenu.nextLine();
+
+			
+			//Step 4:
+			transferFundsTransactionObj.setSourceBankAccount(selectedSourceBankAccount);
+			transferFundsTransactionObj.setDestinationBankAccount(selectedDestinationBankAccount);
+			transferFundsTransactionObj.setAmount(newBalanceToRecord);
+		
+			Timestamp transactionDate = new Timestamp(System.currentTimeMillis());
+			transferFundsTransactionObj.setTransactionDate(transactionDate);
+			
+			TransactionType transactionType = TransactionType.POST_FUND_TRANSFER;
+			transferFundsTransactionObj.setTransactionType(transactionType);
+			
+			transferFundsTransactionObj.setTransactionDescription(transactionDescription);
+			transferFundsTransactionObj.setTransactionCleared(isTransactionCleared);
+			//is_transaction_cleared is set to false when transfer is initiated
+			//when is accepted will be set to true
+			
+			//Code Here for SERVICE LAYER
+			//update the bank account balance
+			if(bankAccountService.postTransferFundsTransaction(selectedSourceBankAccount, newBalanceToRecord, 
+					userSession.getId()) > 0)
+			{
+				Date date = new Date(transferFundsTransactionObj.getTransactionDate().getTime());
+				SimpleDateFormat formatter = new SimpleDateFormat("EEE, dd MMMM yyyy"); 
+
+				System.out.println("\nOn " + formatter.format(date) + ", the amount of " + amountToTransfer 
+					+ " was transfered from your bank account with: \n" 
+					+ "Bank Account Id: " + selectedSourceBankAccount.getBankAccountId() 
+					+ " | Bank Account Number: " + selectedSourceBankAccount.getBankAccountNumber()
+					+ " | to Bank Account Number: " + selectedDestinationBankAccount.getBankAccountNumber());
+				log.info("\nOn " + formatter.format(date) + ", the amount of " + amountToTransfer 
+					+ " was transfered from your bank account with: \n" 
+					+ "Bank Account Id: " + selectedSourceBankAccount.getBankAccountId() 
+					+ " | Bank Account Number: " + selectedSourceBankAccount.getBankAccountNumber()
+					+ " | to Bank Account Number: " + selectedDestinationBankAccount.getBankAccountNumber());	
+				
+				//maybe I can perform a query to extract the new balance from bank table from the db
+				System.out.println("Your bank's account new balance is: " + newBalanceToRecord);
+			}
+
+			
+			//Step 5:
+			//record the transaction in transfers transactions' table;
+			//change the amount to be recorded from newBalanceToBeRecorded to amountToTranfer;
+			//we use the same object to hold the data to be saved in three different tables:
+			//the Bank_Account table where we record only the New Balance and 
+			//the Transactions table where we record the specific amount transfered 
+			//the Transfers TRansactions table where we record the specific amount transfered
+			transferFundsTransactionObj.setAmount(amountToTransfer);
+		
+			//record the transaction in transfer transactions' table;
+			if(bankAccountService.recordTransferTransaction(transferFundsTransactionObj)>0)
+			{						
+				System.out.println("Transfer transaction " + transferFundsTransactionObj.getIdTransaction() 
+					+ " was recorded in the database. Transaction amount: "
+					+ transferFundsTransactionObj.getAmount());
+				log.info("Transfer transaction " + transferFundsTransactionObj.getIdTransaction() 
+					+ " was recorded in the database. Transaction amount: "
+					+ transferFundsTransactionObj.getAmount());
+			}
+			else
+			{
+				System.out.println("Transaction was not recorded in db!");
+			}
+		}
+		catch (BusinessException e) 
+		{
+			System.out.println(e.getMessage());
+		}
+		System.out.println("");	
 	}
 
 	@Override
 	public void updateAcceptFundsTransferIntoBankAccount(User userSession) 
 	{
-		System.out.println("Feature not yet implemented!");
-		//Step 1: retrieve the incoming funds transaction(s) pending approval from the temp db, related to current User;
+		System.out.println("Feature not yet fully implemented!");
+		//Step 1: retrieve and display the incoming funds transaction(s) pending approval from the temp db, related to current User;
 		//Step 2: select the transaction to be approved/accepted;
-		//Step 3: perform the deposit of the funds and balance update of the recipient's account;
-		//Step 4: record the transaction into the final transactions table, while deleting the temp transaction;
+		//Step 3: select if accept of decline the transaction
+		//Step 3A.1 perform the deposit of the funds and balance update of the recipient's account;
+		//Step 3A.2: record the transaction into the final transactions table, 
+		//		while updating the status of the transfer transaction in the transfer_transaction table;
 		//or
-		//Step 3: reject the transfer:
-			//Step 3.1: re-deposit the funds into the sender's account
-			//Step 3.2: delete the transaction form the temp db
+		//Step 3B: reject the transfer:
+		//Step 3B.1: re-deposit the funds into the sender's account
+		//Step 3B.2: change the transaction's status in the transfer_transaction table in TRANSFER_DECLINED
+		
+		//instantiate an object that will be used () to transfer data to and from Service layer 
+		BankAccountService bankAccountService = new BankAccountServiceImpl();
+
+		//instantiate an object to handle the data display on screen
+		DisplayOnScreenService displayOnScreenService = new DisplayOnScreenServiceImpl();
+
+		//instantiate an object to be used to validate the selected Bank Account Id
+		ValidatorUtil selectedTransferTransactionValidator = new ValidatorUtilImpl();
+
+		BankAccount selectedSourceBankAccount = null;
+		BankAccount selectedDestinationBankAccount = null;
+		BankTransaction transferFundsTransactionObj = new BankTransaction();
+		List<BankTransaction> tempTransferBankTransactionsListByRecipientUser;
+		String choiceStatus;
+		TransactionType transactionType = TransactionType.POST_FUND_TRANSFER;
+		boolean isTransactionCleared = false;
+				
+		//Step 1:Retrieve all pending transactions for the current user
+		try {
+			//Code here for SERVICE LAYER	
+			tempTransferBankTransactionsListByRecipientUser = 
+					bankAccountService.getAllTransferTransactionsByRecipientUser(userSession, transactionType, isTransactionCleared);	
+			displayOnScreenService.printListOfTransferTransactionsByRecipientUser(tempTransferBankTransactionsListByRecipientUser, userSession);
+
+			//Step 2: select the transaction to be approved/accepted;
+			//reads from keyboard, validates and returns the selected transfer transaction for the deposit to be made 
+			BankTransaction selectedTransferTransaction = 
+					selectedTransferTransactionValidator.verifySelectedTransferTransaction(userSession, tempTransferBankTransactionsListByRecipientUser);
+						
+			//instantiate the source and destination bank account objects
+			selectedDestinationBankAccount = selectedTransferTransaction.getDestinationBankAccount();
+			selectedSourceBankAccount = selectedTransferTransaction.getSourceBankAccount();
+			
+			//Step 3: select from keyboard if transaction is accepted or declined
+			System.out.println("Do you accept the selected transfer? (Y - approve / N - reject)");
+			choiceStatus = scannerCustomerMenu.nextLine();
+
+			switch (choiceStatus.toUpperCase())
+			{
+				case "Y":				//Code here for SERVICE LAYER
+					
+					//Step 3A.1 perform operations: deposit of the funds and update the balance of the recipient's account;
+
+					double newBalanceToRecord = selectedDestinationBankAccount.getAccountBalance() 
+							+ selectedTransferTransaction.getAmount();
+										
+					//prepare the transaction object properties for recording the accepted transfer transaction into transfer transaction table 
+					transferFundsTransactionObj.setSourceBankAccount(selectedTransferTransaction.getSourceBankAccount());
+					transferFundsTransactionObj.setDestinationBankAccount(selectedTransferTransaction.getDestinationBankAccount());
+					transferFundsTransactionObj.setAmount(newBalanceToRecord);
+				
+					Timestamp transactionDate = new Timestamp(System.currentTimeMillis());
+					transferFundsTransactionObj.setTransactionDate(transactionDate);
+					
+					TransactionType transactionTypeIn = TransactionType.ACCEPT_FUND_TRANSFER;
+					transferFundsTransactionObj.setTransactionType(transactionTypeIn);
+					isTransactionCleared = true;
+					transferFundsTransactionObj.setTransactionCleared(isTransactionCleared);
+					transferFundsTransactionObj.setTransactionDescription(selectedTransferTransaction.getTransactionDescription());
+										
+					//Code Here for SERVICE LAYER
+					//update the bank account balance
+					if(bankAccountService.postTransferFundsTransaction(selectedDestinationBankAccount, newBalanceToRecord, 
+							userSession.getId()) > 0)
+					{
+						Date date = new Date(transferFundsTransactionObj.getTransactionDate().getTime());
+						SimpleDateFormat formatter = new SimpleDateFormat("EEE, dd MMMM yyyy"); 
+
+						System.out.println("\nOn " + formatter.format(date) + ", the amount of " 
+							+ selectedTransferTransaction.getAmount() 
+							+ " was transfered to your bank account with: \n" 
+							+ "Bank Account Id: " + selectedDestinationBankAccount.getBankAccountId() 
+							+ " | Bank Account Number: " + selectedDestinationBankAccount.getBankAccountNumber()
+							+ " | from Bank Account Number: " + selectedSourceBankAccount.getBankAccountNumber());
+						log.info("\nOn " + formatter.format(date) + ", the amount of " 
+							+ selectedTransferTransaction.getAmount() 
+							+ " was transfered to your bank account with: \n" 
+							+ "Bank Account Id: " + selectedDestinationBankAccount.getBankAccountId() 
+							+ " | Bank Account Number: " + selectedDestinationBankAccount.getBankAccountNumber()
+							+ " | from Bank Account Number: " + selectedSourceBankAccount.getBankAccountNumber());	
+						
+						//maybe I can perform a query to extract the new balance from bank table from the db
+						System.out.println("Your bank's account new balance is: " + newBalanceToRecord);
+						
+						
+						//Step 3A.2: record the accept transfer transaction into the transfer_transactions table, 
+						//  while updating the status of the post transfer transaction in the transfer_transaction table;
+						
+						transferFundsTransactionObj.setAmount(selectedTransferTransaction.getAmount());
+						selectedTransferTransaction.setTransactionCleared(isTransactionCleared);
+						
+						//record the transaction in transfer transactions' table;
+						if(bankAccountService.recordTransferTransaction(transferFundsTransactionObj)>0)
+						{									
+							System.out.println("Transfer transaction " + transferFundsTransactionObj.getIdTransaction() 
+								+ " was recorded in the database. Transaction amount: "
+								+ transferFundsTransactionObj.getAmount());
+							log.info("Transfer transaction " + transferFundsTransactionObj.getIdTransaction() 
+								+ " was recorded in the database. Transaction amount: "
+								+ transferFundsTransactionObj.getAmount());
+														
+							if(bankAccountService.updateTransferTransactionClearingStatus(selectedTransferTransaction, isTransactionCleared)>0)
+							{
+								System.out.println("The clearance status of initial transfer transaction with id: " 
+									+ selectedTransferTransaction.getIdTransaction() 
+									+ " was updated to TRUE in the database. New clearance status is: "
+									+ selectedTransferTransaction.isTransactionCleared());
+								log.info("The clearance status of initial transfer transaction with id: " 
+									+ selectedTransferTransaction.getIdTransaction() 
+									+ " was updated to TRUE in the database. New clearance status is: "
+									+ selectedTransferTransaction.isTransactionCleared());
+							}
+						}
+						else
+						{
+							System.out.println("Accepted Transfer Transaction was not recorded in the db!");
+						}
+					}
+					break;
+				case "N":
+					//Code here for SERVICE LAYER
+					//Step 3B: reject the transfer:
+					//Step 3B.1: re-deposit the funds into the sender's account
+					//Step 3B.2: change the transaction's status in the transfer_transaction table in TRANSFER_DECLINED
+					System.out.println("Method for final step of rejecting transfers not yet implemented!");
+
+					//set the parameters for updating the declined transaction in transfer_transactions table
+					transactionTypeIn = TransactionType.TRANSFER_DECLINED;
+					selectedTransferTransaction.setTransactionType(transactionTypeIn);
+					isTransactionCleared = true;
+					selectedTransferTransaction.setTransactionCleared(isTransactionCleared);
+					transactionDate = new Timestamp(System.currentTimeMillis());
+					transferFundsTransactionObj.setTransactionDate(transactionDate);
+					
+					System.out.println("Initial transfer to be updated with declined status: " + selectedTransferTransaction.getIdTransaction());
+					
+					if(bankAccountService.updateTransferTransactionTypeAndClearingStatus(selectedTransferTransaction)>0)
+					{
+						System.out.println("The initial transfer transaction with id: " 
+							+ selectedTransferTransaction.getIdTransaction() 
+							+ " was declined and its clearance status was updated to TRUE in the database. "
+							+ " \nNew transaction type was set to : " + selectedTransferTransaction.getTransactionType() 
+							+ " while the new clearance status was set to: "
+							+ selectedTransferTransaction.isTransactionCleared());
+						log.info("The initial transfer transaction with id: " 
+								+ selectedTransferTransaction.getIdTransaction() 
+								+ " was declined and its clearance status was updated to TRUE in the database. "
+								+ " \nNew transaction type was set to : " + selectedTransferTransaction.getTransactionType() 
+								+ " while the new clearance status was set to: "
+								+ selectedTransferTransaction.isTransactionCleared());
+					}
+					
+					//deposit the funds in the source bank account
+					newBalanceToRecord = selectedSourceBankAccount.getAccountBalance() 
+						+ selectedTransferTransaction.getAmount();
+
+					if(bankAccountService.postTransferFundsTransaction(selectedSourceBankAccount, newBalanceToRecord) > 0)
+					{
+						Date date = new Date(transferFundsTransactionObj.getTransactionDate().getTime());
+						SimpleDateFormat formatter = new SimpleDateFormat("EEE, dd MMMM yyyy"); 
+
+						System.out.println("\nOn " + formatter.format(date) + ", the amount of " 
+							+ selectedTransferTransaction.getAmount() 
+							+ " was transfered back to source bank account with: \n" 
+							+ "Bank Account Id: " + selectedSourceBankAccount.getBankAccountId() 
+							+ " | Bank Account Number: " + selectedSourceBankAccount.getBankAccountNumber());
+						log.info("\nOn " + formatter.format(date) + ", the amount of " 
+							+ selectedTransferTransaction.getAmount() 
+							+ " was transfered back to source bank account with: \n" 
+							+ " Bank Account Id: " + selectedSourceBankAccount.getBankAccountId() 
+							+ " | Bank Account Number: " + selectedSourceBankAccount.getBankAccountNumber());	
+						
+						//maybe I can perform a query to extract the new balance from bank table from the db
+						System.out.println("Your bank's account new balance is: " + newBalanceToRecord);
+					}
+					
+					break;
+				default: 
+					System.out.println("Please enter only 'Y' or 'N' to continue!");
+					break;
+			}			
+		} catch (BusinessException e) {
+			System.out.println(e.getMessage());
+		}
 	}
 }
